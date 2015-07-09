@@ -1,0 +1,210 @@
+\documentclass{article}
+
+\usepackage[frenchb]{babel}
+%\usepackage{longtable}
+\usepackage{ltablex}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage[a4paper,margin=0.3in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[table]{xcolor}% http://ctan.org/pkg/xcolor
+\usepackage[nomessages]{fp}% http://ctan.org/pkg/fp
+\usepackage{ulem}
+\usepackage{hyperref}
+
+
+\newcommand{\maxnum}{100.00}
+\newlength{\maxlen}
+\newcommand{\databar}[2][blue!25]{%
+  \settowidth{\maxlen}{\maxnum}%
+  \addtolength{\maxlen}{\tabcolsep}%
+  \FPeval\result{round(#2/\maxnum:4)}%
+  \rlap{\color{blue!25}\hspace*{-.5\tabcolsep}\rule[-.05\ht\strutbox]{\result\maxlen}{.95\ht\strutbox}}%
+  \makebox[\dimexpr\maxlen-\tabcolsep][r]{#2}%
+}
+\renewcommand*\rmdefault{iwona}
+
+\newcommand{\SampleSize}{18 checklists (292 differents species)} 
+\newcommand{\newnoteline}{\rule{\textwidth}{0.15mm}\\[1.5ex]}
+
+
+\begin{document}
+
+
+
+\centering
+\LARGE{Vaud Bird Checklist}\\
+\normalsize \raggedright
+
+
+Birder(s): \underline{\hspace{112ex}}\\[1.5ex]
+Location: \underline{\hspace{28ex}}    Date: \underline{\hspace{13ex}}    Start time: \underline{\hspace{10ex}}   Duration: \underline{\hspace{10ex}}    Distance: \underline{\hspace{10ex}}\\[1.5ex]
+
+
+\newnoteline\newnoteline\newnoteline
+
+
+\begin{center}
+
+\begin{tabularx}{\textwidth}{cXXc}\hline
+\\[0.5ex]
+\textsc{ \large{\normalsize{\underline{\hspace{8ex}}\hspace{1ex}}}} 	 & \textsc{ \large{English}} 	 & \textsc{ \large{Français}} 	 & \textsc{ \large{ Sp}}\\\\[0.5ex]
+\hline
+
+\\
+\multicolumn{4}{c}{\textbf{Ducks, Geese, and Waterfowl}} \\ 
+\hline
+\underline{\hspace{8ex}}\hspace{1ex} 	 & Greylag Goose 	 & Oie cendrée 	 & \databar{8.2} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Mute Swan 	 & Cygne tuberculé 	 & \databar{43.3} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Ruddy Shelduck 	 & Tadorne casarca 	 & \databar{1.7} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Common Shelduck 	 & Tadorne de Belon 	 & \databar{5.2} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Gadwall 	 & Canard chipeau 	 & \databar{12.1} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Eurasian Wigeon 	 & Canard siffleur 	 & \databar{3.2} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Mallard 	 & Canard colvert 	 & \databar{55.8} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Northern Shoveler 	 & Canard souchet 	 & \databar{6.8} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Northern Pintail 	 & Canard pilet 	 & \databar{2.4} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Garganey 	 & Sarcelle d'été 	 & \databar{3.4} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Red-crested Pochard 	 & Nette rousse 	 & \databar{35.0} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Common Pochard 	 & Fuligule milouin 	 & \databar{12.4} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Tufted Duck 	 & Fuligule morillon 	 & \databar{20.5} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Greater Scaup 	 & Fuligule milouinan 	 & \databar{1.1} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Common Eider 	 & Eider à duvet 	 & \databar{2.7} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Common Goldeneye 	 & Garrot à oeil d'or 	 & \databar{1.7} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Common Merganser 	 & Harle bièvre 	 & \databar{38.6} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Red-breasted Merganser 	 & Harle huppé 	 & \databar{2.7} \\
+\\
+\multicolumn{4}{c}{\textbf{Pheasants, Grouse, and Allies}} \\ 
+\hline
+\underline{\hspace{8ex}}\hspace{1ex} 	 & Common Quail 	 & Caille des blés 	 & \databar{1.3} \\
+\\
+\multicolumn{4}{c}{\textbf{Grebes}} \\ 
+\hline
+\underline{\hspace{8ex}}\hspace{1ex} 	 & Little Grebe 	 & Grèbe castagneux 	 & \databar{14.7} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Great Crested Grebe 	 & Grèbe huppé 	 & \databar{41.1} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Black-necked Grebe 	 & Grèbe à cou noir 	 & \databar{7.9} \\
+\\
+\multicolumn{4}{c}{\textbf{Storks, Cormorants, Herons, Egrets, and Bitterns}} \\ 
+\hline
+\underline{\hspace{8ex}}\hspace{1ex} 	 & White Stork 	 & Cigogne blanche 	 & \databar{2.6} \\
+\underline{\hspace{8ex}}\hspace{1ex} 	 & Great Cormorant 	 & Grand Cormoran 	 & \databar{29.6} \\
+\underline{\hspace{8ex}}\hspace{1ex} 	 & Grey Heron 	 & Héron cendré 	 & \databar{43.3} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Great Egret 	 & Grande Aigrette 	 & \databar{3.0} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Little Egret 	 & Aigrette garzette 	 & \databar{1.2} \\
+\\
+\multicolumn{4}{c}{\textbf{Hawks, Eagles, and Kites}} \\ 
+\hline
+\underline{\hspace{8ex}}\hspace{1ex} 	 & Eurasian Marsh-Harrier 	 & Busard des roseaux 	 & \databar{3.6} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Eurasian Sparrowhawk 	 & Épervier d'Europe 	 & \databar{8.0} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Red Kite 	 & Milan royal 	 & \databar{8.8} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Black Kite 	 & Milan noir 	 & \databar{44.1} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Common Buzzard 	 & Buse variable 	 & \databar{28.6} \\
+\\
+\multicolumn{4}{c}{\textbf{Rails, Gallinules, and Coots}} \\ 
+\hline
+\underline{\hspace{8ex}}\hspace{1ex} 	 & Water Rail 	 & Râle d'eau 	 & \databar{2.6} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Common Moorhen 	 & Gallinule poule-d'eau 	 & \databar{8.3} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Eurasian Coot 	 & Foulque macroule 	 & \databar{54.0} \\
+\\
+\multicolumn{4}{c}{\textbf{Cranes, Stilts and Avocets, Plovers and Lapwings}} \\ 
+\hline
+\underline{\hspace{8ex}}\hspace{1ex} 	 & Common Crane 	 & Grue cendrée 	 & \databar{1.0} \\
+\underline{\hspace{8ex}}\hspace{1ex} 	 & Black-winged Stilt 	 & Échasse blanche 	 & \databar{1.2} \\
+\underline{\hspace{8ex}}\hspace{1ex} 	 & Northern Lapwing 	 & Vanneau huppé 	 & \databar{2.8} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Common Ringed Plover 	 & Grand Gravelot 	 & \databar{4.2} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Little Ringed Plover 	 & Petit Gravelot 	 & \databar{4.0} \\
+\\
+\multicolumn{4}{c}{\textbf{Sandpipers and Allies}} \\ 
+\hline
+\underline{\hspace{8ex}}\hspace{1ex} 	 & Common Sandpiper 	 & Chevalier guignette 	 & \databar{7.1} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Green Sandpiper 	 & Chevalier culblanc 	 & \databar{2.1} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Spotted Redshank 	 & Chevalier arlequin 	 & \databar{3.8} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Common Greenshank 	 & Chevalier aboyeur 	 & \databar{8.0} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Wood Sandpiper 	 & Chevalier sylvain 	 & \databar{4.6} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Common Redshank 	 & Chevalier gambette 	 & \databar{6.4} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Whimbrel 	 & Courlis corlieu 	 & \databar{2.0} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Eurasian Curlew 	 & Courlis cendré 	 & \databar{3.7} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Black-tailed Godwit 	 & Barge à queue noire 	 & \databar{2.3} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Ruff 	 &  	 & \databar{7.0} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Sanderling 	 & Bécasseau sanderling 	 & \databar{2.0} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Dunlin 	 & Bécasseau variable 	 & \databar{3.2} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Common Snipe 	 & Bécassine des marais 	 & \databar{1.6} \\
+\\
+\multicolumn{4}{c}{\textbf{Gulls, Terns, and Skimmers}} \\ 
+\hline
+\underline{\hspace{8ex}}\hspace{1ex} 	 & Black-headed Gull 	 & Mouette rieuse 	 & \databar{30.8} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Little Gull 	 & Mouette pygmée 	 & \databar{1.9} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Mew Gull 	 & Goéland cendré 	 & \databar{7.0} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Yellow-legged Gull 	 & Goéland leucophée 	 & \databar{45.6} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Caspian Gull 	 & Goéland pontique 	 & \databar{1.4} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Lesser Black-backed Gull 	 & Goéland brun 	 & \databar{2.8} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Black Tern 	 & Guifette noire 	 & \databar{3.8} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & White-winged Tern 	 & Guifette leucoptère 	 & \databar{1.2} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Common Tern 	 & Sterne pierregarin 	 & \databar{9.5} \\
+\\
+\multicolumn{4}{c}{\textbf{Pigeons and Doves and Cuckoos}} \\ 
+\hline
+\underline{\hspace{8ex}}\hspace{1ex} 	 & Rock Dove 	 & Pigeon biset 	 & \databar{19.4} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Common Wood-Pigeon 	 & Pigeon ramier 	 & \databar{53.2} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & European Turtle-Dove 	 & Tourterelle des bois 	 & \databar{1.5} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Eurasian Collared-Dove 	 & Tourterelle turque 	 & \databar{10.8} \\
+\underline{\hspace{8ex}}\hspace{1ex} 	 & Common Cuckoo 	 & Coucou gris 	 & \databar{5.4} \\
+\\
+\multicolumn{4}{c}{\textbf{Kingfishers and Woodpeckers}} \\ 
+\hline
+\underline{\hspace{8ex}}\hspace{1ex} 	 & Common Kingfisher 	 & Martin-pêcheur d'E. 	 & \databar{9.5} \\
+\underline{\hspace{8ex}}\hspace{1ex} 	 & Eurasian Wryneck 	 & Torcol fourmilier 	 & \databar{2.2} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Great Spotted Woodpecker 	 & Pic épeiche 	 & \databar{19.8} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Eurasian Green Woodpecker 	 & Pic vert 	 & \databar{25.7} \\
+\\
+\multicolumn{4}{c}{\textbf{Falcons}} \\ 
+\hline
+\underline{\hspace{8ex}}\hspace{1ex} 	 & Common Kestrel 	 & Faucon crécerelle 	 & \databar{16.5} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Red-footed Falcon 	 & Faucon kobez 	 & \databar{1.0} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Eurasian Hobby 	 & Faucon hobereau 	 & \databar{3.0} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Peregrine Falcon 	 & Faucon pèlerin 	 & \databar{2.1} \\
+\\
+\multicolumn{4}{c}{\textbf{Shrikes and Orioles}} \\ 
+\hline
+\underline{\hspace{8ex}}\hspace{1ex} 	 & Red-backed Shrike 	 & Pie-grièche écorcheur 	 & \databar{1.9} \\
+\underline{\hspace{8ex}}\hspace{1ex} 	 & Eurasian Golden Oriole 	 & Loriot d'Europe 	 & \databar{2.9} \\
+\\
+\multicolumn{4}{c}{\textbf{Crows, Jays, and Magpies}} \\ 
+\hline
+\underline{\hspace{8ex}}\hspace{1ex} 	 & Eurasian Jay 	 & Geai des chênes 	 & \databar{15.8} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Common Magpie 	 & Pie bavarde 	 & \databar{31.2} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Alpine Chough 	 & Chocard à bec jaune 	 & \databar{1.4} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Eurasian Jackdaw 	 &  	 & \databar{6.5} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Rook 	 & Corbeau freux 	 & \databar{7.1} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Carrion Crow 	 & Corneille noire 	 & \databar{70.8} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Common Raven 	 & Grand Corbeau 	 & \databar{3.6} \\
+\\
+\multicolumn{4}{c}{\textbf{Larks}} \\ 
+\hline
+\underline{\hspace{8ex}}\hspace{1ex} 	 & Skylark 	 & Alouette des champs 	 & \databar{20.4} \\
+\\
+\multicolumn{4}{c}{\textbf{Swallows, Swifts and Bee-eater}} \\ 
+\hline
+\underline{\hspace{8ex}}\hspace{1ex} 	 & Sand Martin 	 & Hirondelle de rivage 	 & \databar{6.2} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Eurasian Crag-Martin 	 & Hirondelle de rochers 	 & \databar{1.1} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Barn Swallow 	 & Hirondelle rustique 	 & \databar{31.8} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Common House-Martin 	 & Hirondelle de fenêtre 	 & \databar{26.1} \\
+\underline{\hspace{8ex}}\hspace{1ex} 	 & Common Swift 	 & Martinet noir 	 & \databar{24.1} \\
+\underline{\hspace{8ex}}\hspace{1ex} 	 & European Bee-eater 	 & Guêpier d'Europe 	 & \databar{1.2} \\
+\\
+\multicolumn{4}{c}{\textbf{Tits and Bearded Reedling}} \\ 
+\hline
+\underline{\hspace{8ex}}\hspace{1ex} 	 & Marsh Tit 	 & Mésange nonnette 	 & \databar{10.2} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Willow Tit 	 & Mésange boréale 	 & \databar{3.3} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Coal Tit 	 & Mésange noire 	 & \databar{9.8} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Crested Tit 	 & Mésange huppée 	 & \databar{4.0} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Great Tit 	 & Mésange charbonnière 	 & \databar{53.5} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Blue Tit 	 & Mésange bleue 	 & \databar{50.9} \\
+\underline{\hspace{8ex}}\hspace{1ex} 	 & Bearded Tit 	 & Panure à moustaches 	 & \databar{3.1} \\
+\underline{\hspace{8ex}}\hspace{1ex} 	 & Long-tailed Tit 	 & Mésange à l. queue 	 & \databar{5.5} \\
+\\
+\multicolumn{4}{c}{\textbf{Nuthatches and Treecreepers}} \\ 
+\hline
+\underline{\hspace{8ex}}\hspace{1ex} 	 & Eurasian Nuthatch 	 & Sittelle torchepot 	 & \databar{24.2} \\
+\underline{\hspace{8ex}}\hspace{1ex} 	 & Eurasian Treecreeper 	 & Grimpereau des bois 	 & \databar{2.8} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Short-toed Treecreeper 	 & Grimpereau des jardins 	 & \databar{18.0} \\
+\\
+\multicolumn{4}{c}{\textbf{Wrens, Dippers and Kinglets}} \\ 
+\hline
+\underline{\hspace{8ex}}\hspace{1ex} 	 & Eurasian Wren 	 & Troglodyte mignon 	 & \databar{36.2} \\
+\underline{\hspace{8ex}}\hspace{1ex} 	 & White-fronted Dipper 	 & Cincle plongeur 	 & \databar{1.6} \\
+\underline{\hspace{8ex}}\hspace{1ex} 	 & Goldcrest 	 & Roitelet huppé 	 & \databar{9.5} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Firecrest 	 & Roitelet à tr. b. 	 & \databar{7.1} \\
+\\
+\multicolumn{4}{c}{\textbf{Leaf-Warblers, Reed-Warblers, Grassbirds and Allies}} \\ 
+\hline
+\underline{\hspace{8ex}}\hspace{1ex} 	 & Willow Warbler 	 & Pouillot fitis 	 & \databar{8.9} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Common Chiffchaff 	 & Pouillot véloce 	 & \databar{35.9} \\
+\underline{\hspace{8ex}}\hspace{1ex} 	 & Eurasian Reed-Warbler 	 & Rousserolle effarvatte 	 & \databar{9.9} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Great Reed-Warbler 	 & Rousserolle turdoïde 	 & \databar{5.8} \\
+\underline{\hspace{8ex}}\hspace{1ex} 	 & Savi's Warbler 	 & Locustelle luscinioïde 	 & \databar{4.3} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Grasshopper Warbler 	 & Locustelle tachetée 	 & \databar{1.4} \\
+\underline{\hspace{8ex}}\hspace{1ex} 	 & Blackcap 	 & Fauvette à tête noire 	 & \databar{44.9} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Garden Warbler 	 & Fauvette des jardins 	 & \databar{4.8} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Whitethroat 	 & Fauvette grisette 	 & \databar{1.1} \\
+\\
+\multicolumn{4}{c}{\textbf{Old World Flycatchers}} \\ 
+\hline
+\underline{\hspace{8ex}}\hspace{1ex} 	 & Spotted Flycatcher 	 & Gobemouche gris 	 & \databar{2.1} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Robin 	 & Rougegorge familier 	 & \databar{39.4} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Nightingale 	 & Rossignol philomèle 	 & \databar{9.3} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Pied Flycatcher 	 & Gobemouche noir 	 & \databar{3.7} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Redstart 	 & Rougequeue à fr. blc 	 & \databar{2.8} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Black Redstart 	 & Rougequeue noir 	 & \databar{36.4} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Whinchat 	 & Tarier des prés 	 & \databar{3.6} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Stonechat 	 & Tarier pâtre 	 & \databar{6.1} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Wheatear 	 & Traquet motteux 	 & \databar{4.6} \\
+\\
+\multicolumn{4}{c}{\textbf{Thrushes and Allies}} \\ 
+\hline
+\underline{\hspace{8ex}}\hspace{1ex} 	 & Ring Ouzel 	 & Merle à plastron 	 & \databar{2.4} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Blackbird 	 & Merle noir 	 & \databar{70.2} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Fieldfare 	 & Grive litorne 	 & \databar{8.0} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Song Thrush 	 & Grive musicienne 	 & \databar{12.4} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Mistle Thrush 	 & Grive draine 	 & \databar{8.5} \\
+\underline{\hspace{8ex}}\hspace{1ex} 	 & Starling 	 & Étourneau sansonnet 	 & \databar{52.2} \\
+\\
+\multicolumn{4}{c}{\textbf{Wagtails and Pipits}} \\ 
+\hline
+\underline{\hspace{8ex}}\hspace{1ex} 	 & Western Yellow Wagtail 	 & Bergeronnette pr. 	 & \databar{5.9} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Grey Wagtail 	 & Bergeronnette des r. 	 & \databar{3.1} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Meadow Pipit 	 & Pipit farlouse 	 & \databar{3.5} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Tree Pipit 	 & Pipit des arbres 	 & \databar{1.2} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Water Pipit 	 & Pipit spioncelle 	 & \databar{3.6} \\
+\\
+\multicolumn{4}{c}{\textbf{Buntings and New World Sparrows}} \\ 
+\hline
+\underline{\hspace{8ex}}\hspace{1ex} 	 & Yellowhammer 	 & Bruant jaune 	 & \databar{10.4} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Reed Bunting 	 & Bruant des roseaux 	 & \databar{10.3} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Corn Bunting 	 & Bruant proyer 	 & \databar{1.6} \\
+\\
+\multicolumn{4}{c}{\textbf{Siskins, Crossbills, and Allies}} \\ 
+\hline
+\underline{\hspace{8ex}}\hspace{1ex} 	 & Chaffinch 	 & Pinson des arbres 	 & \databar{62.4} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Brambling 	 & Pinson du Nord 	 & \databar{2.5} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Bullfinch 	 & Bouvreuil pivoine 	 & \databar{3.3} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Greenfinch 	 & Verdier d'Europe 	 & \databar{53.1} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Crossbill 	 & Bec-croisé des sapins 	 & \databar{2.6} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Siskin 	 & Tarin des aulnes 	 & \databar{5.2} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Goldfinch 	 & Chardonneret élégant 	 & \databar{32.7} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Linnet 	 &  	 & \databar{5.1} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Serin 	 & Serin cini 	 & \databar{26.8} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Hawfinch 	 & Grosbec casse-noyaux 	 & \databar{2.1} \\
+\underline{\hspace{8ex}}\hspace{1ex} 	 & House Sparrow 	 & Moineau domestique 	 & \databar{57.7} \\\underline{\hspace{8ex}}\hspace{1ex} 	 & Tree Sparrow 	 & Moineau friquet 	 & \databar{5.6} \\\hline
+\let\thefootnote\relax\footnote{
+Checklist generated on \today{}  with occurence and frequency computed from \SampleSize{} submitted to \href{www.ebird.org}{Ebird}. Scientific names and systematic order follow \href{http://www.birds.cornell.edu/clementschecklist/download/}{Clements Checklist 6.9 (eBird 1.55)}. Translation taken from \href{http://www.worldbirdnames.org/ioc-lists/}{IOC World Bird List 5.1 (Multilingual Version)}.
+Main table display only non-hybrid birds with occurence >1\%.
+ Generated with ebirdToLaTeX python code. Comment, suggestion? \href{mailto:rafnuss@gmail.com}{rafnuss@gmail.com}}
+\end{tabularx}
+
+ 
+\begin{tabularx}{\textwidth}{cXcXcX} 
+\hline
+\\
+\multicolumn{6}{c}{\textsc{ \Large{Rare\footnotesize{>.1\%}}}} \\ 
+\\
+\hline
+\underline{\hspace{3ex}} 	 &Canada Goose 	 &\underline{\hspace{3ex}} 	 &Spotted Sandpiper 	 &\underline{\hspace{3ex}} 	 &Great Grey Shrike \\ 
+\underline{\hspace{3ex}} 	 &Egyptian Goose 	 &\underline{\hspace{3ex}} 	 &Marsh Sandpiper 	 &\underline{\hspace{3ex}} 	 &Woodchat Shrike \\ 
+\underline{\hspace{3ex}} 	 &Mandarin Duck 	 &\underline{\hspace{3ex}} 	 &Bar-tailed Godwit 	 &\underline{\hspace{3ex}} 	 &Red-billed Chough \\ 
+\underline{\hspace{3ex}} 	 &White-winged Scoter 	 &\underline{\hspace{3ex}} 	 &Ruddy Turnstone 	 &\underline{\hspace{3ex}} 	 &Greater Short-toed Lark \\ 
+\underline{\hspace{3ex}} 	 &Long-tailed Duck 	 &\underline{\hspace{3ex}} 	 &Broad-billed Sandpiper 	 &\underline{\hspace{3ex}} 	 &Woodlark \\ 
+\underline{\hspace{3ex}} 	 &Common Pheasant 	 &\underline{\hspace{3ex}} 	 &Curlew Sandpiper 	 &\underline{\hspace{3ex}} 	 &Eurasian Penduline-Tit \\ 
+\underline{\hspace{3ex}} 	 &Black-throated Diver 	 &\underline{\hspace{3ex}} 	 &Temminck's Stint 	 &\underline{\hspace{3ex}} 	 &Wallcreeper \\ 
+\underline{\hspace{3ex}} 	 &Purple Heron 	 &\underline{\hspace{3ex}} 	 &Little Stint 	 &\underline{\hspace{3ex}} 	 &Cetti's Warbler \\ 
+\underline{\hspace{3ex}} 	 &Cattle Egret 	 &\underline{\hspace{3ex}} 	 &Pectoral Sandpiper 	 &\underline{\hspace{3ex}} 	 &Western Bonelli's Warbler \\ 
+\underline{\hspace{3ex}} 	 &Black-crowned Night-Heron 	 &\underline{\hspace{3ex}} 	 &Collared Pratincole 	 &\underline{\hspace{3ex}} 	 &Wood Warbler \\ 
+\underline{\hspace{3ex}} 	 &Eurasian Spoonbill 	 &\underline{\hspace{3ex}} 	 &Herring Gull 	 &\underline{\hspace{3ex}} 	 &Yellow-browed Warbler \\ 
+\underline{\hspace{3ex}} 	 &European Honey-buzzard 	 &\underline{\hspace{3ex}} 	 &Whiskered Tern 	 &\underline{\hspace{3ex}} 	 &Aquatic Warbler \\ 
+\underline{\hspace{3ex}} 	 &Griffon Vulture 	 &\underline{\hspace{3ex}} 	 &Arctic Tern 	 &\underline{\hspace{3ex}} 	 &Sedge Warbler \\ 
+\underline{\hspace{3ex}} 	 &Golden Eagle 	 &\underline{\hspace{3ex}} 	 &Eurasian Pygmy-Owl 	 &\underline{\hspace{3ex}} 	 &Marsh Warbler \\ 
+\underline{\hspace{3ex}} 	 &Northern Harrier 	 &\underline{\hspace{3ex}} 	 &Tawny Owl 	 &\underline{\hspace{3ex}} 	 &Lesser Whitethroat \\ 
+\underline{\hspace{3ex}} 	 &Pallid Harrier 	 &\underline{\hspace{3ex}} 	 &Short-eared Owl 	 &\underline{\hspace{3ex}} 	 &Redwing \\ 
+\underline{\hspace{3ex}} 	 &Northern Goshawk 	 &\underline{\hspace{3ex}} 	 &Tengmalm's Owl 	 &\underline{\hspace{3ex}} 	 &Dunnock \\ 
+\underline{\hspace{3ex}} 	 &Little Crake 	 &\underline{\hspace{3ex}} 	 &Eurasian Hoopoe 	 &\underline{\hspace{3ex}} 	 &Citrine Wagtail \\ 
+\underline{\hspace{3ex}} 	 &Pied Avocet 	 &\underline{\hspace{3ex}} 	 &Black Woodpecker 	 &\underline{\hspace{3ex}} 	 &Cirl Bunting \\ 
+\underline{\hspace{3ex}} 	 &Grey Plover 	 &\underline{\hspace{3ex}} 	 &Grey-headed Woodpecker 	 &\underline{\hspace{3ex}} 	 &Ortolan Bunting \\ 
+\underline{\hspace{3ex}} 	 &European Golden-Plover 	 &\underline{\hspace{3ex}} 	 &Merlin 	 &\underline{\hspace{3ex}} 	 &Citril Finch \\ 
+\hline
+\end{tabularx} 
+\end{center}
+\end{document}

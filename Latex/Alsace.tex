@@ -1,0 +1,211 @@
+\documentclass{article}
+
+\usepackage[frenchb]{babel}
+%\usepackage{longtable}
+\usepackage{ltablex}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage[a4paper,margin=0.3in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[table]{xcolor}% http://ctan.org/pkg/xcolor
+\usepackage[nomessages]{fp}% http://ctan.org/pkg/fp
+\usepackage{ulem}
+\usepackage{hyperref}
+
+
+\newcommand{\maxnum}{60.00}
+\newlength{\maxlen}
+\newcommand{\databar}[2][blue!25]{%
+  \settowidth{\maxlen}{\maxnum}%
+  \addtolength{\maxlen}{\tabcolsep}%
+  \FPeval\result{round(#2/\maxnum:4)}%
+  \rlap{\color{blue!25}\hspace*{-.5\tabcolsep}\rule[-.05\ht\strutbox]{\result\maxlen}{.95\ht\strutbox}}%
+  \makebox[\dimexpr\maxlen-\tabcolsep][r]{#2}%
+}
+\renewcommand*\rmdefault{iwona}
+
+\newcommand{\SampleSize}{6 checklists (251 differents species)} 
+\newcommand{\newnoteline}{\rule{\textwidth}{0.15mm}\\[1.5ex]}
+
+
+\begin{document}
+
+
+
+\centering
+\LARGE{Alsace Bird Checklist}\\
+\normalsize \raggedright
+
+
+Birder(s): \underline{\hspace{112ex}}\\[1.5ex]
+Location: \underline{\hspace{28ex}}    Date: \underline{\hspace{13ex}}    Start time: \underline{\hspace{10ex}}   Duration: \underline{\hspace{10ex}}    Distance: \underline{\hspace{10ex}}\\[1.5ex]
+
+
+\newnoteline\newnoteline\newnoteline
+
+
+\begin{center}
+
+\begin{tabularx}{\textwidth}{cXXXccccc}\hline
+\\[0.5ex]
+\textsc{ \large{\normalsize{\underline{\hspace{3ex}}\hspace{1ex}}}} 	 & \textsc{ \large{English}} 	 & \textsc{ \large{Français}} 	 & \textsc{ \large{Scientific}} 	 & \textsc{ \large{Y}} 	 & \textsc{ \large{S}} 	 & \textsc{ \large{S}} 	 & \textsc{ \large{F}} 	 & \textsc{ \large{ W}}\\\\[0.5ex]
+\hline
+
+\\
+\multicolumn{9}{c}{\textbf{Anatidae (Ducks, Geese, and Waterfowl)}} \\ 
+\hline
+$\square$\hspace{1ex}  	 & Greylag Goose 	 & Oie cendrée 	 & \textit{Anser anser} 	 & \databar{7.5} 	 & \databar{9.7} 	 & \databar{6.1} 	 & \databar{6.1} 	 & \databar{8.0} \\$\square$\hspace{1ex}  	 & Canada Goose 	 & Bernache du Canada 	 & \textit{Branta canadensis} 	 & \databar{1.2} 	 & \databar{2.1} 	 & \databar{2.1} 	 & \databar{0.0} 	 & \databar{0.8} \\$\square$\hspace{1ex}  	 & Mute Swan 	 & Cygne tuberculé 	 & \textit{Cygnus olor} 	 & \databar{39.5} 	 & \databar{47.6} 	 & \databar{34.8} 	 & \databar{27.1} 	 & \databar{48.4} \\$\square$\hspace{1ex}  	 & Egyptian Goose 	 & Ouette d'Égypte 	 & \textit{Alopochen aegyptiaca} 	 & \databar{7.5} 	 & \databar{4.1} 	 & \databar{7.8} 	 & \databar{6.5} 	 & \databar{11.4} \\$\square$\hspace{1ex}  	 & Common Shelduck 	 & Tadorne de Belon 	 & \textit{Tadorna tadorna} 	 & \databar{1.1} 	 & \databar{2.1} 	 & \databar{0.0} 	 & \databar{2.1} 	 & \databar{0.0} \\$\square$\hspace{1ex}  	 & Gadwall 	 & Canard chipeau 	 & \textit{Anas strepera} 	 & \databar{14.9} 	 & \databar{9.9} 	 & \databar{9.3} 	 & \databar{15.0} 	 & \databar{25.3} \\$\square$\hspace{1ex}  	 & Eurasian Wigeon 	 & Canard siffleur 	 & \textit{Anas penelope} 	 & \databar{6.3} 	 & \databar{7.7} 	 & \databar{0.0} 	 & \databar{6.1} 	 & \databar{11.5} \\$\square$\hspace{1ex}  	 & Mallard 	 & Canard colvert 	 & \textit{Anas platyrhynchos} 	 & \databar{46.4} 	 & \databar{58.0} 	 & \databar{35.7} 	 & \databar{45.0} 	 & \databar{46.9} \\$\square$\hspace{1ex}  	 & Northern Shoveler 	 & Canard souchet 	 & \textit{Anas clypeata} 	 & \databar{4.4} 	 & \databar{9.6} 	 & \databar{0.0} 	 & \databar{4.9} 	 & \databar{3.2} \\$\square$\hspace{1ex}  	 & Northern Pintail 	 & Canard pilet 	 & \textit{Anas acuta} 	 & \databar{2.7} 	 & \databar{4.2} 	 & \databar{0.0} 	 & \databar{2.1} 	 & \databar{4.6} \\$\square$\hspace{1ex}  	 & Garganey 	 & Sarcelle d'été 	 & \textit{Anas querquedula} 	 & \databar{1.4} 	 & \databar{5.6} 	 & \databar{0.0} 	 & \databar{0.0} 	 & \databar{0.0} \\$\square$\hspace{1ex}  	 & Red-crested Pochard 	 & Nette rousse 	 & \textit{Netta rufina} 	 & \databar{2.6} 	 & \databar{7.0} 	 & \databar{2.1} 	 & \databar{0.0} 	 & \databar{1.5} \\$\square$\hspace{1ex}  	 & Common Pochard 	 & Fuligule milouin 	 & \textit{Aythya ferina} 	 & \databar{14.9} 	 & \databar{9.8} 	 & \databar{0.7} 	 & \databar{12.8} 	 & \databar{36.3} \\$\square$\hspace{1ex}  	 & Ferruginous Duck 	 & Fuligule nyroca 	 & \textit{Aythya nyroca} 	 & \databar{1.1} 	 & \databar{1.4} 	 & \databar{0.0} 	 & \databar{2.6} 	 & \databar{0.5} \\$\square$\hspace{1ex}  	 & Tufted Duck 	 & Fuligule morillon 	 & \textit{Aythya fuligula} 	 & \databar{25.2} 	 & \databar{19.4} 	 & \databar{25.2} 	 & \databar{17.0} 	 & \databar{39.3} \\$\square$\hspace{1ex}  	 & Greater Scaup 	 & Fuligule milouinan 	 & \textit{Aythya marila} 	 & \databar{4.8} 	 & \databar{4.2} 	 & \databar{0.0} 	 & \databar{2.1} 	 & \databar{12.8} \\$\square$\hspace{1ex}  	 & Common Eider 	 & Eider à duvet 	 & \textit{Somateria mollissima} 	 & \databar{1.5} 	 & \databar{2.8} 	 & \databar{0.0} 	 & \databar{2.1} 	 & \databar{1.2} \\$\square$\hspace{1ex}  	 & White-winged Scoter 	 & Macreuse brune 	 & \textit{Melanitta fusca} 	 & \databar{1.6} 	 & \databar{5.6} 	 & \databar{0.0} 	 & \databar{0.0} 	 & \databar{0.8} \\$\square$\hspace{1ex}  	 & Common Goldeneye 	 & Garrot à ?il d'or 	 & \textit{Bucephala clangula} 	 & \databar{4.6} 	 & \databar{5.9} 	 & \databar{0.0} 	 & \databar{2.1} 	 & \databar{10.6} \\$\square$\hspace{1ex}  	 & Smew 	 & Harle piette 	 & \textit{Mergellus albellus} 	 & \databar{0.7} 	 & \databar{1.4} 	 & \databar{0.0} 	 & \databar{0.0} 	 & \databar{1.5} \\$\square$\hspace{1ex}  	 & Common Merganser 	 & Grand Harle 	 & \textit{Mergus merganser} 	 & \databar{12.3} 	 & \databar{11.4} 	 & \databar{1.9} 	 & \databar{9.5} 	 & \databar{26.4} \\$\square$\hspace{1ex}  	 & Red-breasted Merganser 	 & Harle huppé 	 & \textit{Mergus serrator} 	 & \databar{0.8} 	 & \databar{1.4} 	 & \databar{0.0} 	 & \databar{0.0} 	 & \databar{1.7} \\
+\\
+\multicolumn{9}{c}{\textbf{Phasianidae (Pheasants, Grouse, and Allies)}} \\ 
+\hline
+$\square$\hspace{1ex}  	 & Common Pheasant 	 & Faisan de Colchide 	 & \textit{Phasianus colchicus} 	 & \databar{16.3} 	 & \databar{32.8} 	 & \databar{16.7} 	 & \databar{10.6} 	 & \databar{5.3} \\
+\\
+\multicolumn{9}{c}{\textbf{Gaviidae (Loons)}} \\ 
+\hline
+$\square$\hspace{1ex}  	 & Red-throated Diver 	 & Plongeon catmarin 	 & \textit{Gavia stellata} 	 & \databar{1.9} 	 & \databar{4.2} 	 & \databar{0.0} 	 & \databar{2.1} 	 & \databar{1.2} \\$\square$\hspace{1ex}  	 & Black-throated Diver 	 & Plongeon arctique 	 & \textit{Gavia arctica} 	 & \databar{0.4} 	 & \databar{1.4} 	 & \databar{0.0} 	 & \databar{0.0} 	 & \databar{0.0} \\$\square$\hspace{1ex}  	 & Great Northern Diver 	 & Plongeon huard 	 & \textit{Gavia immer} 	 & \databar{0.3} 	 & \databar{1.4} 	 & \databar{0.0} 	 & \databar{0.0} 	 & \databar{0.0} \\
+\\
+\multicolumn{9}{c}{\textbf{Podicipedidae (Grebes)}} \\ 
+\hline
+$\square$\hspace{1ex}  	 & Little Grebe 	 & Grèbe castagneux 	 & \textit{Tachybaptus ruficollis} 	 & \databar{10.6} 	 & \databar{20.8} 	 & \databar{6.7} 	 & \databar{6.3} 	 & \databar{8.6} \\$\square$\hspace{1ex}  	 & Red-necked Grebe 	 & Grèbe jougris 	 & \textit{Podiceps grisegena} 	 & \databar{0.9} 	 & \databar{3.7} 	 & \databar{0.0} 	 & \databar{0.0} 	 & \databar{0.0} \\$\square$\hspace{1ex}  	 & Great Crested Grebe 	 & Grèbe huppé 	 & \textit{Podiceps cristatus} 	 & \databar{18.7} 	 & \databar{16.5} 	 & \databar{10.8} 	 & \databar{8.4} 	 & \databar{39.3} \\$\square$\hspace{1ex}  	 & Black-necked Grebe 	 & Grèbe à cou noir 	 & \textit{Podiceps nigricollis} 	 & \databar{1.6} 	 & \databar{2.8} 	 & \databar{0.0} 	 & \databar{2.1} 	 & \databar{1.5} \\
+\\
+\multicolumn{9}{c}{\textbf{Ciconiidae (Storks)}} \\ 
+\hline
+$\square$\hspace{1ex}  	 & White Stork 	 & Cigogne blanche 	 & \textit{Ciconia ciconia} 	 & \databar{22.5} 	 & \databar{24.9} 	 & \databar{32.6} 	 & \databar{19.0} 	 & \databar{13.7} \\
+\\
+\multicolumn{9}{c}{\textbf{Phalacrocoracidae (Cormorants and Shags)}} \\ 
+\hline
+$\square$\hspace{1ex}  	 & Great Cormorant 	 & Grand Cormoran 	 & \textit{Phalacrocorax carbo} 	 & \databar{33.2} 	 & \databar{25.1} 	 & \databar{27.6} 	 & \databar{33.0} 	 & \databar{47.1} \\
+\\
+\multicolumn{9}{c}{\textbf{Ardeidae (Herons, Egrets, and Bitterns)}} \\ 
+\hline
+$\square$\hspace{1ex}  	 & Grey Heron 	 & Héron cendré 	 & \textit{Ardea cinerea} 	 & \databar{31.3} 	 & \databar{35.9} 	 & \databar{32.8} 	 & \databar{28.2} 	 & \databar{28.4} \\$\square$\hspace{1ex}  	 & Great Egret 	 & Grande Aigrette 	 & \textit{Ardea alba} 	 & \databar{14.0} 	 & \databar{16.9} 	 & \databar{11.9} 	 & \databar{11.3} 	 & \databar{16.0} \\
+\\
+\multicolumn{9}{c}{\textbf{Accipitridae (Hawks, Eagles, and Kites)}} \\ 
+\hline
+$\square$\hspace{1ex}  	 & Eurasian Marsh-Harrier 	 & Busard des roseaux 	 & \textit{Circus aeruginosus} 	 & \databar{3.6} 	 & \databar{3.8} 	 & \databar{1.2} 	 & \databar{9.3} 	 & \databar{0.0} \\$\square$\hspace{1ex}  	 & Northern Harrier 	 & Busard Saint-Martin 	 & \textit{Circus cyaneus} 	 & \databar{1.4} 	 & \databar{4.2} 	 & \databar{0.0} 	 & \databar{1.2} 	 & \databar{0.3} \\$\square$\hspace{1ex}  	 & Eurasian Sparrowhawk 	 & Épervier d'Europe 	 & \textit{Accipiter nisus} 	 & \databar{13.5} 	 & \databar{15.6} 	 & \databar{6.9} 	 & \databar{21.2} 	 & \databar{10.1} \\$\square$\hspace{1ex}  	 & Northern Goshawk 	 & Autour des palombes 	 & \textit{Accipiter gentilis} 	 & \databar{4.1} 	 & \databar{4.9} 	 & \databar{0.0} 	 & \databar{2.6} 	 & \databar{8.8} \\$\square$\hspace{1ex}  	 & Red Kite 	 & Milan royal 	 & \textit{Milvus milvus} 	 & \databar{8.0} 	 & \databar{4.4} 	 & \databar{2.8} 	 & \databar{14.9} 	 & \databar{10.0} \\$\square$\hspace{1ex}  	 & Black Kite 	 & Milan noir 	 & \textit{Milvus migrans} 	 & \databar{12.3} 	 & \databar{20.5} 	 & \databar{20.2} 	 & \databar{8.3} 	 & \databar{0.0} \\$\square$\hspace{1ex}  	 & Rough-legged Buzzard 	 & Buse pattue 	 & \textit{Buteo lagopus} 	 & \databar{2.4} 	 & \databar{1.4} 	 & \databar{0.0} 	 & \databar{0.0} 	 & \databar{8.3} \\$\square$\hspace{1ex}  	 & Common Buzzard 	 & Buse variable 	 & \textit{Buteo buteo} 	 & \databar{33.3} 	 & \databar{38.7} 	 & \databar{23.5} 	 & \databar{40.6} 	 & \databar{30.3} \\
+\\
+\multicolumn{9}{c}{\textbf{Rallidae (Rails, Gallinules, and Coots)}} \\ 
+\hline
+$\square$\hspace{1ex}  	 & Water Rail 	 & Râle d'eau 	 & \textit{Rallus aquaticus} 	 & \databar{4.2} 	 & \databar{6.9} 	 & \databar{3.5} 	 & \databar{6.4} 	 & \databar{0.0} \\$\square$\hspace{1ex}  	 & Common Moorhen 	 & Gallinule poule-d'eau 	 & \textit{Gallinula chloropus} 	 & \databar{17.4} 	 & \databar{27.6} 	 & \databar{14.1} 	 & \databar{15.4} 	 & \databar{12.6} \\$\square$\hspace{1ex}  	 & Eurasian Coot 	 & Foulque macroule 	 & \textit{Fulica atra} 	 & \databar{37.6} 	 & \databar{47.5} 	 & \databar{27.3} 	 & \databar{27.0} 	 & \databar{48.5} \\
+\\
+\multicolumn{9}{c}{\textbf{Charadriidae (Plovers and Lapwings)}} \\ 
+\hline
+$\square$\hspace{1ex}  	 & Northern Lapwing 	 & Vanneau huppé 	 & \textit{Vanellus vanellus} 	 & \databar{9.2} 	 & \databar{17.8} 	 & \databar{7.5} 	 & \databar{2.8} 	 & \databar{8.6} \\$\square$\hspace{1ex}  	 & Little Ringed Plover 	 & Pluvier petit-gravelot 	 & \textit{Charadrius dubius} 	 & \databar{2.0} 	 & \databar{4.8} 	 & \databar{3.3} 	 & \databar{0.1} 	 & \databar{0.0} \\
+\\
+\multicolumn{9}{c}{\textbf{Scolopacidae (Sandpipers and Allies)}} \\ 
+\hline
+$\square$\hspace{1ex}  	 & Common Sandpiper 	 & Chevalier guignette 	 & \textit{Actitis hypoleucos} 	 & \databar{3.5} 	 & \databar{2.8} 	 & \databar{6.5} 	 & \databar{4.2} 	 & \databar{0.3} \\$\square$\hspace{1ex}  	 & Green Sandpiper 	 & Chevalier cul-blanc 	 & \textit{Tringa ochropus} 	 & \databar{4.6} 	 & \databar{9.3} 	 & \databar{2.6} 	 & \databar{5.2} 	 & \databar{1.2} \\$\square$\hspace{1ex}  	 & Common Redshank 	 & Chevalier gambette 	 & \textit{Tringa totanus} 	 & \databar{0.5} 	 & \databar{2.2} 	 & \databar{0.0} 	 & \databar{0.0} 	 & \databar{0.0} \\$\square$\hspace{1ex}  	 & Eurasian Curlew 	 & Courlis cendré 	 & \textit{Numenius arquata} 	 & \databar{2.8} 	 & \databar{9.7} 	 & \databar{1.4} 	 & \databar{0.0} 	 & \databar{0.0} \\$\square$\hspace{1ex}  	 & Jack Snipe 	 & Bécassine sourde 	 & \textit{Lymnocryptes minimus} 	 & \databar{1.0} 	 & \databar{2.8} 	 & \databar{0.0} 	 & \databar{0.0} 	 & \databar{1.0} \\$\square$\hspace{1ex}  	 & Common Snipe 	 & Bécassine des marais 	 & \textit{Gallinago gallinago} 	 & \databar{3.9} 	 & \databar{7.3} 	 & \databar{2.1} 	 & \databar{5.4} 	 & \databar{1.0} \\
+\\
+\multicolumn{9}{c}{\textbf{Laridae (Gulls, Terns, and Skimmers)}} \\ 
+\hline
+$\square$\hspace{1ex}  	 & Black-headed Gull 	 & Mouette rieuse 	 & \textit{Chroicocephalus ridibundus} 	 & \databar{22.0} 	 & \databar{10.0} 	 & \databar{13.6} 	 & \databar{22.3} 	 & \databar{42.1} \\$\square$\hspace{1ex}  	 & Mew Gull 	 & Goéland cendré 	 & \textit{Larus canus} 	 & \databar{3.2} 	 & \databar{4.5} 	 & \databar{0.0} 	 & \databar{2.1} 	 & \databar{6.1} \\$\square$\hspace{1ex}  	 & Yellow-legged Gull 	 & Goéland leucophée 	 & \textit{Larus michahellis} 	 & \databar{9.8} 	 & \databar{7.1} 	 & \databar{3.5} 	 & \databar{2.1} 	 & \databar{26.7} \\$\square$\hspace{1ex}  	 & Caspian Gull 	 & Goéland pontique 	 & \textit{Larus cachinnans} 	 & \databar{1.4} 	 & \databar{2.8} 	 & \databar{0.0} 	 & \databar{0.0} 	 & \databar{2.7} \\$\square$\hspace{1ex}  	 & Lesser Black-backed Gull 	 & Goéland brun 	 & \textit{Larus fuscus} 	 & \databar{1.8} 	 & \databar{4.2} 	 & \databar{0.0} 	 & \databar{0.0} 	 & \databar{2.8} \\
+\\
+\multicolumn{9}{c}{\textbf{Columbidae (Pigeons and Doves)}} \\ 
+\hline
+$\square$\hspace{1ex}  	 & Rock Dove 	 & Pigeon biset 	 & \textit{Columba livia} 	 & \databar{36.4} 	 & \databar{32.3} 	 & \databar{26.3} 	 & \databar{48.8} 	 & \databar{38.2} \\$\square$\hspace{1ex}  	 & Stock Dove 	 & Pigeon colombin 	 & \textit{Columba oenas} 	 & \databar{9.2} 	 & \databar{5.9} 	 & \databar{7.2} 	 & \databar{14.7} 	 & \databar{9.2} \\$\square$\hspace{1ex}  	 & Common Wood-Pigeon 	 & Pigeon ramier 	 & \textit{Columba palumbus} 	 & \databar{34.8} 	 & \databar{39.7} 	 & \databar{38.7} 	 & \databar{47.5} 	 & \databar{13.3} \\$\square$\hspace{1ex}  	 & Eurasian Collared-Dove 	 & Tourterelle turque 	 & \textit{Streptopelia decaocto} 	 & \databar{16.0} 	 & \databar{29.7} 	 & \databar{11.6} 	 & \databar{17.9} 	 & \databar{4.6} \\
+\\
+\multicolumn{9}{c}{\textbf{Cuculidae (Cuckoos)}} \\ 
+\hline
+$\square$\hspace{1ex}  	 & Common Cuckoo 	 & Coucou gris 	 & \textit{Cuculus canorus} 	 & \databar{8.9} 	 & \databar{23.4} 	 & \databar{12.0} 	 & \databar{0.0} 	 & \databar{0.0} \\
+\\
+\multicolumn{9}{c}{\textbf{Strigidae (Owls)}} \\ 
+\hline
+$\square$\hspace{1ex}  	 & Long-eared Owl 	 & Hibou moyen-duc 	 & \textit{Asio otus} 	 & \databar{1.7} 	 & \databar{2.8} 	 & \databar{2.8} 	 & \databar{1.4} 	 & \databar{0.0} \\
+\\
+\multicolumn{9}{c}{\textbf{Alcedinidae (Kingfishers)}} \\ 
+\hline
+$\square$\hspace{1ex}  	 & Common Kingfisher 	 & Martin-pêcheur d'Europe 	 & \textit{Alcedo atthis} 	 & \databar{8.9} 	 & \databar{16.0} 	 & \databar{5.6} 	 & \databar{11.7} 	 & \databar{2.4} \\
+\\
+\multicolumn{9}{c}{\textbf{Picidae (Woodpeckers)}} \\ 
+\hline
+$\square$\hspace{1ex}  	 & Lesser Spotted Woodpecker 	 & Pic épeichette 	 & \textit{Dendrocopos minor} 	 & \databar{3.6} 	 & \databar{7.5} 	 & \databar{1.7} 	 & \databar{4.0} 	 & \databar{1.2} \\$\square$\hspace{1ex}  	 & Middle Spotted Woodpecker 	 & Pic mar 	 & \textit{Dendrocopos medius} 	 & \databar{3.7} 	 & \databar{5.7} 	 & \databar{5.6} 	 & \databar{2.6} 	 & \databar{1.1} \\$\square$\hspace{1ex}  	 & Great Spotted Woodpecker 	 & Pic épeiche 	 & \textit{Dendrocopos major} 	 & \databar{26.0} 	 & \databar{38.6} 	 & \databar{15.3} 	 & \databar{33.0} 	 & \databar{17.2} \\$\square$\hspace{1ex}  	 & Black Woodpecker 	 & Pic noir 	 & \textit{Dryocopus martius} 	 & \databar{5.9} 	 & \databar{13.9} 	 & \databar{3.5} 	 & \databar{2.1} 	 & \databar{4.1} \\$\square$\hspace{1ex}  	 & Eurasian Green Woodpecker 	 & Pic vert 	 & \textit{Picus viridis} 	 & \databar{18.4} 	 & \databar{32.2} 	 & \databar{11.3} 	 & \databar{21.9} 	 & \databar{8.1} \\$\square$\hspace{1ex}  	 & Grey-headed Woodpecker 	 & Pic cendré 	 & \textit{Picus canus} 	 & \databar{3.6} 	 & \databar{3.1} 	 & \databar{7.3} 	 & \databar{4.0} 	 & \databar{0.0} \\
+\\
+\multicolumn{9}{c}{\textbf{Falconidae (Falcons and Caracaras)}} \\ 
+\hline
+$\square$\hspace{1ex}  	 & Common Kestrel 	 & Faucon crécerelle 	 & \textit{Falco tinnunculus} 	 & \databar{19.6} 	 & \databar{24.1} 	 & \databar{17.1} 	 & \databar{29.8} 	 & \databar{7.2} \\$\square$\hspace{1ex}  	 & Merlin 	 & Faucon émerillon 	 & \textit{Falco columbarius} 	 & \databar{0.8} 	 & \databar{2.8} 	 & \databar{0.0} 	 & \databar{0.0} 	 & \databar{0.3} \\
+\\
+\multicolumn{9}{c}{\textbf{Corvidae (Crows, Jays, and Magpies)}} \\ 
+\hline
+$\square$\hspace{1ex}  	 & Eurasian Jay 	 & Geai des chênes 	 & \textit{Garrulus glandarius} 	 & \databar{31.3} 	 & \databar{40.0} 	 & \databar{19.8} 	 & \databar{48.3} 	 & \databar{17.1} \\$\square$\hspace{1ex}  	 & Common Magpie 	 & Pie bavarde 	 & \textit{Pica pica} 	 & \databar{31.9} 	 & \databar{33.6} 	 & \databar{33.1} 	 & \databar{42.0} 	 & \databar{19.0} \\$\square$\hspace{1ex}  	 & Eurasian Jackdaw 	 &  	 & \textit{Corvus monedula} 	 & \databar{14.2} 	 & \databar{20.2} 	 & \databar{2.3} 	 & \databar{27.3} 	 & \databar{7.2} \\$\square$\hspace{1ex}  	 & Rook 	 & Corbeau freux 	 & \textit{Corvus frugilegus} 	 & \databar{18.0} 	 & \databar{18.6} 	 & \databar{5.1} 	 & \databar{29.5} 	 & \databar{18.8} \\$\square$\hspace{1ex}  	 & Carrion Crow 	 & Corneille noire 	 & \textit{Corvus corone} 	 & \databar{55.6} 	 & \databar{57.4} 	 & \databar{53.4} 	 & \databar{56.6} 	 & \databar{55.0} \\$\square$\hspace{1ex}  	 & Hooded Crow 	 & Corneille mantelée 	 & \textit{Corvus cornix} 	 & \databar{0.4} 	 & \databar{1.7} 	 & \databar{0.0} 	 & \databar{0.0} 	 & \databar{0.0} \\$\square$\hspace{1ex}  	 & Common Raven 	 & Grand Corbeau 	 & \textit{Corvus corax} 	 & \databar{1.9} 	 & \databar{2.4} 	 & \databar{1.6} 	 & \databar{2.0} 	 & \databar{1.7} \\
+\\
+\multicolumn{9}{c}{\textbf{Alaudidae (Larks)}} \\ 
+\hline
+$\square$\hspace{1ex}  	 & Skylark 	 & Alouette des champs 	 & \textit{Alauda arvensis} 	 & \databar{9.5} 	 & \databar{19.5} 	 & \databar{4.8} 	 & \databar{13.0} 	 & \databar{0.8} \\
+\\
+\multicolumn{9}{c}{\textbf{Paridae (Chickadees and Tits)}} \\ 
+\hline
+$\square$\hspace{1ex}  	 & Marsh Tit 	 & Mésange nonnette 	 & \textit{Poecile palustris} 	 & \databar{17.9} 	 & \databar{26.1} 	 & \databar{15.7} 	 & \databar{20.6} 	 & \databar{9.1} \\$\square$\hspace{1ex}  	 & Coal Tit 	 & Mésange noire 	 & \textit{Periparus ater} 	 & \databar{10.0} 	 & \databar{10.8} 	 & \databar{7.3} 	 & \databar{16.0} 	 & \databar{6.1} \\$\square$\hspace{1ex}  	 & Crested Tit 	 & Mésange huppée 	 & \textit{Lophophanes cristatus} 	 & \databar{7.2} 	 & \databar{5.1} 	 & \databar{1.1} 	 & \databar{17.6} 	 & \databar{5.0} \\$\square$\hspace{1ex}  	 & Great Tit 	 & Mésange charbonnière 	 & \textit{Parus major} 	 & \databar{43.8} 	 & \databar{60.7} 	 & \databar{36.9} 	 & \databar{47.4} 	 & \databar{30.0} \\$\square$\hspace{1ex}  	 & Blue Tit 	 & Mésange bleue 	 & \textit{Cyanistes caeruleus} 	 & \databar{36.0} 	 & \databar{46.3} 	 & \databar{32.4} 	 & \databar{42.5} 	 & \databar{23.1} \\
+\\
+\multicolumn{9}{c}{\textbf{Aegithalidae (Long-tailed Tits)}} \\ 
+\hline
+$\square$\hspace{1ex}  	 & Long-tailed Tit 	 & Mésange à longue queue 	 & \textit{Aegithalos caudatus} 	 & \databar{16.4} 	 & \databar{20.0} 	 & \databar{10.0} 	 & \databar{23.8} 	 & \databar{11.9} \\
+\\
+\multicolumn{9}{c}{\textbf{Sittidae (Nuthatches)}} \\ 
+\hline
+$\square$\hspace{1ex}  	 & Eurasian Nuthatch 	 & Sittelle torchepot 	 & \textit{Sitta europaea} 	 & \databar{27.3} 	 & \databar{41.8} 	 & \databar{18.8} 	 & \databar{35.1} 	 & \databar{13.5} \\
+\\
+\multicolumn{9}{c}{\textbf{Certhiidae (Treecreepers)}} \\ 
+\hline
+$\square$\hspace{1ex}  	 & Short-toed Treecreeper 	 & Grimpereau des jardins 	 & \textit{Certhia brachydactyla} 	 & \databar{13.9} 	 & \databar{26.0} 	 & \databar{8.4} 	 & \databar{10.8} 	 & \databar{10.2} \\
+\\
+\multicolumn{9}{c}{\textbf{Troglodytidae (Wrens)}} \\ 
+\hline
+$\square$\hspace{1ex}  	 & Eurasian Wren 	 & Troglodyte mignon 	 & \textit{Troglodytes troglodytes} 	 & \databar{24.7} 	 & \databar{35.2} 	 & \databar{15.7} 	 & \databar{34.4} 	 & \databar{13.4} \\
+\\
+\multicolumn{9}{c}{\textbf{Regulidae (Kinglets)}} \\ 
+\hline
+$\square$\hspace{1ex}  	 & Goldcrest 	 & Roitelet huppé 	 & \textit{Regulus regulus} 	 & \databar{6.2} 	 & \databar{4.2} 	 & \databar{1.6} 	 & \databar{12.6} 	 & \databar{6.6} \\$\square$\hspace{1ex}  	 & Firecrest 	 & Roitelet à triple bandeau 	 & \textit{Regulus ignicapilla} 	 & \databar{3.3} 	 & \databar{3.9} 	 & \databar{2.1} 	 & \databar{4.1} 	 & \databar{3.0} \\
+\\
+\multicolumn{9}{c}{\textbf{Phylloscopidae (Leaf-Warblers)}} \\ 
+\hline
+$\square$\hspace{1ex}  	 & Common Chiffchaff 	 & Pouillot véloce 	 & \textit{Phylloscopus collybita} 	 & \databar{20.3} 	 & \databar{33.7} 	 & \databar{26.1} 	 & \databar{19.3} 	 & \databar{2.0} \\
+\\
+\multicolumn{9}{c}{\textbf{Sylviidae (Sylviid Warblers)}} \\ 
+\hline
+$\square$\hspace{1ex}  	 & Blackcap 	 & Fauvette à tête noire 	 & \textit{Sylvia atricapilla} 	 & \databar{21.5} 	 & \databar{37.1} 	 & \databar{32.8} 	 & \databar{15.7} 	 & \databar{0.5} \\
+\\
+\multicolumn{9}{c}{\textbf{Muscicapidae (Old World Flycatchers)}} \\ 
+\hline
+$\square$\hspace{1ex}  	 & Robin 	 & Rougegorge familier 	 & \textit{Erithacus rubecula} 	 & \databar{28.7} 	 & \databar{45.6} 	 & \databar{17.6} 	 & \databar{35.1} 	 & \databar{16.6} \\$\square$\hspace{1ex}  	 & Redstart 	 & Rougequeue à front blanc 	 & \textit{Phoenicurus phoenicurus} 	 & \databar{2.3} 	 & \databar{1.7} 	 & \databar{4.8} 	 & \databar{2.8} 	 & \databar{0.0} \\$\square$\hspace{1ex}  	 & Black Redstart 	 & Rougequeue noir 	 & \textit{Phoenicurus ochruros} 	 & \databar{18.6} 	 & \databar{33.8} 	 & \databar{18.3} 	 & \databar{17.6} 	 & \databar{4.6} \\$\square$\hspace{1ex}  	 & Stonechat 	 & Tarier pâtre 	 & \textit{Saxicola rubicola} 	 & \databar{2.9} 	 & \databar{5.2} 	 & \databar{6.2} 	 & \databar{0.0} 	 & \databar{0.0} \\
+\\
+\multicolumn{9}{c}{\textbf{Turdidae (Thrushes and Allies)}} \\ 
+\hline
+$\square$\hspace{1ex}  	 & Blackbird 	 & Merle noir 	 & \textit{Turdus merula} 	 & \databar{44.7} 	 & \databar{59.0} 	 & \databar{34.6} 	 & \databar{54.3} 	 & \databar{31.1} \\$\square$\hspace{1ex}  	 & Fieldfare 	 & Grive litorne 	 & \textit{Turdus pilaris} 	 & \databar{9.2} 	 & \databar{15.7} 	 & \databar{6.1} 	 & \databar{13.3} 	 & \databar{1.9} \\$\square$\hspace{1ex}  	 & Redwing 	 & Grive mauvis 	 & \textit{Turdus iliacus} 	 & \databar{3.3} 	 & \databar{2.4} 	 & \databar{0.0} 	 & \databar{10.0} 	 & \databar{0.9} \\$\square$\hspace{1ex}  	 & Song Thrush 	 & Grive musicienne 	 & \textit{Turdus philomelos} 	 & \databar{18.9} 	 & \databar{34.3} 	 & \databar{16.8} 	 & \databar{20.6} 	 & \databar{3.6} \\$\square$\hspace{1ex}  	 & Mistle Thrush 	 & Grive draine 	 & \textit{Turdus viscivorus} 	 & \databar{8.8} 	 & \databar{15.4} 	 & \databar{6.8} 	 & \databar{12.4} 	 & \databar{0.5} \\
+\\
+\multicolumn{9}{c}{\textbf{Sturnidae (Starlings)}} \\ 
+\hline
+$\square$\hspace{1ex}  	 & Starling 	 & Étourneau sansonnet 	 & \textit{Sturnus vulgaris} 	 & \databar{25.9} 	 & \databar{38.9} 	 & \databar{14.1} 	 & \databar{40.1} 	 & \databar{10.3} \\
+\\
+\multicolumn{9}{c}{\textbf{Prunellidae (Accentors)}} \\ 
+\hline
+$\square$\hspace{1ex}  	 & Dunnock 	 & Accenteur mouchet 	 & \textit{Prunella modularis} 	 & \databar{12.2} 	 & \databar{25.1} 	 & \databar{3.6} 	 & \databar{13.1} 	 & \databar{6.9} \\
+\\
+\multicolumn{9}{c}{\textbf{Motacillidae (Wagtails and Pipits)}} \\ 
+\hline
+$\square$\hspace{1ex}  	 & Grey Wagtail 	 & Bergeronnette des ruisseaux 	 & \textit{Motacilla cinerea} 	 & \databar{13.7} 	 & \databar{25.9} 	 & \databar{2.1} 	 & \databar{6.1} 	 & \databar{20.9} \\$\square$\hspace{1ex}  	 & Meadow Pipit 	 & Pipit farlouse 	 & \textit{Anthus pratensis} 	 & \databar{6.6} 	 & \databar{4.9} 	 & \databar{2.1} 	 & \databar{15.4} 	 & \databar{4.2} \\$\square$\hspace{1ex}  	 & Water Pipit 	 & Pipit spioncelle 	 & \textit{Anthus spinoletta} 	 & \databar{3.3} 	 & \databar{1.4} 	 & \databar{0.5} 	 & \databar{6.5} 	 & \databar{4.9} \\
+\\
+\multicolumn{9}{c}{\textbf{Bombycillidae (Waxwings)}} \\ 
+\hline
+$\square$\hspace{1ex}  	 & Waxwing 	 & Jaseur boréal 	 & \textit{Bombycilla garrulus} 	 & \databar{0.7} 	 & \databar{2.8} 	 & \databar{0.0} 	 & \databar{0.0} 	 & \databar{0.0} \\
+\\
+\multicolumn{9}{c}{\textbf{Emberizidae (Buntings and New World Sparrows)}} \\ 
+\hline
+$\square$\hspace{1ex}  	 & Yellowhammer 	 & Bruant jaune 	 & \textit{Emberiza citrinella} 	 & \databar{14.4} 	 & \databar{31.3} 	 & \databar{12.0} 	 & \databar{10.0} 	 & \databar{4.3} \\$\square$\hspace{1ex}  	 & Reed Bunting 	 & Bruant des roseaux 	 & \textit{Emberiza schoeniclus} 	 & \databar{9.3} 	 & \databar{9.6} 	 & \databar{7.0} 	 & \databar{15.5} 	 & \databar{5.3} \\
+\\
+\multicolumn{9}{c}{\textbf{Fringillidae (Siskins, Crossbills, and Allies)}} \\ 
+\hline
+$\square$\hspace{1ex}  	 & Chaffinch 	 & Pinson des arbres 	 & \textit{Fringilla coelebs} 	 & \databar{36.2} 	 & \databar{49.1} 	 & \databar{30.6} 	 & \databar{41.1} 	 & \databar{24.2} \\$\square$\hspace{1ex}  	 & Brambling 	 & Pinson du Nord 	 & \textit{Fringilla montifringilla} 	 & \databar{3.4} 	 & \databar{1.7} 	 & \databar{0.0} 	 & \databar{9.3} 	 & \databar{2.6} \\$\square$\hspace{1ex}  	 & Bullfinch 	 & Bouvreuil pivoine 	 & \textit{Pyrrhula pyrrhula} 	 & \databar{10.8} 	 & \databar{19.9} 	 & \databar{0.5} 	 & \databar{16.5} 	 & \databar{6.2} \\$\square$\hspace{1ex}  	 & Greenfinch 	 & Verdier d'Europe 	 & \textit{Chloris chloris} 	 & \databar{26.7} 	 & \databar{32.3} 	 & \databar{22.8} 	 & \databar{29.4} 	 & \databar{22.2} \\$\square$\hspace{1ex}  	 & Crossbill 	 & Bec-croisé des sapins 	 & \textit{Loxia curvirostra} 	 & \databar{1.9} 	 & \databar{2.8} 	 & \databar{1.0} 	 & \databar{2.8} 	 & \databar{0.9} \\$\square$\hspace{1ex}  	 & Siskin 	 & Tarin des aulnes 	 & \textit{Spinus spinus} 	 & \databar{8.4} 	 & \databar{10.8} 	 & \databar{1.6} 	 & \databar{14.0} 	 & \databar{7.1} \\$\square$\hspace{1ex}  	 & Goldfinch 	 & Chardonneret élégant 	 & \textit{Carduelis carduelis} 	 & \databar{25.1} 	 & \databar{32.9} 	 & \databar{21.9} 	 & \databar{36.4} 	 & \databar{9.2} \\$\square$\hspace{1ex}  	 & Hawfinch 	 & Gros-bec casse-noyaux 	 & \textit{Coccothraustes coccothraustes} 	 & \databar{9.3} 	 & \databar{4.7} 	 & \databar{9.4} 	 & \databar{9.1} 	 & \databar{13.8} \\
+\\
+\multicolumn{9}{c}{\textbf{Passeridae (Old World Sparrows)}} \\ 
+\hline
+$\square$\hspace{1ex}  	 & House Sparrow 	 & Moineau domestique 	 & \textit{Passer domesticus} 	 & \databar{38.2} 	 & \databar{46.1} 	 & \databar{41.8} 	 & \databar{45.1} 	 & \databar{19.9} \\$\square$\hspace{1ex}  	 & Tree Sparrow 	 & Moineau friquet 	 & \textit{Passer montanus} 	 & \databar{9.0} 	 & \databar{21.8} 	 & \databar{4.6} 	 & \databar{7.5} 	 & \databar{2.1} \\\hline
+\let\thefootnote\relax\footnote{
+Checklist generated on \today{}  with occurence and frequency computed from \SampleSize{} submitted to \href{www.ebird.org}{Ebird}. Scientific names and systematic order follow \href{http://www.birds.cornell.edu/clementschecklist/download/}{Clements Checklist 6.9 (eBird 1.55)}. Translation taken from \href{http://www.worldbirdnames.org/ioc-lists/}{IOC World Bird List 5.1 (Multilingual Version)}.
+Main table display only non-hybrid birds with occurence >1\%.
+ Generated with ebirdToLaTeX python code. Comment, suggestion? \href{mailto:rafnuss@gmail.com}{rafnuss@gmail.com}}
+\end{tabularx}
+
+ 
+
+\end{center}
+\end{document}
