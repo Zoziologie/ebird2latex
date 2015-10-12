@@ -1,9 +1,8 @@
 # EbirdToLaTex Checklist Generator #
-
 eBirdToLaTex Checklist Generator is a short Python script which generates a customisable bird checklist based on a specific eBird dataset
 
 ## Motivation ##
-Go to [my website](http://zoziologie.raphaelnussbaumer.com/ebirdtolatex/)
+Visit the page on [my website](http://zoziologie.raphaelnussbaumer.com/ebirdtolatex/) which explain more why I belive checklist are still important.
 
 ## How to use it ? ##
 In this new version, internet connection is required to download updated bird taxonomy list, language traduction as well as location barchart data. This result in a very simple script to run. 
@@ -19,16 +18,19 @@ The script only create a .tex (LaTeX file), you will need to use your own tex co
 2. Choose a location: ```code_loc``` (see [eBird API](https://confluence.cornell.edu/display/CLOISAPI/eBird-1.1-HotSpotsByRegion) for possibility)
 3. Choose language : ```lang``` (list of language code, see python code for possibility)
 4. Define date of interest : ```byear```, ```eyear```, ```bmonth```, ```emonth``` (begining and end month and year)
+
 Then ```bird_creator``` fonction will return eBird barchar in a bird list format ```bird_list```.
+
 ### Create Table: ###
+
 1. Define the columns you want to see in your checklist. Here are your possibilities (please, have a look at the code to better understand how to choose each column, the order of input will also be the order in the checklist):
   1. language (English, French, Latin…), 
   2. frequency (as a percentage per month, seasons or year), 
   3. notes (empty space for comments) and 
   4. space (“__” ) to write the number of birds seen or boxes to be ticked.
 2. The checklist can create two distinct zones in the checklist: the regular list and the rare list. According to a chosen criteria (e.g: frequency under 1%, does not contain “hybrid”…etc ) birds are displayed either under “regular” (```condition_tableau```), “rare” (```condition_rare```)or none of the lists. The rare list only provides one language and one symbol for each bird. 
-Finally, ```write_to_latex``` will create the tex file using ```Template_default.tex```
 
+Finally, ```write_to_latex``` will create the tex file using ```Template_default.tex```
 
 ## Contact ##
 Don't hesitate to contact me for any question ! And visit by webiste (if you have some spare time !)
