@@ -32,6 +32,9 @@ Then ```bird_creator``` fonction will return eBird barchar in a bird list format
 
 Finally, ```write_to_latex``` will create the tex file using ```Template_default.tex```
 
+## Work to do ##
+I'm currently working on a javascript adaptation of this script with a web interface to create the tex or even the pdf ! This would be great for non-geek birder ! I'm currently blocked at getting the barchart data as in order to get it, you need to be listed in the [cross-domain policy file](http://ebird.org/crossdomain.xml). The best solution would be to make this data available in the [eBird API](https://confluence.cornell.edu/display/CLOISAPI/eBirdAPIs). Any idea how to get that ?
+
 ## Contact ##
 Don't hesitate to contact me for any question ! And visit by webiste (if you have some spare time !)
 [Raphael Nussbaumer](rafnuss@gmail.com) 
