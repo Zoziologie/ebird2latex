@@ -1,7 +1,7 @@
 // Load Location depending onf the location level
 function loadLocation(level,value) {
 	console.log(level)
-	var url = 'https://ebird.org/ws1.1/ref/location/list?rtype=' + level;
+		var url = 'https://ebird.org/ws1.1/ref/location/list?rtype=' + level;
 	if (level == 'country'){
 		url = url + '&fmt=xml';
 		radio_value = 'country';	
@@ -38,21 +38,33 @@ function loadLocation(level,value) {
 
 
 function updateLocRadio(value){
-console.log(value)
-	jQuery("input[value='" + value + "']").prop('checked',true)
+	console.log(value)
+		jQuery("input[value='" + value + "']").prop('checked',true)
 }
 
 
 function RunPython() {
-	jQuery.ajax({
-		type: "POST",
-		url: "http://zoziologie.raphaelnussbaumer.com/wp-content/plugins/eBirdToLaTeX-Checklist-Generator/Script_Python.py",
-		data: { param: 'hello'}
-	}).done(function( o ) {
-		console.log('Python runned')
-	});
-}
+	// check if all is ok for sumbitting to python
+	// TO BE DONE
+	
+	var params = {
+		code_loc: jQuery('#sel-loc-'+jQuery("input[name='radio-loc']:checked").val()).val()[0],
+		lang: 'EN',
+		cat: jQuery('#sel-cat').val().join('-'),
+		byear: jQuery('#div-date-begin .form-control')[0].value.split('-')[0],
+		eyear: jQuery('#div-date-begin .form-control')[1].value.split('-')[0],
+		bmonth: jQuery('#div-date-begin .form-control')[0].value.split('-')[1],
+		emonth: jQuery('#div-date-begin .form-control')[1].value.split('-')[1],
 
+	};
+
+	var esc = encodeURIComponent;
+	var query = Object.keys(params)
+		.map(k => esc(k) + '=' + esc(params[k]))
+		.join('&');
+	console.log(query)
+	window.open("http://zoziologie.raphaelnussbaumer.com/wp-content/plugins/eBirdToLaTeX-Checklist-Generator/ChecklistGenerator.php?"+query);
+}
 
 
 jQuery(document).ready(function(){
