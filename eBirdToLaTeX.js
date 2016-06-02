@@ -58,12 +58,16 @@ function RunPython() {
 
 	};
 
-	var esc = encodeURIComponent;
-	var query = Object.keys(params)
-		.map(k => esc(k) + '=' + esc(params[k]))
-		.join('&');
-	console.log(query)
-	window.open("http://zoziologie.raphaelnussbaumer.com/wp-content/plugins/eBirdToLaTeX-Checklist-Generator/ChecklistGenerator.php?"+query);
+
+	window.open("http://zoziologie.raphaelnussbaumer.com/wp-content/plugins/eBirdToLaTeX-Checklist-Generator/ChecklistGenerator.php?" + encodeURIComponent(jQuery.param(params)))
+
+
+//	var esc = encodeURIComponent;
+//	var query = Object.keys(params)
+//		.map(k => esc(k) + '=' + esc(params[k]))
+//		.join('&');
+//	console.log(query)
+//	window.open("http://zoziologie.raphaelnussbaumer.com/wp-content/plugins/eBirdToLaTeX-Checklist-Generator/ChecklistGenerator.php?"+query);
 }
 
 
