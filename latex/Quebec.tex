@@ -1,0 +1,58 @@
+\documentclass{article}
+
+\usepackage[frenchb]{babel}
+%\usepackage{longtable}
+\usepackage{ltablex}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage[a4paper,margin=0.3in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[table]{xcolor}% http://ctan.org/pkg/xcolor
+\usepackage[nomessages]{fp}% http://ctan.org/pkg/fp
+\usepackage{ulem}
+\usepackage{hyperref}
+
+\newcommand{\maxnum}{100.00}
+\newlength{\maxlen}
+\newcommand{\databar}[2][blue!25]{%
+  \settowidth{\maxlen}{\maxnum}%
+  \addtolength{\maxlen}{\tabcolsep}%
+  \FPeval\result{round(#2/\maxnum:4)}%
+  \rlap{\color{blue!25}\hspace*{-.5\tabcolsep}\rule[-.05\ht\strutbox]{\result\maxlen}{.95\ht\strutbox}}%
+  \makebox[\dimexpr\maxlen-\tabcolsep][r]{#2}%
+}
+\renewcommand*\rmdefault{iwona}
+\newcommand{\newnoteline}{\rule{\textwidth}{0.15mm}\\[1.5ex]}
+
+
+
+
+\begin{document}
+
+
+\centering
+\LARGE{Quebec Bird Checklist}\\
+\normalsize \raggedright
+
+
+Birder(s): \underline{\hspace{112ex}}\\[1.5ex]
+Location: \underline{\hspace{28ex}}    Date: \underline{\hspace{13ex}}    Start time: \underline{\hspace{10ex}}   Duration: \underline{\hspace{10ex}}    Distance: \underline{\hspace{10ex}}\\[1.5ex]
+
+
+\newnoteline\newnoteline\newnoteline
+
+
+\begin{center}
+
+\begin{tabularx}{\textwidth}{cccX}\hline
+\\[0.5ex]
+\textsc{ \large{\normalsize{$\square$\hspace{1ex} }}} 	 & \textsc{ \large{\normalsize{\underline{\hspace{1ex}}\hspace{1ex}}}} 	 & \textsc{ \large{Y}} 	 & \textsc{ \large{ German}}\\\\[0.5ex]
+\hline
+$\square$\hspace{1ex}  	 & \underline{\hspace{1ex}}\hspace{1ex} 	 & \databar{5.6} 	 & Snow Goose \\ 
+$\square$\hspace{1ex}  	 & \underline{\hspace{1ex}}\hspace{1ex} 	 & \databar{21.4} 	 & Kanadagans \\ 
+$\square$\hspace{1ex}  	 & \underline{\hspace{1ex}}\hspace{1ex} 	 & \databar{6.7} 	 & Wood Duck \\ 
+$\square$\hspace{1ex}  	 & \underline{\hspace{1ex}}\hspace{1ex} 	 & \databar{3.3} 	 & Schnatterente \\ 
+$\square$\hspace{1ex}  	 & \underline{\hspace{1ex}}\hspace{1ex} 	 & \databar{3.9} 	 & American Wigeon \\ 
+$\square$\hspace{1ex}  	 & \underline{\hspace{1ex}}\hspace{1ex} 	 & \databar{15.5} 	 & American Black Duck \\ 
+$\square$\hspace{1ex}  	 & \underline{\hspace{1ex}}\hspace{1ex} 	 & \databar{29.4} 	 & Stockente \\ 
+$\square$\hspace{1ex}  	 & \underline{\hspace{1ex}}\hspace{1ex} 	 & \databar{2.0} 	 & 

@@ -1,0 +1,78 @@
+\documentclass{article}
+
+\usepackage[frenchb]{babel}
+%\usepackage{longtable}
+\usepackage{ltablex}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage[a4paper,margin=0.3in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[table]{xcolor}% http://ctan.org/pkg/xcolor
+\usepackage[nomessages]{fp}% http://ctan.org/pkg/fp
+\usepackage{ulem}
+\usepackage{hyperref}
+
+\newcommand{\maxnum}{100.00}
+\newlength{\maxlen}
+\newcommand{\databar}[2][blue!25]{%
+  \settowidth{\maxlen}{\maxnum}%
+  \addtolength{\maxlen}{\tabcolsep}%
+  \FPeval\result{round(#2/\maxnum:4)}%
+  \rlap{\color{blue!25}\hspace*{-.5\tabcolsep}\rule[-.05\ht\strutbox]{\result\maxlen}{.95\ht\strutbox}}%
+  \makebox[\dimexpr\maxlen-\tabcolsep][r]{#2}%
+}
+\renewcommand*\rmdefault{iwona}
+\newcommand{\newnoteline}{\rule{\textwidth}{0.15mm}\\[1.5ex]}
+
+
+
+
+\begin{document}
+
+
+\centering
+\LARGE{Congo Bird Checklist}\\
+\normalsize \raggedright
+
+
+Birder(s): \underline{\hspace{112ex}}\\[1.5ex]
+Location: \underline{\hspace{28ex}}    Date: \underline{\hspace{13ex}}    Start time: \underline{\hspace{10ex}}   Duration: \underline{\hspace{10ex}}    Distance: \underline{\hspace{10ex}}\\[1.5ex]
+
+
+\newnoteline\newnoteline\newnoteline
+
+
+\begin{center}
+
+\begin{tabularx}{\textwidth}{cccXc}\hline
+\\[0.5ex]
+\textsc{ \large{\normalsize{$\square$\hspace{1ex} }}} 	 & \textsc{ \large{\normalsize{\underline{\hspace{1ex}}\hspace{1ex}}}} 	 & \textsc{ \large{Y}} 	 & \textsc{ \large{German}} 	 & \textsc{ \large{ Y}}\\\\[0.5ex]
+\hline
+$\square$\hspace{1ex}  	 & \underline{\hspace{1ex}}\hspace{1ex} 	 & \databar{2.1} 	 & Hartlaub's Duck 	 & \databar{2.1} \\ 
+$\square$\hspace{1ex}  	 & \underline{\hspace{1ex}}\hspace{1ex} 	 & \databar{2.1} 	 & Crested Guineafowl 	 & \databar{2.1} \\ 
+$\square$\hspace{1ex}  	 & \underline{\hspace{1ex}}\hspace{1ex} 	 & \databar{1.7} 	 & Zwergtaucher 	 & \databar{1.7} \\ 
+$\square$\hspace{1ex}  	 & \underline{\hspace{1ex}}\hspace{1ex} 	 & \databar{1.0} 	 & African Openbill 	 & \databar{1.0} \\ 
+$\square$\hspace{1ex}  	 & \underline{\hspace{1ex}}\hspace{1ex} 	 & \databar{2.6} 	 & Marabou Stork 	 & \databar{2.6} \\ 
+$\square$\hspace{1ex}  	 & \underline{\hspace{1ex}}\hspace{1ex} 	 & \databar{3.6} 	 & Long-tailed Cormorant 	 & \databar{3.6} \\ 
+$\square$\hspace{1ex}  	 & \underline{\hspace{1ex}}\hspace{1ex} 	 & \databar{2.6} 	 & African Darter 	 & \databar{2.6} \\ 
+$\square$\hspace{1ex}  	 & \underline{\hspace{1ex}}\hspace{1ex} 	 & \databar{1.4} 	 & Hamerkop 	 & \databar{1.4} \\ 
+$\square$\hspace{1ex}  	 & \underline{\hspace{1ex}}\hspace{1ex} 	 & \databar{3.5} 	 & Black-headed Heron 	 & \databar{3.5} \\ 
+$\square$\hspace{1ex}  	 & \underline{\hspace{1ex}}\hspace{1ex} 	 & \databar{1.0} 	 & Goliath Heron 	 & \databar{1.0} \\ 
+$\square$\hspace{1ex}  	 & \underline{\hspace{1ex}}\hspace{1ex} 	 & \databar{1.0} 	 & Purpurreiher 	 & \databar{1.0} \\ 
+$\square$\hspace{1ex}  	 & \underline{\hspace{1ex}}\hspace{1ex} 	 & \databar{2.1} 	 & Silberreiher 	 & \databar{2.1} \\ 
+$\square$\hspace{1ex}  	 & \underline{\hspace{1ex}}\hspace{1ex} 	 & \databar{4.9} 	 & Intermediate Egret 	 & \databar{4.9} \\ 
+$\square$\hspace{1ex}  	 & \underline{\hspace{1ex}}\hspace{1ex} 	 & \databar{3.0} 	 & Seidenreiher 	 & \databar{3.0} \\ 
+$\square$\hspace{1ex}  	 & \underline{\hspace{1ex}}\hspace{1ex} 	 & \databar{18.8} 	 & Cattle Egret 	 & \databar{18.8} \\ 
+$\square$\hspace{1ex}  	 & \underline{\hspace{1ex}}\hspace{1ex} 	 & \databar{2.1} 	 & white egret sp. 	 & \databar{2.1} \\ 
+$\square$\hspace{1ex}  	 & \underline{\hspace{1ex}}\hspace{1ex} 	 & \databar{1.6} 	 & Striated Heron 	 & \databar{1.6} \\ 
+$\square$\hspace{1ex}  	 & \underline{\hspace{1ex}}\hspace{1ex} 	 & \databar{1.0} 	 & Nachtreiher 	 & \databar{1.0} \\ 
+$\square$\hspace{1ex}  	 & \underline{\hspace{1ex}}\hspace{1ex} 	 & \databar{2.1} 	 & African Harrier-Hawk 	 & \databar{2.1} \\ 
+$\square$\hspace{1ex}  	 & \underline{\hspace{1ex}}\hspace{1ex} 	 & \databar{2.1} 	 & Palm-nut Vulture 	 & \databar{2.1} \\ 
+$\square$\hspace{1ex}  	 & \underline{\hspace{1ex}}\hspace{1ex} 	 & \databar{1.0} 	 & Schwarzmilan 	 & \databar{1.0} \\ 
+$\square$\hspace{1ex}  	 & \underline{\hspace{1ex}}\hspace{1ex} 	 & \databar{2.1} 	 & African Fish-Eagle 	 & \databar{2.1} \\ 
+$\square$\hspace{1ex}  	 & \underline{\hspace{1ex}}\hspace{1ex} 	 & \databar{1.2} 	 & African Crake 	 & \databar{1.2} \\ 
+$\square$\hspace{1ex}  	 & \underline{\hspace{1ex}}\hspace{1ex} 	 & \databar{2.1} 	 & Bronzesultanshuhn 	 & \databar{2.1} \\ 
+$\square$\hspace{1ex}  	 & \underline{\hspace{1ex}}\hspace{1ex} 	 & \databar{2.6} 	 & Senegal Lapwing 	 & \databar{2.6} \\ 
+$\square$\hspace{1ex}  	 & \underline{\hspace{1ex}}\hspace{1ex} 	 & \databar{1.0} 	 & Forbes's Plover 	 & \databar{1.0} \\ 
+$\square$\hspace{1ex}  	 & \underline{\hspace{1ex}}\hspace{1ex} 	 & \databar{3.5} 	 & African Jacana 	 & \databar{3.5} \\ 
+$\square$\hspace{1ex}  	 & \underline{\hspace{1ex}}\hspace{1ex} 	 & \databar{2.8} 	 & 

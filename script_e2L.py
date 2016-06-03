@@ -1,17 +1,10 @@
 #!/usr/bin/env python
-
 import e2L
-import sys
-import urllib.parse
 
-urld = dict(urllib.parse.parse_qs(urllib.parse.unquote(sys.argv[1])))
 
-print(urld)
-#print(urld)
-#projet_name = "Sweden"
-#print('Start Project: '+ projet_name)
+projet_name = "Sweden"
+print('Start Project: '+ projet_name)
 
-sys.exit()
 
 #1. Create the Bird List loading data from eBird
 code_loc = 'SE' # See possible country code here : https://confluence.cornell.edu/display/CLOISAPI/eBird-1.1-HotSpotsByRegion + region code for each region ? where ?
