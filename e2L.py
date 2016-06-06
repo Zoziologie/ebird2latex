@@ -206,7 +206,7 @@ def write_to_latex(projname, bird_list,col, condition_tableau, condition_rare, i
     family_current = ''
 
     # Start Writing
-    f = open('latex/'+ projname  + '.tex', 'w')
+    f = open('latex/'+ projname.replace(' ','')  + '.tex', 'w')
 
     # Import preformatted text
     f2 = open('Template_default.tex', 'r')

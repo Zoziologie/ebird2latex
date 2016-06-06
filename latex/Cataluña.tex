@@ -1,0 +1,299 @@
+\documentclass{article}
+
+\usepackage[frenchb]{babel}
+%\usepackage{longtable}
+\usepackage{ltablex}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage[a4paper,margin=0.3in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[table]{xcolor}% http://ctan.org/pkg/xcolor
+\usepackage[nomessages]{fp}% http://ctan.org/pkg/fp
+\usepackage{ulem}
+\usepackage{hyperref}
+
+\newcommand{\maxnum}{100.00}
+\newlength{\maxlen}
+\newcommand{\databar}[2][blue!25]{%
+  \settowidth{\maxlen}{\maxnum}%
+  \addtolength{\maxlen}{\tabcolsep}%
+  \FPeval\result{round(#2/\maxnum:4)}%
+  \rlap{\color{blue!25}\hspace*{-.5\tabcolsep}\rule[-.05\ht\strutbox]{\result\maxlen}{.95\ht\strutbox}}%
+  \makebox[\dimexpr\maxlen-\tabcolsep][r]{#2}%
+}
+\renewcommand*\rmdefault{iwona}
+\newcommand{\newnoteline}{\rule{\textwidth}{0.15mm}\\[1.5ex]}
+
+
+
+
+\begin{document}
+
+
+\centering
+\LARGE{Cataluña Bird Checklist}\\
+\normalsize \raggedright
+
+
+Birder(s): \underline{\hspace{112ex}}\\[1.5ex]
+Location: \underline{\hspace{28ex}}    Date: \underline{\hspace{13ex}}    Start time: \underline{\hspace{10ex}}   Duration: \underline{\hspace{10ex}}    Distance: \underline{\hspace{10ex}}\\[1.5ex]
+
+
+\newnoteline\newnoteline\newnoteline
+
+
+\begin{center}
+
+\begin{tabularx}{\textwidth}{cXccccX}\hline
+\\[0.5ex]
+\textsc{ \large{\normalsize{$\square$\hspace{1ex} }}} 	 & \textsc{ \large{English (US)}} 	 & \textsc{ \large{W}} 	 & \textsc{ \large{Sp}} 	 & \textsc{ \large{Sm}} 	 & \textsc{ \large{F}} 	 & \textsc{ \large{ Note}}\\\\[0.5ex]
+\hline
+$\square$\hspace{1ex}  	 & Graylag Goose 	 & \databar{10.5} 	 & \databar{7.6} 	 & \databar{2.1} 	 & \databar{8.8} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Mute Swan 	 & \databar{1.3} 	 & \databar{2.2} 	 & \databar{1.3} 	 & \databar{1.8} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Common Shelduck 	 & \databar{10.3} 	 & \databar{14.1} 	 & \databar{4.9} 	 & \databar{6.2} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Gadwall 	 & \databar{10.6} 	 & \databar{14.9} 	 & \databar{4.0} 	 & \databar{11.6} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Eurasian Wigeon 	 & \databar{7.6} 	 & \databar{3.0} 	 & \databar{0.0} 	 & \databar{4.9} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Mallard 	 & \databar{24.1} 	 & \databar{31.9} 	 & \databar{19.1} 	 & \databar{26.2} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Northern Shoveler 	 & \databar{12.4} 	 & \databar{11.0} 	 & \databar{2.8} 	 & \databar{13.4} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Northern Pintail 	 & \databar{3.6} 	 & \databar{1.9} 	 & \databar{0.0} 	 & \databar{3.6} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Garganey 	 & \databar{0.0} 	 & \databar{5.0} 	 & \databar{0.5} 	 & \databar{0.8} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Green-winged Teal 	 & \databar{12.5} 	 & \databar{7.5} 	 & \databar{1.5} 	 & \databar{11.7} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Red-crested Pochard 	 & \databar{2.3} 	 & \databar{11.0} 	 & \databar{5.1} 	 & \databar{4.8} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Common Pochard 	 & \databar{7.4} 	 & \databar{6.9} 	 & \databar{2.8} 	 & \databar{6.6} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Tufted Duck 	 & \databar{2.6} 	 & \databar{1.5} 	 & \databar{0.0} 	 & \databar{1.1} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Red-legged Partridge 	 & \databar{3.9} 	 & \databar{6.9} 	 & \databar{3.2} 	 & \databar{3.2} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Ring-necked Pheasant 	 & \databar{1.6} 	 & \databar{4.2} 	 & \databar{1.6} 	 & \databar{2.5} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Little Grebe 	 & \databar{14.4} 	 & \databar{18.2} 	 & \databar{11.2} 	 & \databar{18.0} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Great Crested Grebe 	 & \databar{7.0} 	 & \databar{10.6} 	 & \databar{6.4} 	 & \databar{10.3} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Eared Grebe 	 & \databar{4.0} 	 & \databar{1.7} 	 & \databar{0.1} 	 & \databar{2.6} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Greater Flamingo 	 & \databar{6.4} 	 & \databar{12.2} 	 & \databar{5.2} 	 & \databar{10.8} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Balearic Shearwater 	 & \databar{1.4} 	 & \databar{1.6} 	 & \databar{1.0} 	 & \databar{0.6} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & White Stork 	 & \databar{4.7} 	 & \databar{7.9} 	 & \databar{4.9} 	 & \databar{5.5} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Northern Gannet 	 & \databar{3.6} 	 & \databar{2.0} 	 & \databar{1.2} 	 & \databar{2.0} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Great Cormorant 	 & \databar{25.0} 	 & \databar{17.8} 	 & \databar{3.8} 	 & \databar{23.3} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & European Shag 	 & \databar{0.9} 	 & \databar{1.5} 	 & \databar{2.0} 	 & \databar{2.4} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Little Bittern 	 & \databar{0.1} 	 & \databar{3.8} 	 & \databar{7.0} 	 & \databar{0.9} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Gray Heron 	 & \databar{28.0} 	 & \databar{29.3} 	 & \databar{19.4} 	 & \databar{30.4} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Purple Heron 	 & \databar{0.0} 	 & \databar{10.8} 	 & \databar{9.9} 	 & \databar{2.8} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Great Egret 	 & \databar{7.2} 	 & \databar{9.1} 	 & \databar{4.5} 	 & \databar{10.9} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Little Egret 	 & \databar{21.4} 	 & \databar{25.2} 	 & \databar{17.9} 	 & \databar{26.0} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Cattle Egret 	 & \databar{19.6} 	 & \databar{20.4} 	 & \databar{14.4} 	 & \databar{22.0} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Squacco Heron 	 & \databar{0.6} 	 & \databar{7.4} 	 & \databar{6.8} 	 & \databar{4.2} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Black-crowned Night-Heron 	 & \databar{1.9} 	 & \databar{6.0} 	 & \databar{5.1} 	 & \databar{3.8} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Glossy Ibis 	 & \databar{2.6} 	 & \databar{9.4} 	 & \databar{3.7} 	 & \databar{5.8} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Eurasian Spoonbill 	 & \databar{2.5} 	 & \databar{2.7} 	 & \databar{0.9} 	 & \databar{3.0} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Osprey 	 & \databar{0.7} 	 & \databar{1.6} 	 & \databar{0.7} 	 & \databar{5.7} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Lammergeier 	 & \databar{0.9} 	 & \databar{1.6} 	 & \databar{2.5} 	 & \databar{1.7} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & European Honey-buzzard 	 & \databar{0.0} 	 & \databar{1.7} 	 & \databar{1.7} 	 & \databar{8.2} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Eurasian Griffon 	 & \databar{2.5} 	 & \databar{4.9} 	 & \databar{7.9} 	 & \databar{4.2} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Short-toed Snake-Eagle 	 & \databar{0.0} 	 & \databar{5.9} 	 & \databar{3.2} 	 & \databar{2.6} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Booted Eagle 	 & \databar{0.5} 	 & \databar{1.9} 	 & \databar{1.9} 	 & \databar{3.2} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Golden Eagle 	 & \databar{1.1} 	 & \databar{2.4} 	 & \databar{2.4} 	 & \databar{1.3} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Eurasian Marsh-Harrier 	 & \databar{14.5} 	 & \databar{16.5} 	 & \databar{4.8} 	 & \databar{25.4} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Eurasian Sparrowhawk 	 & \databar{4.4} 	 & \databar{3.8} 	 & \databar{2.5} 	 & \databar{13.4} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Northern Goshawk 	 & \databar{3.2} 	 & \databar{3.4} 	 & \databar{0.9} 	 & \databar{7.2} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Red Kite 	 & \databar{3.4} 	 & \databar{3.1} 	 & \databar{2.2} 	 & \databar{4.0} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Black Kite 	 & \databar{0.2} 	 & \databar{7.3} 	 & \databar{3.9} 	 & \databar{1.4} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Common Buzzard 	 & \databar{19.5} 	 & \databar{13.7} 	 & \databar{6.0} 	 & \databar{16.4} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Water Rail 	 & \databar{3.2} 	 & \databar{4.1} 	 & \databar{1.9} 	 & \databar{4.3} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Western Swamphen 	 & \databar{7.2} 	 & \databar{11.9} 	 & \databar{5.1} 	 & \databar{9.9} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Eurasian Moorhen 	 & \databar{21.6} 	 & \databar{21.8} 	 & \databar{14.0} 	 & \databar{22.8} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Eurasian Coot 	 & \databar{15.9} 	 & \databar{20.9} 	 & \databar{11.0} 	 & \databar{18.6} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Eurasian Thick-knee 	 & \databar{0.4} 	 & \databar{3.2} 	 & \databar{1.4} 	 & \databar{0.5} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Black-winged Stilt 	 & \databar{0.2} 	 & \databar{19.4} 	 & \databar{13.9} 	 & \databar{5.5} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Pied Avocet 	 & \databar{1.2} 	 & \databar{5.6} 	 & \databar{2.8} 	 & \databar{2.6} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Eurasian Oystercatcher 	 & \databar{0.6} 	 & \databar{2.6} 	 & \databar{2.2} 	 & \databar{1.0} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Black-bellied Plover 	 & \databar{2.4} 	 & \databar{3.9} 	 & \databar{1.9} 	 & \databar{4.0} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & European Golden-Plover 	 & \databar{3.5} 	 & \databar{0.6} 	 & \databar{0.5} 	 & \databar{1.5} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Northern Lapwing 	 & \databar{13.6} 	 & \databar{4.1} 	 & \databar{2.7} 	 & \databar{15.0} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Kentish Plover 	 & \databar{1.6} 	 & \databar{6.2} 	 & \databar{6.8} 	 & \databar{3.7} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Common Ringed Plover 	 & \databar{2.0} 	 & \databar{7.3} 	 & \databar{2.7} 	 & \databar{6.1} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Little Ringed Plover 	 & \databar{0.3} 	 & \databar{10.5} 	 & \databar{7.5} 	 & \databar{3.7} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Common Sandpiper 	 & \databar{3.9} 	 & \databar{10.7} 	 & \databar{6.7} 	 & \databar{8.7} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Green Sandpiper 	 & \databar{7.1} 	 & \databar{6.4} 	 & \databar{5.6} 	 & \databar{8.7} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Spotted Redshank 	 & \databar{3.4} 	 & \databar{4.1} 	 & \databar{1.6} 	 & \databar{6.9} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Common Greenshank 	 & \databar{3.6} 	 & \databar{7.9} 	 & \databar{4.7} 	 & \databar{8.4} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Wood Sandpiper 	 & \databar{0.3} 	 & \databar{8.7} 	 & \databar{4.6} 	 & \databar{4.9} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Common Redshank 	 & \databar{3.2} 	 & \databar{12.3} 	 & \databar{5.6} 	 & \databar{4.3} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Whimbrel 	 & \databar{0.5} 	 & \databar{0.9} 	 & \databar{1.9} 	 & \databar{1.5} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Eurasian Curlew 	 & \databar{3.2} 	 & \databar{2.8} 	 & \databar{2.1} 	 & \databar{3.2} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Black-tailed Godwit 	 & \databar{1.0} 	 & \databar{4.9} 	 & \databar{2.7} 	 & \databar{2.7} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Ruddy Turnstone 	 & \databar{1.8} 	 & \databar{3.1} 	 & \databar{0.6} 	 & \databar{2.4} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Ruff 	 & \databar{1.5} 	 & \databar{5.5} 	 & \databar{2.3} 	 & \databar{5.7} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Curlew Sandpiper 	 & \databar{0.0} 	 & \databar{3.2} 	 & \databar{2.1} 	 & \databar{2.8} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Sanderling 	 & \databar{2.7} 	 & \databar{3.6} 	 & \databar{0.8} 	 & \databar{3.3} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Dunlin 	 & \databar{5.0} 	 & \databar{5.6} 	 & \databar{2.5} 	 & \databar{6.5} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Little Stint 	 & \databar{2.9} 	 & \databar{4.7} 	 & \databar{2.7} 	 & \databar{5.2} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Common Snipe 	 & \databar{9.5} 	 & \databar{7.7} 	 & \databar{1.0} 	 & \databar{12.9} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Collared Pratincole 	 & \databar{0.0} 	 & \databar{4.9} 	 & \databar{3.3} 	 & \databar{0.5} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Slender-billed Gull 	 & \databar{1.8} 	 & \databar{4.9} 	 & \databar{3.9} 	 & \databar{2.8} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Black-headed Gull 	 & \databar{26.1} 	 & \databar{16.3} 	 & \databar{15.9} 	 & \databar{26.4} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Mediterranean Gull 	 & \databar{7.8} 	 & \databar{5.9} 	 & \databar{3.6} 	 & \databar{6.8} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Audouin's Gull 	 & \databar{1.7} 	 & \databar{12.9} 	 & \databar{10.4} 	 & \databar{6.6} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Yellow-legged Gull 	 & \databar{36.6} 	 & \databar{37.0} 	 & \databar{26.7} 	 & \databar{34.3} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Lesser Black-backed Gull 	 & \databar{5.9} 	 & \databar{6.4} 	 & \databar{1.9} 	 & \databar{8.6} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Little Tern 	 & \databar{0.0} 	 & \databar{3.6} 	 & \databar{4.6} 	 & \databar{0.8} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Gull-billed Tern 	 & \databar{0.1} 	 & \databar{4.0} 	 & \databar{3.2} 	 & \databar{1.1} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Caspian Tern 	 & \databar{0.4} 	 & \databar{4.1} 	 & \databar{1.4} 	 & \databar{3.1} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Whiskered Tern 	 & \databar{0.9} 	 & \databar{11.4} 	 & \databar{6.6} 	 & \databar{3.8} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Common Tern 	 & \databar{0.0} 	 & \databar{5.1} 	 & \databar{4.9} 	 & \databar{2.1} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Sandwich Tern 	 & \databar{7.2} 	 & \databar{6.9} 	 & \databar{5.6} 	 & \databar{6.7} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Rock Pigeon 	 & \databar{39.1} 	 & \databar{33.3} 	 & \databar{25.4} 	 & \databar{32.1} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Stock Dove 	 & \databar{1.3} 	 & \databar{2.9} 	 & \databar{3.3} 	 & \databar{1.7} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Common Wood-Pigeon 	 & \databar{35.6} 	 & \databar{43.3} 	 & \databar{31.2} 	 & \databar{37.1} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & European Turtle-Dove 	 & \databar{0.0} 	 & \databar{5.0} 	 & \databar{4.5} 	 & \databar{1.5} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Eurasian Collared-Dove 	 & \databar{23.6} 	 & \databar{32.6} 	 & \databar{23.1} 	 & \databar{24.3} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Common Cuckoo 	 & \databar{0.0} 	 & \databar{7.8} 	 & \databar{4.3} 	 & \databar{0.5} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Little Owl 	 & \databar{2.3} 	 & \databar{3.4} 	 & \databar{4.2} 	 & \databar{1.5} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Alpine Swift 	 & \databar{0.0} 	 & \databar{20.1} 	 & \databar{27.5} 	 & \databar{7.5} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Common Swift 	 & \databar{0.0} 	 & \databar{33.0} 	 & \databar{43.3} 	 & \databar{3.1} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Pallid Swift 	 & \databar{0.0} 	 & \databar{3.8} 	 & \databar{4.9} 	 & \databar{0.9} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Eurasian Hoopoe 	 & \databar{6.6} 	 & \databar{19.8} 	 & \databar{11.2} 	 & \databar{9.1} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Common Kingfisher 	 & \databar{10.8} 	 & \databar{5.0} 	 & \databar{5.4} 	 & \databar{18.6} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & European Bee-eater 	 & \databar{0.0} 	 & \databar{10.0} 	 & \databar{15.4} 	 & \databar{2.9} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & European Roller 	 & \databar{0.0} 	 & \databar{2.9} 	 & \databar{2.7} 	 & \databar{0.1} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Eurasian Wryneck 	 & \databar{1.0} 	 & \databar{2.9} 	 & \databar{0.3} 	 & \databar{0.6} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Great Spotted Woodpecker 	 & \databar{3.5} 	 & \databar{6.2} 	 & \databar{4.5} 	 & \databar{5.3} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Eurasian Green Woodpecker 	 & \databar{11.9} 	 & \databar{15.7} 	 & \databar{6.6} 	 & \databar{9.3} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Eurasian Kestrel 	 & \databar{19.0} 	 & \databar{23.3} 	 & \databar{14.5} 	 & \databar{27.1} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Eurasian Hobby 	 & \databar{0.0} 	 & \databar{2.1} 	 & \databar{1.3} 	 & \databar{6.5} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Peregrine Falcon 	 & \databar{4.4} 	 & \databar{4.0} 	 & \databar{3.7} 	 & \databar{6.0} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Rose-ringed Parakeet 	 & \databar{11.3} 	 & \databar{6.3} 	 & \databar{2.2} 	 & \databar{7.2} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Monk Parakeet 	 & \databar{23.2} 	 & \databar{16.7} 	 & \databar{13.3} 	 & \databar{21.3} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Southern Gray Shrike 	 & \databar{1.0} 	 & \databar{2.2} 	 & \databar{1.6} 	 & \databar{1.2} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Woodchat Shrike 	 & \databar{0.0} 	 & \databar{8.1} 	 & \databar{4.9} 	 & \databar{0.8} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Eurasian Golden Oriole 	 & \databar{0.0} 	 & \databar{3.3} 	 & \databar{5.7} 	 & \databar{0.2} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Eurasian Jay 	 & \databar{9.4} 	 & \databar{11.0} 	 & \databar{11.8} 	 & \databar{11.8} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Eurasian Magpie 	 & \databar{44.8} 	 & \databar{44.9} 	 & \databar{28.6} 	 & \databar{42.4} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Red-billed Chough 	 & \databar{1.7} 	 & \databar{3.3} 	 & \databar{4.1} 	 & \databar{1.7} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Yellow-billed Chough 	 & \databar{0.5} 	 & \databar{1.1} 	 & \databar{2.7} 	 & \databar{1.1} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Eurasian Jackdaw 	 & \databar{9.5} 	 & \databar{9.5} 	 & \databar{4.7} 	 & \databar{6.7} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Carrion Crow 	 & \databar{3.9} 	 & \databar{6.6} 	 & \databar{7.6} 	 & \databar{5.5} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Common Raven 	 & \databar{6.3} 	 & \databar{8.2} 	 & \databar{6.9} 	 & \databar{9.4} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Calandra Lark 	 & \databar{1.1} 	 & \databar{2.8} 	 & \databar{1.3} 	 & \databar{0.4} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Crested Lark 	 & \databar{9.1} 	 & \databar{17.4} 	 & \databar{8.5} 	 & \databar{11.1} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Thekla Lark 	 & \databar{0.6} 	 & \databar{3.0} 	 & \databar{1.5} 	 & \databar{0.8} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Sky Lark 	 & \databar{4.2} 	 & \databar{5.0} 	 & \databar{1.9} 	 & \databar{3.8} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Wood Lark 	 & \databar{1.4} 	 & \databar{3.3} 	 & \databar{1.1} 	 & \databar{2.5} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Bank Swallow 	 & \databar{0.0} 	 & \databar{10.9} 	 & \databar{3.5} 	 & \databar{4.9} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Eurasian Crag-Martin 	 & \databar{8.9} 	 & \databar{9.8} 	 & \databar{5.9} 	 & \databar{5.8} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Barn Swallow 	 & \databar{0.9} 	 & \databar{37.1} 	 & \databar{32.7} 	 & \databar{21.5} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Red-rumped Swallow 	 & \databar{0.1} 	 & \databar{2.9} 	 & \databar{1.9} 	 & \databar{0.8} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Common House-Martin 	 & \databar{0.3} 	 & \databar{23.4} 	 & \databar{25.3} 	 & \databar{9.2} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Coal Tit 	 & \databar{7.0} 	 & \databar{9.4} 	 & \databar{9.1} 	 & \databar{10.3} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Crested Tit 	 & \databar{9.3} 	 & \databar{10.9} 	 & \databar{10.3} 	 & \databar{12.9} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Eurasian Blue Tit 	 & \databar{27.2} 	 & \databar{19.9} 	 & \databar{9.0} 	 & \databar{18.6} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Great Tit 	 & \databar{27.7} 	 & \databar{31.7} 	 & \databar{16.3} 	 & \databar{26.2} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Eurasian Penduline-Tit 	 & \databar{3.4} 	 & \databar{3.2} 	 & \databar{1.9} 	 & \databar{2.1} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Long-tailed Tit 	 & \databar{15.1} 	 & \databar{13.3} 	 & \databar{8.2} 	 & \databar{13.2} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Eurasian Nuthatch 	 & \databar{1.3} 	 & \databar{1.8} 	 & \databar{2.9} 	 & \databar{1.9} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Short-toed Treecreeper 	 & \databar{11.0} 	 & \databar{11.1} 	 & \databar{6.0} 	 & \databar{10.3} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Eurasian Wren 	 & \databar{8.1} 	 & \databar{8.7} 	 & \databar{4.5} 	 & \databar{6.1} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & White-throated Dipper 	 & \databar{0.6} 	 & \databar{1.0} 	 & \databar{1.8} 	 & \databar{0.9} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Goldcrest 	 & \databar{4.1} 	 & \databar{1.2} 	 & \databar{3.1} 	 & \databar{3.2} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Firecrest 	 & \databar{8.8} 	 & \databar{8.2} 	 & \databar{3.7} 	 & \databar{11.9} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Cetti's Warbler 	 & \databar{17.2} 	 & \databar{21.6} 	 & \databar{8.6} 	 & \databar{15.8} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Willow Warbler 	 & \databar{0.0} 	 & \databar{8.9} 	 & \databar{2.8} 	 & \databar{4.7} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Common Chiffchaff 	 & \databar{69.6} 	 & \databar{25.4} 	 & \databar{2.9} 	 & \databar{26.5} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Western Bonelli's Warbler 	 & \databar{0.0} 	 & \databar{5.1} 	 & \databar{3.7} 	 & \databar{0.6} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Melodious Warbler 	 & \databar{0.0} 	 & \databar{4.0} 	 & \databar{4.6} 	 & \databar{0.9} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Moustached Warbler 	 & \databar{1.7} 	 & \databar{1.2} 	 & \databar{0.5} 	 & \databar{1.6} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Eurasian Reed-Warbler 	 & \databar{0.0} 	 & \databar{7.3} 	 & \databar{6.2} 	 & \databar{4.0} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Great Reed-Warbler 	 & \databar{0.0} 	 & \databar{7.6} 	 & \databar{4.1} 	 & \databar{1.0} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Zitting Cisticola 	 & \databar{9.9} 	 & \databar{20.9} 	 & \databar{14.8} 	 & \databar{10.5} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Eurasian Blackcap 	 & \databar{22.3} 	 & \databar{25.5} 	 & \databar{8.2} 	 & \databar{17.4} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Garden Warbler 	 & \databar{0.0} 	 & \databar{1.5} 	 & \databar{1.9} 	 & \databar{1.2} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Subalpine Warbler 	 & \databar{0.0} 	 & \databar{6.2} 	 & \databar{1.5} 	 & \databar{1.2} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Sardinian Warbler 	 & \databar{44.7} 	 & \databar{36.2} 	 & \databar{21.2} 	 & \databar{27.8} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Greater Whitethroat 	 & \databar{0.0} 	 & \databar{3.7} 	 & \databar{1.5} 	 & \databar{1.1} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Dartford Warbler 	 & \databar{3.4} 	 & \databar{3.3} 	 & \databar{2.7} 	 & \databar{2.7} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Red-billed Leiothrix 	 & \databar{1.7} 	 & \databar{2.5} 	 & \databar{0.6} 	 & \databar{2.9} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Spotted Flycatcher 	 & \databar{0.0} 	 & \databar{5.0} 	 & \databar{2.4} 	 & \databar{2.0} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & European Robin 	 & \databar{50.3} 	 & \databar{27.5} 	 & \databar{10.5} 	 & \databar{36.9} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Common Nightingale 	 & \databar{0.0} 	 & \databar{16.0} 	 & \databar{7.2} 	 & \databar{0.6} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Bluethroat 	 & \databar{2.4} 	 & \databar{2.0} 	 & \databar{0.0} 	 & \databar{2.3} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & European Pied Flycatcher 	 & \databar{0.0} 	 & \databar{9.9} 	 & \databar{3.3} 	 & \databar{7.5} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Common Redstart 	 & \databar{0.0} 	 & \databar{6.3} 	 & \databar{1.1} 	 & \databar{4.1} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Black Redstart 	 & \databar{53.5} 	 & \databar{21.1} 	 & \databar{8.3} 	 & \databar{24.5} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Blue Rock-Thrush 	 & \databar{1.0} 	 & \databar{3.1} 	 & \databar{2.8} 	 & \databar{1.6} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Whinchat 	 & \databar{0.0} 	 & \databar{3.5} 	 & \databar{0.5} 	 & \databar{2.7} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & European Stonechat 	 & \databar{16.2} 	 & \databar{13.3} 	 & \databar{5.2} 	 & \databar{13.0} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Northern Wheatear 	 & \databar{0.0} 	 & \databar{4.5} 	 & \databar{4.6} 	 & \databar{4.4} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Eurasian Blackbird 	 & \databar{53.6} 	 & \databar{53.8} 	 & \databar{32.5} 	 & \databar{37.9} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Song Thrush 	 & \databar{13.1} 	 & \databar{9.5} 	 & \databar{2.7} 	 & \databar{6.1} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Mistle Thrush 	 & \databar{4.8} 	 & \databar{5.6} 	 & \databar{3.4} 	 & \databar{4.7} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & European Starling 	 & \databar{35.5} 	 & \databar{35.3} 	 & \databar{16.0} 	 & \databar{28.9} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Spotless Starling 	 & \databar{10.1} 	 & \databar{17.2} 	 & \databar{9.0} 	 & \databar{7.9} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Alpine Accentor 	 & \databar{1.3} 	 & \databar{0.4} 	 & \databar{1.1} 	 & \databar{1.4} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Dunnock 	 & \databar{5.5} 	 & \databar{3.1} 	 & \databar{3.0} 	 & \databar{4.4} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Western Yellow Wagtail 	 & \databar{0.4} 	 & \databar{13.6} 	 & \databar{6.3} 	 & \databar{4.8} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Gray Wagtail 	 & \databar{26.9} 	 & \databar{7.3} 	 & \databar{4.2} 	 & \databar{16.9} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & White Wagtail 	 & \databar{39.5} 	 & \databar{31.9} 	 & \databar{17.7} 	 & \databar{32.6} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Meadow Pipit 	 & \databar{15.3} 	 & \databar{3.8} 	 & \databar{0.4} 	 & \databar{7.0} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Water Pipit 	 & \databar{7.4} 	 & \databar{4.5} 	 & \databar{2.5} 	 & \databar{3.4} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Cirl Bunting 	 & \databar{5.3} 	 & \databar{7.1} 	 & \databar{3.3} 	 & \databar{4.4} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Rock Bunting 	 & \databar{0.8} 	 & \databar{2.6} 	 & \databar{2.8} 	 & \databar{2.4} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Reed Bunting 	 & \databar{9.0} 	 & \databar{3.6} 	 & \databar{0.9} 	 & \databar{3.7} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Corn Bunting 	 & \databar{2.5} 	 & \databar{9.3} 	 & \databar{3.0} 	 & \databar{1.6} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Common Chaffinch 	 & \databar{29.9} 	 & \databar{17.2} 	 & \databar{8.7} 	 & \databar{18.2} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & European Greenfinch 	 & \databar{11.8} 	 & \databar{20.9} 	 & \databar{10.3} 	 & \databar{9.0} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Red Crossbill 	 & \databar{0.8} 	 & \databar{1.1} 	 & \databar{2.6} 	 & \databar{2.2} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Eurasian Siskin 	 & \databar{1.4} 	 & \databar{1.3} 	 & \databar{0.6} 	 & \databar{2.8} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & European Goldfinch 	 & \databar{25.0} 	 & \databar{34.6} 	 & \databar{20.1} 	 & \databar{23.3} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Eurasian Linnet 	 & \databar{4.5} 	 & \databar{6.9} 	 & \databar{4.0} 	 & \databar{4.3} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Citril Finch 	 & \databar{0.5} 	 & \databar{1.0} 	 & \databar{3.3} 	 & \databar{1.4} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & European Serin 	 & \databar{32.0} 	 & \databar{40.7} 	 & \databar{18.1} 	 & \databar{17.5} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Hawfinch 	 & \databar{1.4} 	 & \databar{1.7} 	 & \databar{0.5} 	 & \databar{1.1} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & House Sparrow 	 & \databar{40.5} 	 & \databar{47.3} 	 & \databar{37.3} 	 & \databar{37.8} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Eurasian Tree Sparrow 	 & \databar{14.4} 	 & \databar{19.8} 	 & \databar{11.2} 	 & \databar{10.8} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Rock Petronia 	 & \databar{0.6} 	 & \databar{2.0} 	 & \databar{1.6} 	 & \databar{1.0} 	 & \dotuline{\hspace{1cm}} \\ 
+$\square$\hspace{1ex}  	 & Common Waxbill 	 & \databar{2.4} 	 & \databar{2.4} 	 & \databar{2.6} 	 & \databar{6.2} 	 & \dotuline{\hspace{1cm}} \\ 
+\hline
+\let\thefootnote\relax\footnote{
+Checklist generated on \today{}  with occurrence and frequency computed from checklist submitted on \href{www.ebird.org}{eBird}. Scientific names and systematic order follow \href{http://www.birds.cornell.edu/clementschecklist/download/}{Clements Checklist 6.9 (eBird 1.55)}.
+Main table display only non-hybrid birds with occurence >1\%.
+ Generated with ebirdToLaTeX python code. Comment, suggestion? \href{mailto:rafnuss@gmail.com}{rafnuss@gmail.com}}
+\end{tabularx}
+
+ 
+\begin{tabularx}{\textwidth}{cXcXcX} 
+\hline
+\\
+\multicolumn{6}{c}{\textsc{ \Large{Rare\footnotesize{>.1\%}}}} \\ 
+\\
+\hline
+\underline{\hspace{3ex}} 	 &Greater White-fronted Goose 	 &\underline{\hspace{3ex}} 	 &Red Knot 	 &\underline{\hspace{3ex}} 	 &Mitred Parakeet \\ 
+\underline{\hspace{3ex}} 	 &Egyptian Goose 	 &\underline{\hspace{3ex}} 	 &Temminck's Stint 	 &\underline{\hspace{3ex}} 	 &Red-backed Shrike \\ 
+\underline{\hspace{3ex}} 	 &Ferruginous Duck 	 &\underline{\hspace{3ex}} 	 &Pectoral Sandpiper 	 &\underline{\hspace{3ex}} 	 &Lesser Gray Shrike \\ 
+\underline{\hspace{3ex}} 	 &White-winged Scoter 	 &\underline{\hspace{3ex}} 	 &Jack Snipe 	 &\underline{\hspace{3ex}} 	 &Bearded Reedling \\ 
+\underline{\hspace{3ex}} 	 &Common Scoter 	 &\underline{\hspace{3ex}} 	 &Eurasian Woodcock 	 &\underline{\hspace{3ex}} 	 &Greater Short-toed Lark \\ 
+\underline{\hspace{3ex}} 	 &Common Merganser 	 &\underline{\hspace{3ex}} 	 &Great Skua 	 &\underline{\hspace{3ex}} 	 &Lesser Short-toed Lark \\ 
+\underline{\hspace{3ex}} 	 &Red-breasted Merganser 	 &\underline{\hspace{3ex}} 	 &Parasitic Jaeger 	 &\underline{\hspace{3ex}} 	 &Marsh Tit \\ 
+\underline{\hspace{3ex}} 	 &Common Quail 	 &\underline{\hspace{3ex}} 	 &Razorbill 	 &\underline{\hspace{3ex}} 	 &Wallcreeper \\ 
+\underline{\hspace{3ex}} 	 &Eurasian Capercaillie 	 &\underline{\hspace{3ex}} 	 &Little Gull 	 &\underline{\hspace{3ex}} 	 &Eurasian Treecreeper \\ 
+\underline{\hspace{3ex}} 	 &Rock Ptarmigan 	 &\underline{\hspace{3ex}} 	 &Mew Gull 	 &\underline{\hspace{3ex}} 	 &Iberian Chiffchaff \\ 
+\underline{\hspace{3ex}} 	 &Arctic Loon 	 &\underline{\hspace{3ex}} 	 &Black Tern 	 &\underline{\hspace{3ex}} 	 &Wood Warbler \\ 
+\underline{\hspace{3ex}} 	 &Common Loon 	 &\underline{\hspace{3ex}} 	 &White-winged Tern 	 &\underline{\hspace{3ex}} 	 &Sedge Warbler \\ 
+\underline{\hspace{3ex}} 	 &Cory's Shearwater 	 &\underline{\hspace{3ex}} 	 &Pin-tailed Sandgrouse 	 &\underline{\hspace{3ex}} 	 &Savi's Warbler \\ 
+\underline{\hspace{3ex}} 	 &Yelkouan Shearwater 	 &\underline{\hspace{3ex}} 	 &Black-bellied Sandgrouse 	 &\underline{\hspace{3ex}} 	 &Common Grasshopper-Warbler \\ 
+\underline{\hspace{3ex}} 	 &European Storm-Petrel 	 &\underline{\hspace{3ex}} 	 &Great Spotted Cuckoo 	 &\underline{\hspace{3ex}} 	 &Western Orphean Warbler \\ 
+\underline{\hspace{3ex}} 	 &Black Stork 	 &\underline{\hspace{3ex}} 	 &Barn Owl 	 &\underline{\hspace{3ex}} 	 &Spectacled Warbler \\ 
+\underline{\hspace{3ex}} 	 &Great Bittern 	 &\underline{\hspace{3ex}} 	 &European Scops-Owl 	 &\underline{\hspace{3ex}} 	 &Rufous-tailed Rock-Thrush \\ 
+\underline{\hspace{3ex}} 	 &Sacred Ibis 	 &\underline{\hspace{3ex}} 	 &Eurasian Eagle-Owl 	 &\underline{\hspace{3ex}} 	 &Black Wheatear \\ 
+\underline{\hspace{3ex}} 	 &Black-shouldered Kite 	 &\underline{\hspace{3ex}} 	 &Tawny Owl 	 &\underline{\hspace{3ex}} 	 &Black-eared Wheatear \\ 
+\underline{\hspace{3ex}} 	 &Egyptian Vulture 	 &\underline{\hspace{3ex}} 	 &Long-eared Owl 	 &\underline{\hspace{3ex}} 	 &Ring Ouzel \\ 
+\underline{\hspace{3ex}} 	 &Cinereous Vulture 	 &\underline{\hspace{3ex}} 	 &Short-eared Owl 	 &\underline{\hspace{3ex}} 	 &Fieldfare \\ 
+\underline{\hspace{3ex}} 	 &Bonelli's Eagle 	 &\underline{\hspace{3ex}} 	 &Red-necked Nightjar 	 &\underline{\hspace{3ex}} 	 &Redwing \\ 
+\underline{\hspace{3ex}} 	 &Northern Harrier 	 &\underline{\hspace{3ex}} 	 &Eurasian Nightjar 	 &\underline{\hspace{3ex}} 	 &Tawny Pipit \\ 
+\underline{\hspace{3ex}} 	 &Montagu's Harrier 	 &\underline{\hspace{3ex}} 	 &Lesser Spotted Woodpecker 	 &\underline{\hspace{3ex}} 	 &Tree Pipit \\ 
+\underline{\hspace{3ex}} 	 &Little Bustard 	 &\underline{\hspace{3ex}} 	 &Middle Spotted Woodpecker 	 &\underline{\hspace{3ex}} 	 &Yellowhammer \\ 
+\underline{\hspace{3ex}} 	 &Little Crake 	 &\underline{\hspace{3ex}} 	 &Black Woodpecker 	 &\underline{\hspace{3ex}} 	 &Ortolan Bunting \\ 
+\underline{\hspace{3ex}} 	 &Spotted Crake 	 &\underline{\hspace{3ex}} 	 &Lesser Kestrel 	 &\underline{\hspace{3ex}} 	 &Brambling \\ 
+\underline{\hspace{3ex}} 	 &Common Crane 	 &\underline{\hspace{3ex}} 	 &Red-footed Falcon 	 &\underline{\hspace{3ex}} 	 &Eurasian Bullfinch \\ 
+\underline{\hspace{3ex}} 	 &Pacific Golden-Plover 	 &\underline{\hspace{3ex}} 	 &Eleonora's Falcon 	 &\underline{\hspace{3ex}} 	 &White-winged Snowfinch \\ 
+\underline{\hspace{3ex}} 	 &Marsh Sandpiper 	 &\underline{\hspace{3ex}} 	 &Merlin 	 &\underline{\hspace{3ex}} 	 &\underline{\hfill} \\ 
+\underline{\hspace{3ex}} 	 &Bar-tailed Godwit 	 &\underline{\hspace{3ex}} 	 &Blue-crowned Parakeet 	 &\underline{\hspace{3ex}} 	 &\underline{\hfill} \\ 
+\hline
+\end{tabularx} 
+\end{center}
+\end{document}

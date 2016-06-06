@@ -67,7 +67,6 @@ function RunPython() {
 		emonth: jQuery('#div-date-begin .form-control')[1].value.split('-')[1],
 
 	};
-
 	params['col']=[];
 
 	for (col of jQuery('#panel-body-col-checklist .btn')) {
@@ -83,8 +82,8 @@ function RunPython() {
 		}
 		params['col'].push(col_list);
 	}	
-
-	window.open("http://zoziologie.raphaelnussbaumer.com/wp-content/plugins/e2L/e2L.php?" + encodeURIComponent(jQuery.param(params)))
+    console.log(params)
+	window.open("http://zoziologie.raphaelnussbaumer.com/ebirdtolatex/generate?" + jQuery.param(params,true))
 
 }
 
