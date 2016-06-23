@@ -1,0 +1,12 @@
+
+.fusion-main-menu a{
+    text-decoration: none;
+}
+
+
+#sel-loc-country, #sel-loc-subnational1, #sel-loc-subnational2{
+    height: 145px;
+}
+#panel-body-col-library a, panel-body-col-checklist a{
+    width:150px;
+}
