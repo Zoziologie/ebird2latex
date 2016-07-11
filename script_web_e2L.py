@@ -4,6 +4,8 @@ import e2L
 import sys
 import urllib.parse
 
+print(sys.argv[1])
+
 print('1. Read the url, transform it to dict and adapt it for our purpuse')
 urld = dict(urllib.parse.parse_qs(urllib.parse.unquote(sys.argv[1])))
 print(urld)
@@ -35,12 +37,13 @@ print('3. Define column and condition')
 # freq     'Year', 'Season', 'month', 'week'    index (1:4 season, 1:12 month 1:... week)
 # note     leength (eg. : 4cm)
 col = []
+print(info['samples_size'])
 for urld_col in urld['col']:
-    col.append(e2L.TableInput(urld_col[0],urld_col[1],urld_col[2],info))
+    col.append(e2L.TableInput(info,urld_col[0],urld_col[1],urld_col[2]))
 
 
-condition_tableau = ['Main table display only non-hybrid birds with occurence >1\\%.'," ( bird['freq']['year'] >= 0.01)"]
-condition_rare = ['\\footnotesize{>.1\\%}'," (bird['freq']['year'] < .01) and (bird['freq']['year'] > 0.001)"]
+condition_tableau = ['Main table display only non-hybrid birds with occurence >1\\%.'," ( bird['freq']['year'] >= 0.0)"]
+condition_rare = ['\\footnotesize{>.1\\%}'," (bird['freq']['year'] < .00) and (bird['freq']['year'] > 0.001)"]
 
 
 ## Write To LateX

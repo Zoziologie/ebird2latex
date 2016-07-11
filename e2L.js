@@ -1,3 +1,4 @@
+
 // Load Location depending onf the location level
 function loadLocation(level,value) {
 	var startelmt = 0;
@@ -44,7 +45,8 @@ function updateLocRadio(value){
 
 
 function RunPython() {
-	// check if all is ok for sumbitting to python
+	
+    // check if all is ok for sumbitting to python
 	// TO BE DONE
 	code_loc = jQuery('#sel-loc-'+jQuery("input[name='radio-loc']:checked").val()).val();
 	if (code_loc == null) {
@@ -68,6 +70,11 @@ function RunPython() {
 
 	};
 	params['col']=[];
+    
+    if (jQuery('#panel-body-col-checklist .btn').length==0){
+        alert('You must create the column of your checklist by draging the coloum item of the library into your checklist!')
+        return
+    }
 
 	for (col of jQuery('#panel-body-col-checklist .btn')) {
 		var col_list = [];
@@ -99,7 +106,7 @@ function FreqIndex(target) {
 	} else if (value == 'season') {
 		name = ['Spring','Summer','Autumn','Winter'];
 	} else if (value == 'month') {
-		name=['January','February','March','April','June','July','August','September','October','November','December'];
+		name=['January','February','March','April','May','June','July','August','September','October','November','December'];
 	} else if (value == 'week') {
 		var name = [];
 		for (var i = 0; i <= 54; i++) {
@@ -142,7 +149,10 @@ jQuery(document).ready(function(){
 			return target !== document.getElementById('panel-body-col-library')
 		},
 		removeOnSpill: true
-	});
+	}).on('drop', function(){
+        jQuery('#dropbox').remove()
+    });
+
 
 
 });

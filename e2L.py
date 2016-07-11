@@ -41,7 +41,7 @@ LANGUAGE = [ ['Croatian', 'HR', 'Includes all species and non-species taxa recor
             ['Chinese', 'ZH', 'Currently includes only species recorded in Taiwan in Mandarin. Matches prevailing usage for the area. Thanks to Scott Lin for providing these names and updates to them.'],
             ['Chinese (Simple)', 'ZH_SIM', 'Includes species recorded in China. Thanks to Yuetao Zhong and Tong Mu for providing these names. The IOC names are used for species that do not occur in China.'],
             ['Latin', 'LA','latin name'],
-            ['English (US)','EN','english']
+            ['English','EN','english']
             ]
 
 CATEGORIE = [
@@ -141,6 +141,9 @@ def load_barchart(code_loc, byear, eyear, bmonth, emonth):
             info['samples_size'] = {}
             info['samples_size']['week'] = [int(float(i)) for i in line.replace("Sample Size:","").split()]
             info['samples_size']['month'], info['samples_size']['season'], info['samples_size']['year'] = week_to_else(info['samples_size']['week'])
+            info['samples_size']['month'] = [i*4 for i in info['samples_size']['month']];
+            info['samples_size']['season'] = [i*12 for i in info['samples_size']['season']];
+            info['samples_size']['year'] = info['samples_size']['year']*48;
         else:
             comName, line = line.split('\t',1)
             #name_la,line = line.split('\t',1)
@@ -216,7 +219,8 @@ def write_to_latex(projname, bird_list,col, condition_tableau, condition_rare, i
         if 'newcommand{\samples_size}' in line:
             line = line[:-1]+ str(round(info['samples_size']['year']))+' checklists ('+str(info['nb_taxa'])+' differents species)} '
         elif '_condition_' in line:
-            line = condition_tableau[0]+'\n'
+            continue
+            #line = condition_tableau[0]+'\n'
         elif '_projectname_' in line:
             line = '\\LARGE{'+projname+' Bird Checklist}\\\\'
         elif '_noteline_' in line:
@@ -278,7 +282,7 @@ def write_to_latex(projname, bird_list,col, condition_tableau, condition_rare, i
 
 
 class TableInput:
-    def __init__(self, type, option1=None, option2=None, option3=None):
+    def __init__(self, info, type, option1=None, option2=None, option3=None):
         self.type = type
         self.title = None
         self.wid = None
@@ -292,14 +296,14 @@ class TableInput:
         elif self.type == 'freq':
             self.wid = 'c'
             if self.option1 == 'year':
-                self.title = 'Y'#ear'+'\\footnotesize{ (' +str(round(self.option3['samples_size_year'])) +')} '
+                self.title = 'Y'+'\\footnotesize{ (' +str(round(info['samples_size']['year'])) +')} '
             elif self.option1 == 'season':
-                self.option2 = int(option2)-1
+                self.option2 = int(option2)
                 season = ['Sp','Sm','F','W']#['Spring','Summer','Fall','Winter']
-                self.title = season[self.option2]# +'\\footnotesize{ (' +str(round(self.option3['samples_size_season'][self.option2])) +')} '
+                self.title = season[self.option2] +'\\footnotesize{ (' +str(round(info['samples_size']['season'][self.option2])) +')} '
             elif self.option1 == 'month':
                 month = ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May', 'June', 'Jul', 'Aug', 'Sept.', 'Oct.', 'Nov.', 'Dec.']
-                self.option2 = int(option2)-1
+                self.option2 = int(option2)
                 self.title = month[self.option2] #+'\\footnotesize{ (' +str(round(self.option3['samples_size_month'][self.option2])) +')} '
         elif self.type == 'note':
             self.wid = 'X'

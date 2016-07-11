@@ -1,12 +1,34 @@
-
-.fusion-main-menu a{
-    text-decoration: none;
+.row{
+   text-align: center;
 }
-
-
 #sel-loc-country, #sel-loc-subnational1, #sel-loc-subnational2{
     height: 145px;
 }
-#panel-body-col-library a, panel-body-col-checklist a{
-    width:150px;
+#panel-col-library{
+    display: inline-block;
+    border-color: #fbbd58;
 }
+#panel-col-library .panel-heading{
+    background-color: #fbbd58;
+    border-color: #fbbd58;
+}
+#panel-body-col-checklist a{
+        margin-right: 3px;
+}
+#dropbox{
+    font-size: x-large;
+    border: 2px dashed #bbb;
+    border-radius: 5px;
+    padding: 25px;
+    text-align: center;
+    color: #bbb;
+}
+a[type="checkbox"]{width:100px;}
+a[type="hyphen"]{width:150px;}
+.hyphen-nb{width:50px;display: inline;}
+.hyphen-length{width:65px;display: inline;}
+a[type="lang"]{width:160;}
+a[type="freq"]{width:210px;}
+.freq-period{width:80px;display: inline;}
+.freq-index{width: 100px;display: inline;}
+a[type="note"]{width:100px;}
