@@ -90,34 +90,19 @@ def bird_creator(code_loc, lang, cat, byear, eyear, bmonth, emonth):
 
 def load_barchart(code_loc, byear, eyear, bmonth, emonth):
 
-    url_base = 'http://ebird.org/ebird/BarChart'
-    cmd = 'getChart'
-    displayType = 'download'
-    reportType = 'location'
+    url = 'http://ebird.org/ebird/BarChart?cmd=getChart&displayType=download&reportType=location' + '&'
 
-    if '-' in code_loc:
-        getLocations = 'states'
-        countries = code_loc[:2]
-        states = code_loc
-        parentState = countries
-    else:
-        getLocations = 'countries'
-        countries = code_loc
-        states = code_loc
-        parentState = countries
+    if code_loc.count('-')==0:
+        url += 'getLocations=countries&countries=' + code_loc + '&'
+    elif code_loc.count('-')==1:
+        url += 'getLocations=states&states=' + code_loc + '&'
+    elif code_loc.count('-')==2:
+        url += 'getLocations=counties&counties=' + code_loc + '&'
 
-    url = url_base+'?'
-    url += 'cmd='+ cmd + '&'
-    url += 'displayType='+ displayType + '&'
-    url += 'getLocations='+ getLocations + '&'
-    url += 'countries='+ countries + '&'
-    url += 'states='+ str(states) + '&'
     url += 'bYear='+ str(byear) + '&'
     url += 'eYear='+ str(eyear) + '&'
     url += 'bMonth='+ str(bmonth) + '&'
-    url += 'eMonth='+ str(emonth) + '&'
-    url += 'reportType='+ reportType + '&'
-    url += 'parentState='+ parentState
+    url += 'eMonth='+ str(emonth)
 
     print('barchar url: ')
     print(url)
