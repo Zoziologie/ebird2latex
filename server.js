@@ -31,7 +31,8 @@ app.get('/', function (req, res) {
         }
         res.write('</pre>')
         res.write('</div>')
-        res.write('<form action="'+results[results.length-1]+'" style="margin-top:50px;text-align:center;"><button title="Open pdf" type="sumbit">Open generated PDF</button></form>')
+        res.write('<form action="'+results[results.length-1]+'" target="_blank" style="margin-top:50px;text-align:center;"><button title="Open pdf" type="sumbit">Open generated PDF</button></form>')
+        res.write('<form action="'+results[results.length-1].split('.pdf')[0]+'.tex" target="_blank" style="margin-top:50px;text-align:center;"><button title="View the .TeX file" type="sumbit">View the .TeX file</button></form>')
         res.write('</div>')
         res.write('</div>')
         res.end();

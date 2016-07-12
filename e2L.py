@@ -125,6 +125,7 @@ def load_barchart(code_loc, byear, eyear, bmonth, emonth):
         elif "Sample Size" in line:
             info['samples_size'] = {}
             info['samples_size']['week'] = [int(float(i)) for i in line.replace("Sample Size:","").split()]
+            assert len(info['samples_size']['week'])>0, 'Empty Barchart! Check the barchart link above, maybe there is not data for your query or the query is wrong'
             info['samples_size']['month'], info['samples_size']['season'], info['samples_size']['year'] = week_to_else(info['samples_size']['week'])
             info['samples_size']['month'] = [i*4 for i in info['samples_size']['month']];
             info['samples_size']['season'] = [i*12 for i in info['samples_size']['season']];
@@ -291,7 +292,7 @@ class TableInput:
                 self.option2 = int(option2)
                 self.title = month[self.option2] #+'\\footnotesize{ (' +str(round(self.option3['samples_size_month'][self.option2])) +')} '
         elif self.type == 'note':
-            self.wid = 'X'
+            self.wid = 'c'
             self.title = 'Note'
         elif self.type == 'hyphen':
             self.option1 = int(self.option1)
