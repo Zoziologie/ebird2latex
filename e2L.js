@@ -1,97 +1,68 @@
-
-// Load Location depending onf the location level
-function loadLocation(level,value) {
-	var startelmt = 0;
-	var url = 'https://ebird.org/ws1.1/ref/location/list?rtype=' + level;
-	if (level == 'country'){
-		url = url + '&fmt=xml';
-		radio_value = 'country';	
-	} else if (level == 'subnational1') {
-		url = url + '&countryCode=' + value + '&fmt=xml';
-		radio_value = 'country';
-		startelmt = 1;
-	} else if (level == 'subnational2') {
-		url = url + '&subnational1Code=' + value + '&fmt=xml';
-		var radio_value = 'subnational1'
-	} else {
-		throw 'not defined level'
-	}
-
-	xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function() {
-		if (xhttp.readyState == 4 && xhttp.status == 200) {
-			var elmts = xhttp.responseXML.getElementsByTagName(level);
-			list = document.getElementById('sel-loc-'+level);
-			list.innerHTML='';
-			document.getElementById('sel-loc-subnational2').innerHTML=''; // always erase this one
-			for (var i = startelmt; i <elmts.length; i++) {
-				var opt = document.createElement('option');
-				opt.appendChild( document.createTextNode(elmts[i].getElementsByTagName("name")[0].childNodes[0].nodeValue) );
-				opt.value = elmts[i].getElementsByTagName(level+"-code")[0].childNodes[0].nodeValue;
-				list.appendChild(opt);
-			}
-			list.style.display = "block";
-			updateLocRadio(radio_value)
-		}
-	};
-	xhttp.open("GET", url, true);
-	xhttp.send();
-}
-
-
-function updateLocRadio(value){
-	jQuery("input[value='" + value + "']").prop('checked',true)
-}
-
-
 function RunPython() {
 	
-    // check if all is ok for sumbitting to python
-	// TO BE DONE
-	code_loc = jQuery('#sel-loc-'+jQuery("input[name='radio-loc']:checked").val()).val();
-	if (code_loc == null) {
-		alert('Location not selected. Please choose one');
-		return
-	} else if (code_loc.length>1){
-		confirm('Warning: Several location selected, only the first one is taken! Continue ? ')
-			code_loc = code_loc[0];
-	} else {
-		code_loc = code_loc[0];
+	params = {
+		code_loc: '',
+		project_name: '',
+		byear: jQuery('#div-date-begin .form-control')[0].value.split('-')[1],
+		eyear: jQuery('#div-date-begin .form-control')[1].value.split('-')[1],
+		bmonth: jQuery('#div-date-begin .form-control')[0].value.split('-')[0],
+		emonth: jQuery('#div-date-begin .form-control')[1].value.split('-')[0],
+		cat: [],
+		col: [],
+		condition: [jQuery('#threshold_rarity').val(),jQuery('#threshold_display').val()],
+		format: jQuery('input[type=radio][name=format]:checked').val()+',margin='+jQuery('#margin').val()+'in',
+		family: jQuery('input[value=family_name]').is(':checked')
+	};
+
+	// Location
+	if (s_country.getValue()){
+		if (s_sub1.getValue()){
+			if (s_sub2.getValue()){
+				params.code_loc = s_sub2.getValue();
+				params.project_name =  s_sub2.getItem(s_sub2.getValue())[0].innerHTML;
+			} else{
+				params.code_loc = s_sub1.getValue();
+				params.project_name =  s_sub1.getItem(s_sub1.getValue())[0].innerHTML;
+			}
+		} else {
+			params.code_loc = s_country.getValue();
+			params.project_name =  s_country.getItem(s_country.getValue())[0].innerHTML;
+		}
+	} else{
+		alert('No Location choosen!')
+		return;
 	}
 
-	var params = {
-		code_loc: code_loc,
-		project_name: jQuery('#sel-loc-'+jQuery("input[name='radio-loc']:checked").val()+' option:selected')[0].text,
-		cat: jQuery('#sel-cat').val(),
-		byear: jQuery('#div-date-begin .form-control')[0].value.split('-')[0],
-		eyear: jQuery('#div-date-begin .form-control')[1].value.split('-')[0],
-		bmonth: jQuery('#div-date-begin .form-control')[0].value.split('-')[1],
-		emonth: jQuery('#div-date-begin .form-control')[1].value.split('-')[1],
+	// Categorie
+	jQuery('#sel-cat :checkbox:checked').each(function(i){
+		params.cat.push(jQuery(this).val());
+	});
+	if (params.cat.length==0){
+		alert('No Categorie choosen!')
+		return;
+	}
 
-	};
-	params['col']=[];
-    
-    if (jQuery('#panel-body-col-checklist .btn').length==0){
-        alert('You must create the column of your checklist by draging the coloum item of the library into your checklist!')
-        return
-    }
-
-	for (col of jQuery('#panel-body-col-checklist .btn')) {
+	// Column
+	if (jQuery('#panel-body-col-checklist .btn').length==0){
+		alert('No colunm choosen!')
+		return;
+	}
+	jQuery('#panel-body-col-checklist .btn').each(function(i,col){
 		var col_list = [];
 		col_list.push(col.type);
 
 		forms=col.getElementsByClassName('form-control')
-			col_list.push(forms[0].value);
+		col_list.push(forms[0].value);
 		if (forms.length==2 && forms[1].value) {
 			col_list.push(forms[1].value);
 		} else{
 			col_list.push(0);
 		}
-		params['col'].push(col_list);
-	}	
-    console.log(params)
-	window.open("http://zoziologie.raphaelnussbaumer.com/ebirdtolatex/generate?" + jQuery.param(params,true))
+		params.col.push(col_list);
+	});
 
+	console.log(params)
+	window.open("http://zoziologie.raphaelnussbaumer.com/ebirdtolatex/generate?" + jQuery.param(params,true))
 }
 
 
@@ -130,15 +101,75 @@ function FreqIndex(target) {
 
 
 
-
-
-
-
+var s_sub1, s_sub2, s_country, params;
 
 
 jQuery(document).ready(function(){
-	// Populate Country 
-	loadLocation('country',1);
+
+	var $s_country = jQuery('#sel-loc-country').selectize({
+		valueField: 'country-code',
+		labelField: 'name',
+		searchField: ['name','country-code'],
+		onChange: function(value) {
+			if (!value.length) return;
+			s_sub1.disable();
+			s_sub2.disable();
+			s_sub2.clearOptions();
+			s_sub1.clearOptions();
+			jQuery.get('https://ebird.org/ws1.1/ref/location/list?rtype=subnational1&countryCode=' + value + '&fmt=xml',function(results){
+				res=jQuery.parseJSON(xml2json(results).replace('undefined','')).response.result.subnational1;
+				s_sub1.enable();
+				s_sub1.addOption(res)
+			});
+		},
+		onInitialize: function(){
+			jQuery.get('https://ebird.org/ws1.1/ref/location/list?rtype=country&fmt=xml',function(results) {
+				res=jQuery.parseJSON(xml2json(results).replace('undefined','')).response.result.country;
+				s_country.addOption(res)
+			});
+		}
+	});
+
+	var $s_sub1 = jQuery('#sel-loc-subnational1').selectize({
+		valueField: 'subnational1-code',
+		labelField: 'name',
+		searchField: ['name'],
+		onChange: function(value) {
+			if (!value.length) return;
+			s_sub2.disable();
+			s_sub2.clearOptions();
+			jQuery.get('https://ebird.org/ws1.1/ref/location/list?rtype=subnational2&subnational1Code=' + value + '&fmt=xml',function(results){
+				res=jQuery.parseJSON(xml2json(results).replace('undefined','')).response.result
+				if (res){
+					s_sub2.enable();
+					s_sub2.addOption(res.subnational2)
+				}
+			});
+		},
+	});
+
+	var $s_sub2 = jQuery('#sel-loc-subnational2').selectize({
+		valueField: 'subnational2-code',
+		labelField: 'name',
+		searchField: ['name']
+	});
+
+	s_sub1  = $s_sub1[0].selectize;
+	s_sub2  = $s_sub2[0].selectize;
+	s_country = $s_country[0].selectize;
+
+	s_sub1.disable();
+	s_sub2.disable();
+
+
+	// Date
+	jQuery('#div-date-begin').datepicker({
+		format: "mm-yyyy",
+		startView: "months", 
+		minViewMode: "months"
+	});
+
+
 
 	// Able to move the stuff in checklist-
 	dragula([document.getElementById('panel-body-col-library'), document.getElementById('panel-body-col-checklist')],{
@@ -150,8 +181,8 @@ jQuery(document).ready(function(){
 		},
 		removeOnSpill: true
 	}).on('drop', function(){
-        jQuery('#dropbox').remove()
-    });
+		jQuery('#dropbox').remove()
+	});
 
 
 

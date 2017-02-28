@@ -1,6 +1,4 @@
-.row{
-   text-align: center;
-}
+
 #sel-loc-country, #sel-loc-subnational1, #sel-loc-subnational2{
     height: 145px;
 }
@@ -32,3 +30,13 @@ a[type="freq"]{width:210px;}
 .freq-period{width:80px;display: inline;}
 .freq-index{width: 100px;display: inline;}
 a[type="note"]{width:100px;}
+
+.selectize-input .item {
+    vertical-align: -webkit-baseline-middle;
+}
+.selectize-input{
+    padding:1px 12px;
+}
+#div-date-begin input{
+    height: 34px;
+}

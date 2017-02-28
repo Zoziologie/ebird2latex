@@ -23,6 +23,10 @@ byear = int(urld['byear'][0])
 eyear = int(urld['eyear'][0])
 bmonth = int(urld['bmonth'][0])
 emonth = int(urld['emonth'][0])
+cond_rare = urld['condition'][0]
+cond_tableau = urld['condition'][1]
+format = urld['format'][0]
+family = urld['family'][0]
 
 print('2. Create the Bird List from eBird.org')
 info, bird_list = e2L.bird_creator(code_loc, lang, cat, byear, eyear, bmonth, emonth)
@@ -42,13 +46,14 @@ for urld_col in urld['col']:
     col.append(e2L.TableInput(info,urld_col[0],urld_col[1],urld_col[2]))
 
 
-condition_tableau = ['Main table display only non-hybrid birds with occurence >1\\%.'," ( bird['freq']['year'] >= 0.0)"]
-condition_rare = ['\\footnotesize{>.1\\%}'," (bird['freq']['year'] < .00) and (bird['freq']['year'] > 0.001)"]
-
+condition_tableau = ['Main table display only non-hybrid birds with occurence >1\\%.'," ( bird['freq']['year'] >= "+cond_rare+")"]
+condition_rare = ['\\footnotesize{<.1\\%}'," (bird['freq']['year'] < "+cond_rare+") and (bird['freq']['year'] > "+cond_tableau+")"]
+print(condition_tableau)
+print(condition_rare)
 
 ## Write To LateX
 print('4. Write to latex')
-e2L.write_to_latex(projet_name,bird_list,col,condition_tableau,condition_rare, info)
+e2L.write_to_latex(projet_name,bird_list,col,condition_tableau, condition_rare, family, format, info)
 # os.system('cp temp.tex  ./latex/'+ projet_name + '.tex' )
 
 
