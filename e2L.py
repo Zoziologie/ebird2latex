@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import urllib.request, json
+import urllib.request, json, datetime
+import requests
+import codecs
 
 # Global variable
 LANGUAGE = [ ['Croatian', 'HR', 'Includes all species and non-species taxa recorded in Croatia. Thanks to Josip Turkalj for these translations.'],
@@ -64,10 +66,12 @@ def bird_creator(code_loc, lang, cat, byear, eyear, bmonth, emonth):
 	else:
 		lang = lang.upper()
 		assert lang in poss_lang, 'One or several language asked ( %s ) are not available.' % lang
+
+	current_year = datetime.datetime.now().year
 	assert all([c in poss_cat for c in cat]) or (cat in poss_cat), 'One or several categorie asked ( %s ) are not available.' % cat
-	assert byear < eyear, 'byear (%d) needs to be before eyear (%d)' % (byear, byear)
-	assert bmonth < emonth, 'bmonth (%d) needs to be before emonth (%d)' % (bmonth, bmonth)
-	assert byear > 0 and byear < 2019 and eyear > 0 and eyear < 2019, 'month need to be comprise between 0 and 2016'
+	assert byear <= eyear, 'byear (%d) needs to be before eyear (%d)' % (byear, byear)
+	assert bmonth <= emonth, 'bmonth (%d) needs to be before emonth (%d)' % (bmonth, bmonth)
+	assert byear > 0 and byear <= current_year and eyear > 0 and eyear <= current_year, 'month need to be comprise between 0 and this year'
 	assert bmonth > 0 and bmonth < 13 and emonth>0 and emonth < 13, 'month need to be comprise between 1 and 12'
 
 	bc_bird_list, info = load_barchart(code_loc, byear, eyear, bmonth, emonth)
@@ -88,29 +92,23 @@ def bird_creator(code_loc, lang, cat, byear, eyear, bmonth, emonth):
 
 
 def load_barchart(code_loc, byear, eyear, bmonth, emonth):
-
-	url = 'http://ebird.org/ebird/BarChart?cmd=getChart&displayType=download&reportType=location' + '&'
-
-	if code_loc.count('-')==0:
-		url += 'getLocations=countries&countries=' + code_loc + '&'
-	elif code_loc.count('-')==1:
-		url += 'getLocations=states&states=' + code_loc + '&'
-	elif code_loc.count('-')==2:
-		url += 'getLocations=counties&counties=' + code_loc + '&'
-
-	url += 'bYear='+ str(byear) + '&'
-	url += 'eYear='+ str(eyear) + '&'
-	url += 'bMonth='+ str(bmonth) + '&'
-	url += 'eMonth='+ str(emonth)
+	url = 'http://ebird.org/ebird/barchartData?r={code_loc}&bmo={bmonth}&emo={emonth}&byr={byear}&eyr={eyear}&fmt=tsv'.format(
+		code_loc=code_loc, byear=byear, eyear=eyear, bmonth=bmonth, emonth=emonth)
 
 	print('barchar url: ')
 	print(url)
-	lines = urllib.request.urlopen(url).readlines()
+	r = requests.get(url)
+
+	f = open('_barchart.tsv', 'wb')
+	f.write(r.content)
+	f.close()
+
+	lines = codecs.open('_barchart.tsv','r', encoding='utf8')
 
 	bc_bird_list = []
 	info = {}
-	for line in [l.decode('utf-8') for l in lines]:
-		if line == '\n' or line == "\r\n":
+	for line in [l.strip() for l in lines]:
+		if not line:
 			pass
 		elif "Frequency of observations in the selected location(s).:" in line:
 			# print(line)
@@ -212,7 +210,6 @@ def write_to_latex(projname, bird_list, col, condition_tableau, condition_rare, 
 			line = '\\LARGE{'+projname+' Bird Checklist}\\\\'
 		elif '_noteline_' in line:
 			line = 3*'\\newnoteline'
-			line = 3*'\\newnoteline'
 		elif 'begin{tabularx' in line:
 			line = line[:-1]
 			for c in col: # write column width
@@ -292,6 +289,8 @@ class TableInput:
 				month = ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May', 'June', 'Jul', 'Aug', 'Sept.', 'Oct.', 'Nov.', 'Dec.']
 				self.option2 = int(option2)
 				self.title = month[self.option2] #+'\\footnotesize{ (' +str(round(self.option3['samples_size_month'][self.option2])) +')} '
+			else:
+				raise ValueError(self.option1)
 		elif self.type == 'note':
 			self.wid = 'c'
 			self.title = 'Note'
@@ -306,6 +305,8 @@ class TableInput:
 			self.option1 = int(self.option1)
 			self.title = '\\normalsize{'+self.get_content(None)+'}'
 			self.type = 'checkbox'
+		else:
+			raise ValueError(self.type)
 
 	def __str__(self):
 		return str(self.title)
