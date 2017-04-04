@@ -22,9 +22,9 @@
     color: #bbb;
 }
 a[type="checkbox"]{width:100px;}
-a[type="hyphen"]{width:150px;}
-.hyphen-nb{width:50px;display: inline;}
-.hyphen-length{width:65px;display: inline;}
+a[type="line"]{width:150px;}
+.line-nb{width:50px;display: inline;}
+.line-length{width:65px;display: inline;}
 a[type="lang"]{width:160;}
 a[type="freq"]{width:210px;}
 .freq-period{width:80px;display: inline;}

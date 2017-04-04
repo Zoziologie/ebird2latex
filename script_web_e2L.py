@@ -3,6 +3,7 @@ import os
 import e2L
 import sys
 import urllib.parse
+import unidecode
 
 print(sys.argv[1])
 
@@ -15,6 +16,7 @@ for idx,val in enumerate(urld['col']):
     urld['col'][idx] = val.split(',')
 
 projet_name = urld['project_name'][0]
+filename = unidecode.unidecode(projet_name).replace(' ','_').replace("'",'').replace('.','')
 
 code_loc = urld['code_loc'][0] # See possible country code here : https://confluence.cornell.edu/display/CLOISAPI/eBird-1.1-HotSpotsByRegion + region code for each region ? where ?
 lang = [col[1] for col in urld['col'] if col[0]=='lang'] # a single language, or list of several language en,en_US,de,en_AE,en_AU,en_IN,en_NZ,en_UK,en_ZA,es,es_AR,es_CL,es_CU, es_DO,es_ES,es_MX,es_PA,es_PR,fi,fr,fr_HT,ht_HT,in,is,pt_BR,pt_PT,tr,zh http://help.ebird.org/customer/portal/articles/1596582-common-name-translations-in-ebird
@@ -53,18 +55,18 @@ print(condition_rare)
 
 ## Write To LateX
 print('4. Write to latex')
-e2L.write_to_latex(projet_name,bird_list,col,condition_tableau, condition_rare, family, format, info)
+e2L.write_to_latex(projet_name,filename,bird_list,col,condition_tableau, condition_rare, family, format, info)
 # os.system('cp temp.tex  ./latex/'+ projet_name + '.tex' )
 
 
 ## Run Latex
 print('5. Run Pdflatex and Open')
 os.chdir('latex')
-os.system('pdflatex '+ projet_name.replace(' ','') + '.tex')
+os.system('pdflatex '+ filename + '.tex')
 #os.system('"start '+ projet_name + '.pdf"')
 os.chdir('..')
 
-urlf = 'http://zoziologie.raphaelnussbaumer.com/wp-content/plugins/e2L/latex/'+ projet_name.replace(' ','') + '.pdf'
+urlf = 'http://zoziologie.raphaelnussbaumer.com/wp-content/plugins/e2L/latex/'+ filename + '.pdf'
 print('<a href="'+urlf+'">'+urlf+'</a>')
 print(urlf)
 

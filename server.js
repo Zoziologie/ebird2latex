@@ -18,7 +18,7 @@ app.get('/', function (req, res) {
 
     var options = {
         mode: 'text',
-        pythonPath: '/usr/bin/python3',
+        pythonPath: '/usr/local/bin/python3',
         pythonOptions: ['-u'],
         args: url.parse(decodeURIComponent(req.url)).query
     };

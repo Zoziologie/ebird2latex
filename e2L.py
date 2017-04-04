@@ -188,11 +188,11 @@ def week_to_else(week):
 	return month, season, year
 
 
-def write_to_latex(projname, bird_list, col, condition_tableau, condition_rare, family, format, info):
+def write_to_latex(projname, filename, bird_list, col, condition_tableau, condition_rare, family, format, info):
 	family_current = ''
 
 	# Start Writing
-	f = open('latex/'+ projname.replace(' ','')  + '.tex', 'w')
+	f = open('latex/'+ filename  + '.tex', 'w')
 
 	# Import preformatted text
 	f2 = open('Template_default.tex', 'r')
@@ -294,14 +294,14 @@ class TableInput:
 		elif self.type == 'note':
 			self.wid = 'c'
 			self.title = 'Note'
-		elif self.type == 'hyphen':
+		elif self.type == 'line':
 			self.option1 = int(self.option1)
 			self.wid = 'c'
 			alphabet = 'A B C D E F G H I J K L M N O P Q R S T U V W X Y Z'
 			self.title = '\\normalsize{'+self.get_content(None)+'}'
 		elif self.type == 'checkbox':
 			self.wid = 'c'
-			self.type = 'checkbox' # put hyphen-like title
+			self.type = 'checkbox' # put line-like title
 			self.option1 = int(self.option1)
 			self.title = '\\normalsize{'+self.get_content(None)+'}'
 			self.type = 'checkbox'
@@ -325,7 +325,7 @@ class TableInput:
 			if not self.option1:
 				self.option1 = '4cm'
 			return '\\dotuline{\\hspace{'+self.option1+'}}'
-		elif self.type == 'hyphen':
+		elif self.type == 'line':
 			if not self.option1:
 				self.option1 = 3
 			if not self.option2:
