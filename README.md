@@ -27,6 +27,9 @@ For the web version, just follow the instruction on [the website](http://zoziolo
 
 If you wish to dive into my code, I'm using Nodejs, python3 and javascript. Javascript get the input for the checklist and send a the info to Nodejs which run the python script on my server and return a link to the pdf generated. 
 
+## GIF
+![Exemple](https://raw.githubusercontent.com/Zoziologie/e2L/master/e2l.gif)
+
 ## Contact ##
 Don't hesitate to contact me for any question ! And visit by webiste (if you have some spare time !)
 [Raphael Nussbaumer](rafnuss@gmail.com) 
