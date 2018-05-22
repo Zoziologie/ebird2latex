@@ -16,7 +16,7 @@ for idx,val in enumerate(urld['col']):
     urld['col'][idx] = val.split(',')
 
 projet_name = urld['project_name'][0]
-filename = unidecode.unidecode(projet_name).replace(' ','_').replace("'",'').replace('.','')
+filename = unidecode.unidecode(projet_name).replace(' ','_').replace("'",'').replace('.','').replace(',','_').replace('(','_').replace(')','_').replace('__','_').replace('__','_')
 
 code_loc = urld['code_loc'][0] # See possible country code here : https://confluence.cornell.edu/display/CLOISAPI/eBird-1.1-HotSpotsByRegion + region code for each region ? where ?
 lang = [col[1] for col in urld['col'] if col[0]=='lang'] # a single language, or list of several language en,en_US,de,en_AE,en_AU,en_IN,en_NZ,en_UK,en_ZA,es,es_AR,es_CL,es_CU, es_DO,es_ES,es_MX,es_PA,es_PR,fi,fr,fr_HT,ht_HT,in,is,pt_BR,pt_PT,tr,zh http://help.ebird.org/customer/portal/articles/1596582-common-name-translations-in-ebird
@@ -25,9 +25,11 @@ byear = int(urld['byear'][0])
 eyear = int(urld['eyear'][0])
 bmonth = int(urld['bmonth'][0])
 emonth = int(urld['emonth'][0])
-cond_rare = urld['condition'][0]
-cond_tableau = urld['condition'][1]
+cond_time = urld['condition'][0]
+cond_rare = urld['condition'][1]
+cond_tableau = urld['condition'][2]
 format = urld['format'][0]
+spacing = urld['spacing'][0]
 family = urld['family'][0]
 
 print('2. Create the Bird List from eBird.org')
@@ -48,14 +50,14 @@ for urld_col in urld['col']:
     col.append(e2L.TableInput(info,urld_col[0],urld_col[1],urld_col[2]))
 
 
-condition_tableau = ['Main table display only non-hybrid birds with occurence >1\\%.'," ( bird['freq']['year'] >= "+cond_rare+")"]
-condition_rare = ['\\footnotesize{<.1\\%}'," (bird['freq']['year'] < "+cond_rare+") and (bird['freq']['year'] > "+cond_tableau+")"]
+condition_tableau = ['Main table display only non-hybrid birds with occurence >1\\%.'," ( bird['freq']"+cond_time+" >= "+cond_rare+")"]
+condition_rare = ['\\footnotesize{<.1\\%}'," (bird['freq']"+cond_time+" < "+cond_rare+") and (bird['freq']"+cond_time+" > "+cond_tableau+")"]
 print(condition_tableau)
 print(condition_rare)
 
 ## Write To LateX
 print('4. Write to latex')
-e2L.write_to_latex(projet_name,filename,bird_list,col,condition_tableau, condition_rare, family, format, info)
+e2L.write_to_latex(projet_name,filename,bird_list,col,condition_tableau, condition_rare, family, format, spacing, info)
 # os.system('cp temp.tex  ./latex/'+ projet_name + '.tex' )
 
 

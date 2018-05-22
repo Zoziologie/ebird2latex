@@ -1,4 +1,10 @@
 
+#sel-hotspot{
+    right: 0px;
+    position: absolute;
+    top: 0px;
+    display:none;
+}
 #sel-loc-country, #sel-loc-subnational1, #sel-loc-subnational2{
     height: 145px;
 }
@@ -13,13 +19,26 @@
 #panel-body-col-checklist a{
         margin-right: 3px;
 }
+#library{
+    text-align: center;
+}
+#panel-col-checklist .panel-heading{
+    text-align: center;
+    font-size: x-large;
+}
+#panel-col-checklist .panel-body{
+    padding:0;
+}
 #dropbox{
     font-size: x-large;
-    border: 2px dashed #bbb;
-    border-radius: 5px;
+    color: #bbb;
+    /*border-radius: 5px;*/
     padding: 25px;
     text-align: center;
-    color: #bbb;
+}
+#panel-body-col-checklist{
+    border: 2px dashed #bbb;
+    margin: 0.952381%;
 }
 a[type="checkbox"]{width:100px;}
 a[type="line"]{width:150px;}
@@ -30,13 +49,38 @@ a[type="freq"]{width:210px;}
 .freq-period{width:80px;display: inline;}
 .freq-index{width: 100px;display: inline;}
 a[type="note"]{width:100px;}
-
-.selectize-input .item {
-    vertical-align: -webkit-baseline-middle;
-}
 .selectize-input{
     padding:1px 12px;
 }
 #div-date-begin input{
     height: 34px;
+}
+.btn, .form-control, .selectize-input, .panel{
+   border-radius: 0; 
+}
+.form-control.selectize-control{
+    margin: auto;
+    width: 50%;
+}
+.selectize-input{
+    font-size: x-large;
+    padding: 16px;
+    height: 52px;
+    text-align: center;
+}
+#sel-loc-selectized{
+    font-size: x-large;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.fa-pencil{
+    margin-left: 5px;
+    cursor: pointer;
+}
+#map{
+    width:100%;
+    height: 400px;
+    display: none;
 }

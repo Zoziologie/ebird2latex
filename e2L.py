@@ -103,7 +103,7 @@ def load_barchart(code_loc, byear, eyear, bmonth, emonth):
 	f.write(r.content)
 	f.close()
 
-	lines = codecs.open('_barchart.tsv','r', encoding='utf8')
+	lines = codecs.open('_barchart.tsv','r', encoding='utf8', errors='replace')
 
 	bc_bird_list = []
 	info = {}
@@ -188,7 +188,7 @@ def week_to_else(week):
 	return month, season, year
 
 
-def write_to_latex(projname, filename, bird_list, col, condition_tableau, condition_rare, family, format, info):
+def write_to_latex(projname, filename, bird_list, col, condition_tableau, condition_rare, family, format, spacing, info):
 	family_current = ''
 
 	# Start Writing
@@ -205,16 +205,18 @@ def write_to_latex(projname, filename, bird_list, col, condition_tableau, condit
 			continue
 			#line = condition_tableau[0]+'\n'
 		elif '_format_' in line:
-			line = '\\usepackage['+format+']{geometry}'
+			line = '\\usepackage['+format+']{geometry}\n'
+		elif '_linespacing_' in line:
+			line = '\\renewcommand{\\arraystretch}{' + spacing + '}\n'
 		elif '_projectname_' in line:
 			line = '\\LARGE{'+projname+' Bird Checklist}\\\\'
 		elif '_noteline_' in line:
-			line = 3*'\\newnoteline'
-		elif 'begin{tabularx' in line:
+			line = 3*'\\newnoteline\n'
+		elif 'begin{xtabular*' in line:
 			line = line[:-1]
 			for c in col: # write column width
 				line += c.wid
-			line += '}'
+			line += '}\n'
 		elif '_columntitle_' in line:
 			line = ''
 			for c in col[:-1]: # write title
@@ -234,7 +236,10 @@ def write_to_latex(projname, filename, bird_list, col, condition_tableau, condit
 		elif '_rare_' in line:
 			line = ''
 			# Table Rare
-			n_rare_col = 3
+			if 'onecolumn' in format:
+				n_rare_col = 3
+			else:
+				n_rare_col = 2
 			col_r = TableInput(info,'lang','EN')
 			bird_list_r = []
 			for bird in bird_list:
@@ -248,19 +253,19 @@ def write_to_latex(projname, filename, bird_list, col, condition_tableau, condit
 					bird_list_r.append('\\underline{\\hfill}')
 					u = len(bird_list_r)
 				c = round(u/n_rare_col)
-				f.write('\\begin{tabularx}{\\textwidth}{')
+				f.write('\\begin{xtabular*}{\\linewidth}{@{\\extracolsep{\\fill}}')
 				for x in range(0,n_rare_col):
-					f.write('cX')
+					f.write('cl')
 				f.write('} \n')
-				f.write('\\hline\n\\\\\n')
+				f.write('\\toprule\n\\\\\n')
 				f.write('\\multicolumn{'+str(2*n_rare_col)+'}{c}{\\textsc{ \\Large{Rare'+condition_rare[0]+'}}} \\\\ \n')
-				f.write('\\\\\n\\hline\n')
+				f.write('\\\\\n\\midrule\n')
 				for cc in range(0,c):
 					for c_r in range(0,n_rare_col-1):
 						f.write('\\underline{\\hspace{3ex}} \t &' + bird_list_r[cc+c*c_r] +' \t &')
 					f.write('\\underline{\\hspace{3ex}} \t &' + bird_list_r[cc+c*(n_rare_col-1)]+' \\\\ \n')
-				f.write('\\hline\n')
-				f.write('\\end{tabularx} ')
+				f.write('\\bottomrule\n')
+				f.write('\\end{xtabular*} ')
 		f.write(line)
 	f2.close()
 
@@ -274,7 +279,7 @@ class TableInput:
 		self.option2 = option2
 		self.option3 = option3
 		if self.type == 'lang':
-			self.wid = 'X'
+			self.wid = 'l'
 			idx = [l[1] for l in LANGUAGE].index(self.option1.upper())
 			self.title = LANGUAGE[idx][0]
 		elif self.type == 'freq':
@@ -288,7 +293,10 @@ class TableInput:
 			elif self.option1 == 'month':
 				month = ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May', 'June', 'Jul', 'Aug', 'Sept.', 'Oct.', 'Nov.', 'Dec.']
 				self.option2 = int(option2)
-				self.title = month[self.option2] #+'\\footnotesize{ (' +str(round(self.option3['samples_size_month'][self.option2])) +')} '
+				self.title = month[self.option2] #+'\\footnotesize{ (' +str(round(info['samples_size']['month'][self.option2])) +')} '
+			elif self.option1 == 'week':
+				self.option2 = int(option2)
+				self.title = 'Week '+ str(self.option2) #+'\\footnotesize{ (' +str(round(info['samples_size']['week'][self.option2])) +')} '
 			else:
 				raise ValueError(self.option1)
 		elif self.type == 'note':
@@ -321,6 +329,8 @@ class TableInput:
 				return '\\databar{'+'{:.1f}'.format(bird['freq']['season'][self.option2]*100) +'}'
 			elif self.option1 == 'month':
 				return '\\databar{'+'{:.1f}'.format(bird['freq']['month'][self.option2]*100) +'}'
+			elif self.option1 == 'week':
+				return '\\databar{'+'{:.1f}'.format(bird['freq']['week'][self.option2]*100) +'}'
 		elif self.type == 'note':
 			if not self.option1:
 				self.option1 = '4cm'

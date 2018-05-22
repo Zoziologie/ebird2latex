@@ -2,7 +2,8 @@
 
 \usepackage[frenchb]{babel}
 %\usepackage{longtable}
-\usepackage{ltablex}
+%\usepackage{ltablex}
+\usepackage{xtab}
 \usepackage{amssymb}
 \usepackage{array}
 _format_
@@ -11,6 +12,12 @@ _format_
 \usepackage[nomessages]{fp}% http://ctan.org/pkg/fp
 \usepackage{ulem}
 \usepackage{hyperref}
+\usepackage{booktabs}
+
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
 \newcommand{\maxnum}{
 \newlength{\maxlen}
@@ -24,7 +31,10 @@ _format_
 \renewcommand*\rmdefault{iwona}
 \newcommand{\newnoteline}{\rule{\textwidth}{0.15mm}\\[1.5ex]}
 
-
+% prevent tables from being broken too early
+\xentrystretch{-0.1}
+% increase spacing between table's rows
+_linespacing_ 
 
 
 \begin{document}
@@ -36,29 +46,27 @@ _projectname_
 \normalsize \raggedright
 
 
-Birder(s): \underline{\hspace{112ex}}\\[1.5ex]
-Location: \underline{\hspace{28ex}}    Date: \underline{\hspace{13ex}}    Start time: \underline{\hspace{10ex}}   Duration: \underline{\hspace{10ex}}    Distance: \underline{\hspace{10ex}}\\[1.5ex]
+%Birder(s): \underline{\hspace{112ex}}\\[1.5ex]
+%Location: \underline{\hspace{28ex}}    Date: \underline{\hspace{13ex}}    Start time: \underline{\hspace{10ex}}   Duration: \underline{\hspace{10ex}}    Distance: \underline{\hspace{10ex}}\\[1.5ex]
 
 
-_noteline_
+%_ noteline_
 
 
 
 \begin{center}
 
-\begin{tabularx}{\textwidth}{
-\hline
-\\[0.5ex]
+\begin{xtabular*}{\linewidth}{@{\extracolsep{\fill}}
+\toprule
 _columntitle_
-\\[0.5ex]
-\hline
+\midrule
 _content_
-\hline
+\bottomrule
 \let\thefootnote\relax\footnote{
 Checklist generated on \today{}  with occurrence and frequency computed from checklist submitted on \href{www.ebird.org}{eBird}. Scientific names and systematic order follow \href{http://www.birds.cornell.edu/clementschecklist/download/}{Clements Checklist 6.9 (eBird 1.55)}.
  _condition_ 
  Generated with \href{http://zoziologie.raphaelnussbaumer.com/ebirdtolatex/}{ebirdToLaTeX} python code. Comment, suggestion? \href{mailto:rafnuss@gmail.com}{rafnuss@gmail.com}}
-\end{tabularx}
+\end{xtabular*}
 
  
 _rare_
