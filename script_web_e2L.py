@@ -16,6 +16,7 @@ for idx,val in enumerate(urld['col']):
     urld['col'][idx] = val.split(',')
 
 projet_name = urld['project_name'][0]
+print(projet_name)
 filename = unidecode.unidecode(projet_name).replace(' ','_').replace("'",'').replace('.','').replace(',','_').replace('(','_').replace(')','_').replace('__','_').replace('__','_')
 
 code_loc = urld['code_loc'][0] # See possible country code here : https://confluence.cornell.edu/display/CLOISAPI/eBird-1.1-HotSpotsByRegion + region code for each region ? where ?

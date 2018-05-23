@@ -192,7 +192,7 @@ def write_to_latex(projname, filename, bird_list, col, condition_tableau, condit
 	family_current = ''
 
 	# Start Writing
-	f = open('latex/'+ filename  + '.tex', 'w')
+	f = codecs.open('latex/'+ filename  + '.tex', 'w+', encoding='utf8')
 
 	# Import preformatted text
 	f2 = open('Template_default.tex', 'r')
@@ -209,7 +209,7 @@ def write_to_latex(projname, filename, bird_list, col, condition_tableau, condit
 		elif '_linespacing_' in line:
 			line = '\\renewcommand{\\arraystretch}{' + spacing + '}\n'
 		elif '_projectname_' in line:
-			line = '\\LARGE{'+projname+' Bird Checklist}\\\\'
+			line = '\\LARGE{'+projname+'}\\\\'
 		elif '_noteline_' in line:
 			line = 3*'\\newnoteline\n'
 		elif 'begin{xtabular*' in line:

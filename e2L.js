@@ -28,7 +28,7 @@ function RunPython() {
 
 	params = {
 		code_loc: '',
-		project_name: jQuery('#checklistname').html(),
+		project_name: encodeURIComponent(jQuery('#checklistname').html()),
 		byear: jQuery('#div-date-begin .form-control')[0].value.split('-')[1],
 		eyear: jQuery('#div-date-begin .form-control')[1].value.split('-')[1],
 		bmonth: jQuery('#div-date-begin .form-control')[0].value.split('-')[0],
