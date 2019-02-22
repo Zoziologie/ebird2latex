@@ -2,6 +2,8 @@
 latex/
 *.tsv
 bower_components
+*.bak
+node_modules/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

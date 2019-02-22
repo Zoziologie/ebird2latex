@@ -69,7 +69,7 @@ os.system('pdflatex '+ filename + '.tex')
 #os.system('"start '+ projet_name + '.pdf"')
 os.chdir('..')
 
-urlf = 'http://zoziologie.raphaelnussbaumer.com/wp-content/plugins/e2L/latex/'+ filename + '.pdf'
+urlf = 'http://zoziologie.raphaelnussbaumer.com/assets/eBird2LaTeX/latex/'+ filename + '.pdf'
 print('<a href="'+urlf+'">'+urlf+'</a>')
 print(urlf)
 

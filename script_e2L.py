@@ -1,5 +1,9 @@
 #!/usr/bin/env python
+import os
 import e2L
+import sys
+import urllib.parse
+import unidecode
 
 
 projet_name = "Sweden"
@@ -49,8 +53,7 @@ condition_rare = ['\\footnotesize{>.1\\%}'," (bird['freq']['year'] < .01) and (b
 
 ## Write To LateX
 #print('Write to latex')
-e2L.write_to_latex(projet_name,filename,bird_list,col,condition_tableau, condition_rare, family, format, info)
-
+e2L.write_to_latex(projet_name,filename,bird_list,col,condition_tableau, condition_rare, family, format, spacing, info)
 #os.chdir('Latex'); os.system(projet_name+'.tex');os.chdir('..')
 
 
@@ -60,4 +63,3 @@ e2L.write_to_latex(projet_name,filename,bird_list,col,condition_tableau, conditi
 #os.system('"pdflatex '+ Projet_name + '.tex"')
 #os.system('"start '+ Projet_name + '.pdf"')
 #os.chdir('..')
-

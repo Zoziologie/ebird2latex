@@ -6,6 +6,8 @@ var express = require('express');
 app = express();
 
 
+
+
 app.get('/', function (req, res) {
     res.writeHead(200, { 'Content-Type': 'text/html' });  
 
@@ -18,12 +20,12 @@ app.get('/', function (req, res) {
 
     var options = {
         mode: 'text',
-        pythonPath: '/usr/local/bin/python3',
+        pythonPath: '/usr/bin/python3',
         pythonOptions: ['-u'],
         args: url.parse(decodeURIComponent(req.url)).query
     };
 
-    PythonShell.run('script_web_e2L.py', options, function (err, results) {
+    PythonShell.PythonShell.run('script_web_e2L.py', options, function (err, results) {
         if (err){
             res.write('The python script has fail. Sorry for this. Would you mind reporting the error to rafnuss@gmail.com. Thanks<br><br>Error Traceback:<br>')
             res.write(err.traceback+'<br>');

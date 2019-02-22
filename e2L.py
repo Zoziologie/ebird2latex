@@ -84,7 +84,12 @@ def bird_creator(code_loc, lang, cat, byear, eyear, bmonth, emonth):
 				bird = taxa_bird
 				bird['freq'] = {}
 				bird['freq']['week'] = bc_bird['freq']
-				bird['freq']['month'], bird['freq']['season'], bird['freq']['year'] = week_to_else(bird['freq']['week'])
+				bird_nb_week = list(map(lambda x,y:x*y,bird['freq']['week'],info['samples_size']['week']))
+				bird_nb_month, bird_nb_season, bird_nb_year = week_to_else(bird_nb_week)
+				bird['freq']['month'] = list(map(lambda x,y:x/y, bird_nb_month, info['samples_size']['month']))
+				bird['freq']['season'] = list(map(lambda x,y:x/y, bird_nb_season, info['samples_size']['season']))
+				bird['freq']['year'] = bird_nb_year/info['samples_size']['year']
+				#print(info['samples_size']['year'])
 				bird['family']=''
 				bird_list.append(bird)
 
@@ -124,9 +129,11 @@ def load_barchart(code_loc, byear, eyear, bmonth, emonth):
 			info['samples_size']['week'] = [int(float(i)) for i in line.replace("Sample Size:","").split()]
 			assert len(info['samples_size']['week'])>0, 'Empty Barchart! Check the barchart link above, maybe there is not data for your query or the query is wrong'
 			info['samples_size']['month'], info['samples_size']['season'], info['samples_size']['year'] = week_to_else(info['samples_size']['week'])
-			info['samples_size']['month'] = [i*4 for i in info['samples_size']['month']];
-			info['samples_size']['season'] = [i*12 for i in info['samples_size']['season']];
-			info['samples_size']['year'] = info['samples_size']['year']*48;
+			print(info['samples_size']['week'])
+			print(info['samples_size']['year'])
+			#info['samples_size']['month'] = [i*4 for i in info['samples_size']['month']];
+			#info['samples_size']['season'] = [i*12 for i in info['samples_size']['season']];
+			#info['samples_size']['year'] = info['samples_size']['year']*48;
 		else:
 			comName, line = line.split('\t',1)
 			#name_la,line = line.split('\t',1)
@@ -174,17 +181,17 @@ def week_to_else(week):
 	for i in range(0,len(week)):
 		t_m.append(week[i])
 		if i%4 == 3:
-			month.append(sum(b for b in t_m) / len(t_m))
+			month.append(sum(b for b in t_m))
 			t_m = []
 	assert len(month) == 12,'Month frequency is not equal to 12'
 	#Season
 	season = []
-	season.append(sum(b for b in month[2:5]) / 3)
-	season.append(sum(b for b in month[5:8]) / 3)
-	season.append(sum(b for b in month[8:11]) / 3)
-	season.append(sum(b for b in month[0:2] + [month[11]]) / 3)
+	season.append(sum(b for b in month[2:5]))
+	season.append(sum(b for b in month[5:8]))
+	season.append(sum(b for b in month[8:11]))
+	season.append(sum(b for b in month[0:2] + [month[11]]))
 	#Year
-	year = sum(b for b in week) / len(week)
+	year = sum(b for b in week)
 	return month, season, year
 
 
@@ -345,5 +352,4 @@ class TableInput:
 			if not self.option1:
 				self.option1 = 3
 			return self.option1*'$\\square$\\hspace{1ex} '
-
 

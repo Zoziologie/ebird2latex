@@ -1,23 +1,83 @@
-
-#sel-hotspot{
-    right: 0px;
-    position: absolute;
-    top: 0px;
+body{
+    background-color: initial;
+}
+label, label input, label textarea, label select{
+    display:inline-block !important;
+    box-shadow: none;
+}
+h1 {
+    font-size: 2rem;
+}
+h2 {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+}
+a:hover{
+    text-decoration: none;
+}
+.btn-default{
+    background-color: #fbbd58;
+} 
+.btn-default:hover{
+    background-color:  #f7a222;
+} 
+.radio-inline{
+    margin-top: 0;
+    margin-left: 10px;
+    position: relative;
+    display: inline-block;
+    padding-left: 20px;
+    margin-bottom: 0;
+    font-weight: 400;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.input-group-addon{
+    padding: 6px 12px;
+    color: #555;
+    background-color: #eee;
+    border: 1px solid #ced4da;
+}
+#margin, #linespacing, #threshold_display, #threshold_rarity{
+    margin-left: auto;
+}
+.toggle{
     display:none;
+}
+#select-hotspot-img{
+    padding-right: 10px;
 }
 #sel-loc-country, #sel-loc-subnational1, #sel-loc-subnational2{
     height: 145px;
 }
-#panel-col-library{
+#panel-col-library, #panel-col-checklist{
     display: inline-block;
-    border-color: #fbbd58;
+    border: 1px solid #ced4da;
+    background-color: #eee;
+    border-radius: .25rem;
 }
-#panel-col-library .panel-heading{
-    background-color: #fbbd58;
-    border-color: #fbbd58;
+#panel-col-library{
+    width: 90%;
+}
+#panel-col-checklist{
+    width: 100%;
+}
+#panel-col-library .panel-heading, #panel-col-checklist .panel-heading{
+    background-color: white;
+    border-top-left-radius: .25rem;
+    border-bottom: 1px solid #ced4da;
+    border-top-right-radius: .25rem;
+    font-size: x-large;
+    padding: 6px;
 }
 #panel-body-col-checklist a{
-        margin-right: 3px;
+    margin-right: 3px;
+}
+.col-lib{
+    border: 1px solid #ced4da;
+    background: #fbbd58;
+    display: flex;
+    flex-direction: column;
 }
 #library{
     text-align: center;
@@ -28,6 +88,25 @@
 }
 #panel-col-checklist .panel-body{
     padding:0;
+}
+#panel-body-col-library, #panel-body-col-checklist{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 15px 0px;
+}
+#col-lib-line{
+    display:flex;
+}
+.line-nb{
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+.line-length{
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
 }
 #dropbox{
     font-size: x-large;
@@ -40,25 +119,10 @@
     border: 2px dashed #bbb;
     margin: 0.952381%;
 }
-a[type="checkbox"]{width:100px;}
-a[type="line"]{width:150px;}
-.line-nb{width:50px;display: inline;}
-.line-length{width:65px;display: inline;}
-a[type="lang"]{width:160;}
-a[type="freq"]{width:210px;}
-.freq-period{width:80px;display: inline;}
-.freq-index{width: 100px;display: inline;}
-a[type="note"]{width:100px;}
 .selectize-input{
     padding:1px 12px;
 }
-#div-date-begin input{
-    height: 34px;
-}
-.btn, .form-control, .selectize-input, .panel{
-   border-radius: 0; 
-}
-.form-control.selectize-control{
+#selectize-col-col{
     margin: auto;
     width: 50%;
 }
@@ -82,5 +146,18 @@ a[type="note"]{width:100px;}
 #map{
     width:100%;
     height: 400px;
+    border: 3px solid white;
+}
+#map-col{
     display: none;
+}
+#selectize-col{
+    display: flex
+}
+#checklistname{
+    padding-right: 10px;
+}
+#letsgo{
+        padding: 12px 55px;
+    font-size: 1.5rem;
 }
