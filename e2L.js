@@ -60,7 +60,7 @@ function RunPython() {
 	});
 
 	console.log(params)
-	window.open("http://zoziologie.raphaelnussbaumer.com/eBird2LaTeX/generate?" + jQuery.param(params,true))
+	window.open("http://zoziologie.raphaelnussbaumer.com/ebird2latex/generate/?" + jQuery.param(params,true))
 }
 
 
@@ -231,6 +231,10 @@ jQuery(document).ready(function(){
 		spiderfyDistanceMultiplier: 2
 	}).addTo(map);
 
+
+	jQuery('#edit-checklistname').click(function(){
+		jQuery('#checklistname').focus();
+	});
 });
 
 
