@@ -215,6 +215,7 @@ jQuery(document).ready(function(){
 			l.name = l.name + " ("+l.code+")"
 		})
 		sel_loc.addOption(LocationList)
+		sel_loc.updatePlaceholder()//setTextboxValue('Search a location...')
 	});
 
 

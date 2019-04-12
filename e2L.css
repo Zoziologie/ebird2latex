@@ -161,3 +161,7 @@ a:hover{
         padding: 12px 55px;
     font-size: 1.5rem;
 }
+.toggle{
+    width: 180px !important;
+    /*height: inherit !important;*/
+}
