@@ -66,6 +66,7 @@ e2L.write_to_latex(projet_name,filename,bird_list,col,condition_tableau, conditi
 print('5. Run Pdflatex and Open')
 os.chdir('latex')
 os.system('pdflatex '+ filename + '.tex')
+os.system('cp '+ filename + '.tex  /var/www/zoziologie/_site/assets/eBird2LaTeX/latex/'+ filename + '.tex')
 #os.system('"start '+ projet_name + '.pdf"')
 os.chdir('..')
 
