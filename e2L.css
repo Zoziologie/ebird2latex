@@ -165,3 +165,28 @@ a:hover{
     width: 180px !important;
     /*height: inherit !important;*/
 }
+
+
+
+pre{
+    font-size: small; overflow: initial;color: white;
+}
+#code{
+    background-color: black;
+    padding:20px;
+    overflow:scroll;
+    height:400px;
+}
+#embedPDF{
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+::-moz-selection { /* Code for Firefox */
+    color: black;
+    background: white;
+  }
+  
+::selection {
+color: black;
+background: white;
+}

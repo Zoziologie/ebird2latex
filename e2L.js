@@ -3,6 +3,9 @@
 function RunPython() {
 
 	filtdiv = jQuery( ":radio.radio-filter:checked" ).parent().parent()[0];
+	if (typeof filtdiv=='undefined'){
+		alert('Select at least one "Frequency" column with Threashold activated')
+	}
 	filt_cond = '[\''+filtdiv.querySelector('.freq-period').value+'\']';
 	if (filtdiv.querySelector('.freq-period').value != 'year'){
 		filt_cond=filt_cond+'['+filtdiv.querySelector('.freq-index').value+']';

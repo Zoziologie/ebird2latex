@@ -67,15 +67,19 @@ def bird_creator(code_loc, lang, cat, byear, eyear, bmonth, emonth):
 		lang = lang.upper()
 		assert lang in poss_lang, 'One or several language asked ( %s ) are not available.' % lang
 
-	current_year = datetime.datetime.now().year
+	# current_year = datetime.datetime.now().year
 	assert all([c in poss_cat for c in cat]) or (cat in poss_cat), 'One or several categorie asked ( %s ) are not available.' % cat
 	assert byear <= eyear, 'byear (%d) needs to be before eyear (%d)' % (byear, byear)
 	assert bmonth <= emonth, 'bmonth (%d) needs to be before emonth (%d)' % (bmonth, bmonth)
-	assert byear > 0 and byear <= current_year and eyear > 0 and eyear <= current_year, 'month need to be comprise between 0 and this year'
+	# assert byear > 0 and byear <= current_year and eyear > 0 and eyear <= current_year, 'month need to be comprise between 0 and this year'
 	assert bmonth > 0 and bmonth < 13 and emonth>0 and emonth < 13, 'month need to be comprise between 1 and 12'
 
 	bc_bird_list, info = load_barchart(code_loc, byear, eyear, bmonth, emonth)
 	taxa_bird_list = load_taxa(lang, cat)
+
+	# Replace 
+	samples_size_month_0 = [1 if x==0 else x for x in info['samples_size']['month']]
+	samples_size_season_0 = [1 if x==0 else x for x in info['samples_size']['season']]
 
 	bird_list = []
 	for bc_bird in bc_bird_list:
@@ -86,8 +90,8 @@ def bird_creator(code_loc, lang, cat, byear, eyear, bmonth, emonth):
 				bird['freq']['week'] = bc_bird['freq']
 				bird_nb_week = list(map(lambda x,y:x*y,bird['freq']['week'],info['samples_size']['week']))
 				bird_nb_month, bird_nb_season, bird_nb_year = week_to_else(bird_nb_week)
-				bird['freq']['month'] = list(map(lambda x,y:x/y, bird_nb_month, info['samples_size']['month']))
-				bird['freq']['season'] = list(map(lambda x,y:x/y, bird_nb_season, info['samples_size']['season']))
+				bird['freq']['month'] = list(map(lambda x,y:x/y, bird_nb_month, samples_size_month_0))
+				bird['freq']['season'] = list(map(lambda x,y:x/y, bird_nb_season, samples_size_season_0 ))
 				bird['freq']['year'] = bird_nb_year/info['samples_size']['year']
 				#print(info['samples_size']['year'])
 				bird['family']=''
@@ -97,7 +101,7 @@ def bird_creator(code_loc, lang, cat, byear, eyear, bmonth, emonth):
 
 
 def load_barchart(code_loc, byear, eyear, bmonth, emonth):
-	url = 'http://ebird.org/ebird/barchartData?r={code_loc}&bmo={bmonth}&emo={emonth}&byr={byear}&eyr={eyear}&fmt=tsv'.format(
+	url = 'http://ebird.org/barchartData?r={code_loc}&bmo={bmonth}&emo={emonth}&byr={byear}&eyr={eyear}&fmt=tsv'.format(
 		code_loc=code_loc, byear=byear, eyear=eyear, bmonth=bmonth, emonth=emonth)
 
 	print('barchar url: ')
@@ -213,6 +217,8 @@ def write_to_latex(projname, filename, bird_list, col, condition_tableau, condit
 			#line = condition_tableau[0]+'\n'
 		elif '_format_' in line:
 			line = '\\usepackage['+format+']{geometry}\n'
+		elif '_xentrystretch_' in line:
+			line = '\\xentrystretch{' + '-0.1' + '}\n'
 		elif '_linespacing_' in line:
 			line = '\\renewcommand{\\arraystretch}{' + spacing + '}\n'
 		elif '_projectname_' in line:

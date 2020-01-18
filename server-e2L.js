@@ -20,8 +20,8 @@ app.get('/', function (req, res) {
 	res.write('<div class="alert alert-warning" id="info">Status: <b>RUNNING</b> <i class="fa fa-spinner fa-spin" style="font-size:24px"></i><br>');
 	res.write('We are currently running the python script on our server with the parameters you choosed. This should take less than a minute.</div>');
 	res.write('Python/LaTeX code (scroll to bottom if needed):')
-	res.write('<br><div id="code" style="background-color: black;padding:20px;overflow:scroll;height:400px;">')
-	res.write('<pre style="font-size: small; overflow: initial;color: white;">')
+	res.write('<br><div id="code">')
+	res.write('<pre>')
 	
 
 	var options = {
@@ -52,7 +52,7 @@ app.get('/', function (req, res) {
 			res.write('</div>')
 			res.write('<form action="'+results[results.length-1]+'" target="_blank" style="margin-top:50px;text-align:center;"><button title="Open pdf" type="sumbit">Open generated PDF</button></form>');
 			res.write('<form action="'+results[results.length-1].split('.pdf')[0]+'.tex" target="_blank" style="margin-top:50px;text-align:center;"><button title="View the .TeX file" type="sumbit">View the .TeX file</button></form>')
-			res.write('<embed src="'+results[results.length-1]+'" type="application/pdf" width="100%" height="600px" />')
+			res.write('<embed src="'+results[results.length-1]+'?" type="application/pdf" width="100%" height="600px" id="embedPDF" />')
 			res.write('<script>');
 			res.write('var element = document.getElementById("code");')
 			res.write('element.scrollTop = element.scrollHeight;');

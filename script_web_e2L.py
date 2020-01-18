@@ -9,6 +9,8 @@ print(sys.argv[1])
 
 print('1. Read the url, transform it to dict and adapt it for our purpuse')
 urld = dict(urllib.parse.parse_qs(urllib.parse.unquote(sys.argv[1])))
+# urld = {'eyear': ['2020'], 'family': ['false'], 'byear': ['1900'], 'col': ['lang,EN,0', 'freq,year,0'], 'spacing': ['0.9'], 'cat': ['species'], 'code_loc': ['L5502383'], 'condition': ["['year']", '0.00001', '0.00001'], 'bmonth': ['01'], 'emonth': ['01'], 'project_name': ['Arabuko-Sokoke Forest--Swamp'], 'format': ['a4paper,margin=15mm,twocolumn']}
+
 print(urld)
 
 # Adapt the dict structure:
@@ -67,6 +69,7 @@ print('5. Run Pdflatex and Open')
 os.chdir('latex')
 os.system('pdflatex '+ filename + '.tex')
 os.system('cp '+ filename + '.tex  /var/www/zoziologie/_site/assets/eBird2LaTeX/latex/'+ filename + '.tex')
+os.system('cp '+ filename + '.pdf  /var/www/zoziologie/_site/assets/eBird2LaTeX/latex/'+ filename + '.pdf')
 #os.system('"start '+ projet_name + '.pdf"')
 os.chdir('..')
 
