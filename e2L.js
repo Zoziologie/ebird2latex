@@ -110,7 +110,7 @@ addToMapHotspot = function (){
 				title: h.locName,
 				alt: h.locName,
 				icon: L.icon({
-					iconUrl: "https://zoziologie.raphaelnussbaumer.com/assets/eBird2LaTeX/images/hotspot-icon-hotspot.png",
+					iconUrl: "/assets/eBird2LaTeX/images/hotspot-icon-hotspot.png",
 					iconAnchor: [15, 19],
 					popupAnchor: [0, -19],
 				})
@@ -212,7 +212,7 @@ jQuery(document).ready(function(){
 	});
 	sel_loc  = $sel_loc[0].selectize;
 
-	jQuery.get('https://zoziologie.raphaelnussbaumer.com/assets/eBird2LaTeX/LocationList.json',function(data) {
+	jQuery.get('/assets/eBird2LaTeX/LocationList.json',function(data) {
 		LocationList = data;
 		LocationList.forEach(function(l){
 			l.name = l.name + " ("+l.code+")"
@@ -224,10 +224,7 @@ jQuery(document).ready(function(){
 
 	map = L.map('map').setView(L.latLng(46.57591, 7.84956), 8);
 
-	var mapbox = L.tileLayer.provider('MapBox', {
-		id: 'rafnuss.npl3amec',
-		accessToken: token.mapbox
-	}).addTo(map);
+	L.tileLayer.provider('MapBox', {id: 'mapbox/streets-v11', accessToken:token.mapbox}).addTo(map)
 
 	layer = L.markerClusterGroup({
 		showCoverageOnHover: false,
