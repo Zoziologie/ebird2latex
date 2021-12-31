@@ -358,4 +358,3 @@ class TableInput:
 			if not self.option1:
 				self.option1 = 3
 			return self.option1*'$\\square$\\hspace{1ex} '
-
