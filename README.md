@@ -1,5 +1,5 @@
-# EbirdToLaTex Checklist Generator #
-eBirdToLaTex Checklist Generator is a short Python script which generates a customisable bird checklist based on a specific dataset downloaded from [eBird](http://ebird.org/). There is also a web version of the generator available on my [my website](http://zoziologie.raphaelnussbaumer.com/ebirdtolatex/) with some explanation of the importance of checklist.
+# eBirdToLaTex Checklist Generator #
+eBirdToLaTex Checklist Generator is a Python module which generates a customisable bird checklist based on a specific dataset downloaded from [eBird](http://ebird.org/). The web version of the generator is currently not available.
 
 ## How to use the python version ? ##
 If you have python3 (python2 won't work with ```urllib```) and LaTeX, take the ```e2L.py``` module with the ```script_e2L.py``` and ```Template_default```. Internet connection is required to download updated bird taxonomy list, language traduction as well as location barchart data.  
@@ -28,9 +28,4 @@ For the web version, just follow the instruction on [the website](http://zoziolo
 If you wish to dive into my code, I'm using Nodejs, python3 and javascript. Javascript get the input for the checklist and send a the info to Nodejs which run the python script on my server and return a link to the pdf generated. 
 
 ## GIF
-![Exemple](https://raw.githubusercontent.com/Zoziologie/e2L/master/e2l.gif)
-
-## Contact ##
-Don't hesitate to contact me for any question ! And visit by webiste (if you have some spare time !)
-[Raphael Nussbaumer](rafnuss@gmail.com) 
-[zoziologie.raphaelnussbaumer.comm](http://zoziologie.raphaelnussbaumer.com/)
+![Exemple](https://github.com/Zoziologie/ebird2latex/blob/master/assets/e2l.gif?raw=true)
