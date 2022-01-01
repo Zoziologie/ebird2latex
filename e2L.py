@@ -1,7 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import urllib.request, json
+from os.path import exists
+from re import search
 import requests
+from lxml import html
 import codecs
 
 # Global variable
@@ -57,7 +60,29 @@ CATEGORIE = [
 	['form', 'Miscellaneous other taxa, including recently-described species yet to be accepted or distinctive forms that are not universally accepted (Red-tailed Hawk (Northern), Upland Goose (Bar-breasted))']
 ]
 
-def bird_creator(code_loc, lang, cat, byear, eyear, bmonth, emonth):
+def auth(usr, pwd):
+	print('request sessionID from login...')
+	# create a session to keep cookies
+	s = requests.Session()
+	# login url, I don't know why you need the part after ? but it doesn't work without
+	urlLogin = 'https://secure.birds.cornell.edu/cassso/login?service=https%3A%2F%2Febird.org%2Febird%2Flogin%2Fcas%3Fportal%3Debird'
+	r = s.get(urlLogin)
+	# search the value of the hidden input name=lt (link to cookies or login I guess)
+	matches = search('name="lt" value="(.*)"',r.text)
+	# create the data to include in the form
+	form_data = [('_eventId', 'submit'), ('execution', 'e1s1'), ('lt',matches[1]), ('password', pwd), ('username', usr)]
+	# post a login to get the session ID
+	s.post(urlLogin, data=form_data)
+	# check that the session ID is return
+	sessionID = requests.utils.dict_from_cookiejar(s.cookies).get('EBIRD_SESSIONID')
+	if len(sessionID)==0:
+		raise ValueError('Authentification failed...')
+	else:
+		print('...login succesfull')
+	return s
+
+
+def bird_creator(s, code_loc, lang, cat, byear, eyear, bmonth, emonth):
 	poss_lang = [l[1] for l in LANGUAGE]
 	poss_cat =  [c[0] for c in CATEGORIE]
 	if isinstance(lang, list):
@@ -74,8 +99,10 @@ def bird_creator(code_loc, lang, cat, byear, eyear, bmonth, emonth):
 	# assert byear > 0 and byear <= current_year and eyear > 0 and eyear <= current_year, 'month need to be comprise between 0 and this year'
 	assert bmonth > 0 and bmonth < 13 and emonth>0 and emonth < 13, 'month need to be comprise between 1 and 12'
 
-	bc_bird_list, info = load_barchart(code_loc, byear, eyear, bmonth, emonth)
+	bc_bird_list, info = load_barchart(s, code_loc, byear, eyear, bmonth, emonth)
 	taxa_bird_list = load_taxa(lang, cat)
+	info['lang'] = lang
+	info['lang'].append('LA')
 
 	# Replace 
 	samples_size_month_0 = [1 if x==0 else x for x in info['samples_size']['month']]
@@ -84,7 +111,7 @@ def bird_creator(code_loc, lang, cat, byear, eyear, bmonth, emonth):
 	bird_list = []
 	for bc_bird in bc_bird_list:
 		for taxa_bird in taxa_bird_list:
-			if taxa_bird["comName"] == bc_bird['comName']:
+			if taxa_bird["sciName"] == bc_bird['sciName']:
 				bird = taxa_bird
 				bird['freq'] = {}
 				bird['freq']['week'] = bc_bird['freq']
@@ -94,91 +121,142 @@ def bird_creator(code_loc, lang, cat, byear, eyear, bmonth, emonth):
 				bird['freq']['season'] = list(map(lambda x,y:x/y, bird_nb_season, samples_size_season_0 ))
 				bird['freq']['year'] = bird_nb_year/info['samples_size']['year']
 				#print(info['samples_size']['year'])
-				bird['family']=''
+				bird['status'] = []
 				bird_list.append(bird)
 
 	return (info, sorted(bird_list, key = lambda k: k['taxonOrder']))
 
 
-def load_barchart(code_loc, byear, eyear, bmonth, emonth):
-	url = 'http://ebird.org/barchartData?r={code_loc}&bmo={bmonth}&emo={emonth}&byr={byear}&eyr={eyear}&fmt=tsv'.format(
-		code_loc=code_loc, byear=byear, eyear=eyear, bmonth=bmonth, emonth=emonth)
+def load_barchart(s, code_loc, byear, eyear, bmonth, emonth):
 
-	print('barchar url: ')
-	print(url)
-	r = requests.get(url)
+	url = 'http://ebird.org/barchartData?r={code_loc}&bmo={bmonth}&emo={emonth}&byr={byear}&eyr={eyear}&fmt=tsv'.format(code_loc=code_loc, byear=byear, eyear=eyear, bmonth=bmonth, emonth=emonth)
+
+	print('Load barchart data from '+url)
+	r = s.get(url, stream=True)
 
 	f = open('_barchart.tsv', 'wb')
 	f.write(r.content)
 	f.close()
 
-	lines = codecs.open('_barchart.tsv','r', encoding='utf8', errors='replace')
+	#lines = codecs.open('_barchart.tsv','r', encoding='utf8', errors='replace')
 
 	bc_bird_list = []
 	info = {}
-	for line in [l.strip() for l in lines]:
+	for l in r.iter_lines():
+		line = l.decode('utf8').strip()
 		if not line:
 			pass
 		elif "Frequency of observations in the selected location(s).:" in line:
-			# print(line)
-			# Don't know that it's is ???
 			pass
 		elif "Number of taxa" in line:
 			# Line with the number of taxa in the list
 			info['NbTaxa'] = int(line.replace("Number of taxa: ", ""))
-		elif "Jan				Feb" in line:
+		elif "Jan\t\t\t\tFeb" in line:
 			pass
 		elif "Sample Size" in line:
 			info['samples_size'] = {}
 			info['samples_size']['week'] = [int(float(i)) for i in line.replace("Sample Size:","").split()]
 			assert len(info['samples_size']['week'])>0, 'Empty Barchart! Check the barchart link above, maybe there is not data for your query or the query is wrong'
 			info['samples_size']['month'], info['samples_size']['season'], info['samples_size']['year'] = week_to_else(info['samples_size']['week'])
-			print(info['samples_size']['week'])
-			print(info['samples_size']['year'])
 			#info['samples_size']['month'] = [i*4 for i in info['samples_size']['month']];
 			#info['samples_size']['season'] = [i*12 for i in info['samples_size']['season']];
 			#info['samples_size']['year'] = info['samples_size']['year']*48;
 		else:
-			comName, line = line.split('\t',1)
+			name, lineF = line.split('\t',1)
+			sciName = search('<em class="sci">(.*)</em>',name)[1]
 			#name_la,line = line.split('\t',1)
-			freq = [float(i) for i in line.split()]
-			assert len(freq) == 48,"Number of bird frequency is not equal to 48"
-			bc_bird_list.append({'comName':comName, 'freq':freq})
+			freq = [float(i) for i in lineF.split()]
+			assert len(freq) == 48, "Number of bird frequency is not equal to 48"
+			bc_bird_list.append({'sciName':sciName, 'freq':freq})
 	return (bc_bird_list, info)
-
 
 def load_taxa(lang, cat):
 	# cat = 'domestic,form,hybrid,intergrade,issf,slash,species,spuh'
 	# local en,en_US,de,en_AE,en_AU,en_IN,en_NZ,en_UK,en_ZA,es,es_AR,es_CL,es_CU, es_DO,es_ES,es_MX,es_PA,es_PR,fi,fr,fr_HT,ht_HT,in,is,pt_BR,pt_PT,tr,zh
-	url_base = 'http://ebird.org/ws1.1/ref/taxa/ebird'
-	fmt = 'json' # xml,json,csv
+	# https://support.ebird.org/en/support/solutions/articles/48000804865-bird-names-in-ebird
+	
+	print('Load taxonomy for '+','.join(lang))
 
-	url = url_base+'?'
-	url += 'cat=' + ','.join(cat) + '&'
-	url += 'fmt=' + fmt + '&'
-	response = urllib.request.urlopen(url)
-	taxa = json.loads( response.read().decode('utf-8'))
-	for t in taxa:
+	taxaLang=dict()
+	for locale in lang:
+		# define location of the file
+		filename = "assets/taxonomy-"+locale+".json"
+
+		# if the file doesn't exist, download it
+		if not exists(filename):
+			response = requests.get('https://api.ebird.org/v2/ref/taxonomy/ebird?fmt=json&locale='+locale)
+			response.raise_for_status() # ensure we notice bad responses
+			with open(filename, "w") as file:
+				file.write(response.text)
+		
+		# read the json file
+		with open(filename, "r") as file:
+			taxaLang[locale] = list(filter(lambda x: x['category'] in cat, json.load(file)))
+
+	taxa = taxaLang[lang[0]]
+
+	for id,t in enumerate(taxa):
 		t['lang'] = {}
-		t['lang']['EN'] = t['comName']
 		t['lang']['LA'] = t['sciName']
+		for locale in lang:
+			t['lang'][locale] = taxaLang[locale][id]['comName']
 
-	if not isinstance(lang, list):
-		lang = [lang]
-	for l in lang:
-		if l=='EN' or l=='LA':
-			pass
-		else:
-			url_local = url + 'locale=' + l
-			response = urllib.request.urlopen(url_local)
-			j = json.loads( response.read().decode('utf-8'))
-			for i in range(0, len(taxa)):
-				taxa[i]['lang'][l] = j[i]['comName']
-				assert(taxa[i]['sciName'] == j[i]['sciName'])
 	return taxa
 
+def statusInList(status,bird_list,session,target_loc,target_time):
+	url = 'https://ebird.org/lifelist/{target_loc}/?time={target_time}'.format(target_loc=target_loc, target_time=target_time)
 
-# Other small function
+	print('Load target data from '+url)
+	r = session.get(url)
+	tree = html.fromstring(r.content)
+
+	myList = list(map(lambda res : res.cssselect('.Heading-sub--sci')[0].text_content(), tree.cssselect('.Observation-species .Heading')))
+
+	for bird in bird_list:
+		if not bird['sciName'] in myList:
+			bird['status'].append(status)
+
+	return bird_list
+
+def statusInTarget(status,bird_list,session,code_loc,target_loc,target_time,bmonth,emonth):
+	url = 'http://ebird.org/ebird/targets?r1={code_loc}&r2={target_loc}&t2={target_time}&bmo={bmonth}&emo={emonth}'.format(code_loc=code_loc, target_loc=target_loc, target_time=target_time, bmonth=bmonth, emonth=emonth)
+
+	print('Load target data from '+url)
+	r = session.get(url)
+	tree = html.fromstring(r.content)
+
+	target = list(map(lambda res : res.cssselect('.ResultsStats-title a em')[0].text_content(), tree.find_class('ResultsStats')))
+
+	for bird in bird_list:
+		if bird['sciName'] in target:
+			bird['status'].append(status)
+		
+	return bird_list
+
+def statusAvibase(status,bird_list, code_loc):
+	url = 'https://avibase.bsc-eoc.org/checklist.jsp?region={code_loc}&list=clements'.format(code_loc=code_loc)
+	print('Load endemic data from '+url)
+	r = requests.get(url)
+	tree = html.fromstring(r.content)
+
+	endemic = []
+	for res in tree.find_class('highlight1'):
+		if "Endemic" in res.text_content():
+			endemic.append(res.cssselect('i')[0].text_content())
+
+	introduce = []
+	for res in tree.find_class('highlight1'):
+		if "Introduced" in res.text_content():
+			introduce.append(res.cssselect('i')[0].text_content())
+
+	for bird in bird_list:
+		if bird['sciName'] in endemic:
+			bird['status'].append(status[0])
+		if bird['sciName'] in introduce:
+			bird['status'].append(status[1])
+
+	return bird_list
+
 def week_to_else(week):
 	t_m = []
 	month = []
@@ -206,7 +284,7 @@ def write_to_latex(projname, filename, bird_list, col, condition_tableau, condit
 	f = codecs.open('latex/'+ filename  + '.tex', 'w+', encoding='utf8')
 
 	# Import preformatted text
-	f2 = open('Template_default.tex', 'r')
+	f2 = open('assets/templateLaTeX.tex', 'r')
 	for line in f2:
 		if 'newcommand{\maxnum}' in line:
 			line = line[:-1]+'100.00}\n'
@@ -239,10 +317,10 @@ def write_to_latex(projname, filename, bird_list, col, condition_tableau, condit
 			line = ''
 			for bird in bird_list: #write Content
 				if eval(condition_tableau[1]): # condition to display or not a bird
-					if bird['family'] != family_current: # family name
-						f.write('\n\\\\\n\\multicolumn{'+str(len(col))+'}{c}{\\textbf{'+bird['family']+'}} \\\\ \n')
+					if bird['familyComName'] != family_current and family: # family name
+						f.write('\\multicolumn{'+str(len(col))+'}{c}{\\textbf{'+bird['familyComName']+'}} \\\\ \n')
 						f.write('\\hline\n')
-						family_current = bird['family']
+						family_current = bird['familyComName']
 					for c in col[:-1]:
 						f.write(c.get_content(bird) + ' \t & ') # Content of the cell
 					f.write(col[-1].get_content(bird)+' \\\\ \n') # end of line
@@ -253,7 +331,7 @@ def write_to_latex(projname, filename, bird_list, col, condition_tableau, condit
 				n_rare_col = 3
 			else:
 				n_rare_col = 2
-			col_r = TableInput(info,'lang','EN')
+			col_r = TableInput(info,'lang',info['lang'][1])
 			bird_list_r = []
 			for bird in bird_list:
 				if eval(condition_rare[1]):
@@ -282,7 +360,17 @@ def write_to_latex(projname, filename, bird_list, col, condition_tableau, condit
 		f.write(line)
 	f2.close()
 
+def num2str(num):
+	if num >1000000:
+		return str(round(num/1000000))+'M'
+	elif num >1000:
+		return str(round(num/1000))+'K'
+	else:
+		return str(round(num))
 
+	
+
+# Class
 class TableInput:
 	def __init__(self, info, type, option1=None, option2=None, option3=None):
 		self.type = type
@@ -292,17 +380,18 @@ class TableInput:
 		self.option2 = option2
 		self.option3 = option3
 		if self.type == 'lang':
+			assert self.option1 in info['lang'], 'language requested not available in barchart data.'
 			self.wid = 'l'
 			idx = [l[1] for l in LANGUAGE].index(self.option1.upper())
 			self.title = LANGUAGE[idx][0]
 		elif self.type == 'freq':
 			self.wid = 'c'
 			if self.option1 == 'year':
-				self.title = 'Y'+'\\footnotesize{ (' +str(round(info['samples_size']['year'])) +')} '
+				self.title = 'Y'+'\\footnotesize{ (' +num2str(info['samples_size']['year']) +')} '
 			elif self.option1 == 'season':
 				self.option2 = int(option2)
 				season = ['Sp','Sm','F','W']#['Spring','Summer','Fall','Winter']
-				self.title = season[self.option2] +'\\footnotesize{ (' +str(round(info['samples_size']['season'][self.option2])) +')} '
+				self.title = season[self.option2] +'\\footnotesize{ (' + num2str(info['samples_size']['season'][self.option2]) +')} '
 			elif self.option1 == 'month':
 				month = ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May', 'June', 'Jul', 'Aug', 'Sept.', 'Oct.', 'Nov.', 'Dec.']
 				self.option2 = int(option2)
@@ -334,7 +423,21 @@ class TableInput:
 
 	def get_content(self,bird):
 		if self.type == 'lang':
-			return bird['lang'][self.option1]
+			c = bird['lang'][self.option1]
+			if self.option2 is not None:
+				for status in self.option2:
+					if status[0] in bird['status']:
+						if "bold" == status[1]:
+							c = "\\textbf{"+c+"}"
+						elif "italic" == status[1]:
+							c = "\\emph{"+c+"}"
+						elif "underline" == status[1]:
+							c = "\\underline{"+c+"}"
+						elif "color" in status[1]:
+							c = "\\textcolor{" + status[1][6:] + "}{"+c+"}"
+						elif "sym" in status[1]:
+							c = c + status[1][4:5]
+			return c
 		elif self.type == 'freq':
 			if self.option1 == 'year':
 				return '\\databar{'+'{:.1f}'.format(bird['freq']['year']*100) +'}'
