@@ -2,7 +2,7 @@
 eBirdToLaTex Checklist Generator is a Python module which generates a customisable bird checklist based on a specific dataset downloaded from [eBird](http://ebird.org/). The web version of the generator is not available anymore as eBird is requiring to login to get barchart data.
 
 ## Where to start?
-Have a look at `script_e2L.py` which gives an example with comments on how to use the `e2L` python module. 
+Have a look at [`script_e2L.ipynb`](https://github.com/Zoziologie/ebird2latex/blob/master/script_e2L.ipynb) which gives an example on how to use the `e2L` python module.
 
 ## Requirement
  - python (only python3 has been tested) with a a couple of standard libraries: `requests`,`re`,`lxml`
