@@ -281,9 +281,7 @@ def week_to_else(week):
 	return month, season, year
 
 
-def write_to_
-
-(projname, filename, bird_list, col, condition_tableau, condition_rare, family, format, spacing, info):
+def write_to_latex(projname, filename, bird_list, col, condition_tableau, condition_rare, family, format, spacing, info):
 	family_current = ''
 
 	# if latex does not exists, create i
