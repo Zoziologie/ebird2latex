@@ -181,7 +181,11 @@ def load_taxa(lang, cat):
 	for locale in lang:
 		# define location of the file
 		filename = "assets/taxonomy-"+locale+".json"
-
+		
+		# if assets does not exists, create i
+		if not (exists("assets/")):
+			os.makedirs("assets/")
+		
 		# if the file doesn't exist, download it
 		if not exists(filename):
 			response = requests.get('https://api.ebird.org/v2/ref/taxonomy/ebird?fmt=json&locale='+locale)
@@ -277,9 +281,15 @@ def week_to_else(week):
 	return month, season, year
 
 
-def write_to_latex(projname, filename, bird_list, col, condition_tableau, condition_rare, family, format, spacing, info):
+def write_to_
+
+(projname, filename, bird_list, col, condition_tableau, condition_rare, family, format, spacing, info):
 	family_current = ''
 
+	# if latex does not exists, create i
+	if not (exists("latex/")):
+		os.makedirs("latex/")
+			
 	# Start Writing
 	f = codecs.open('latex/'+ filename  + '.tex', 'w+', encoding='utf8')
 
