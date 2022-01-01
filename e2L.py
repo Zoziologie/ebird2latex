@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import urllib.request, json
-from os.path import exists
+import os
 from re import search
 import requests
 from lxml import html
