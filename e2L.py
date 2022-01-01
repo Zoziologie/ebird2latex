@@ -183,11 +183,11 @@ def load_taxa(lang, cat):
 		filename = "assets/taxonomy-"+locale+".json"
 		
 		# if assets does not exists, create i
-		if not (exists("assets/")):
+		if not (os.path.exists("assets/")):
 			os.makedirs("assets/")
 		
 		# if the file doesn't exist, download it
-		if not exists(filename):
+		if not os.path.exists(filename):
 			response = requests.get('https://api.ebird.org/v2/ref/taxonomy/ebird?fmt=json&locale='+locale)
 			response.raise_for_status() # ensure we notice bad responses
 			with open(filename, "w") as file:
@@ -285,7 +285,7 @@ def write_to_latex(projname, filename, bird_list, col, condition_tableau, condit
 	family_current = ''
 
 	# if latex does not exists, create i
-	if not (exists("latex/")):
+	if not (os.path.exists("latex/")):
 		os.makedirs("latex/")
 			
 	# Start Writing
