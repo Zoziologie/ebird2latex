@@ -4,7 +4,7 @@ from setuptools import setup
 setup(
        # the name must match the folder name 'verysimplemodule'
         name="e2L", 
-        version='0.0.3',
+        version='0.1.0',
         license='MIT',
         author="Raphaël Nussbaumer",
         author_email="<rafnuss@gmail.com>",
@@ -13,7 +13,7 @@ setup(
         url="https://github.com/Zoziologie/ebird2latex",
         download_url="https://github.com/Zoziologie/ebird2latex/archive/refs/tags/v0.0.3.tar.gz",
         py_modules=["e2L"],
-        install_requires=['requests'],
+        install_requires=['requests','re','lxml'],
         
         keywords=['python', 'eBird', 'LaTeX'],
         classifiers= [

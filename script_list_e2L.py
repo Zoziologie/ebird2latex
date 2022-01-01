@@ -1,13 +1,12 @@
 #!/usr/bin/env python
 import os
-import sys
-import urllib.parse
-import subprocess
 import e2L
+import json
 
-# 1. Authentify
-# Sesssion is required to download barchart data
-session = e2L.auth('rafnuss','12468935')
+with open('auth.json') as f:
+  auth = json.load(f)
+session = e2L.auth(auth['username'], auth['password'])
+
 
 # https://api.ebird.org/v2/ref/hotspot/PR
 listHotspot = ['L358880','L323780','L323787','L293471','L802780','L323797','L341846','L323795','L343336','L294049','L293340','L420854','L323805','L323786','L323799','L293226','L293474','L550396','L682838','L341215','L323798','L293452','L527077','L682443','L323789','L323796','L323792','L813486','L340971']
@@ -23,13 +22,12 @@ emonth = 12
 target_loc = "world"
 target_time = "life"
 
-format='letterpaper,margin=.3in,twocolumn' #'a4paper,margin=15mm,twocolumn'
+format='letterpaper,margin=.3in,twocolumn'
 family = False
 spacing = '.95'
 condition_tableau = ['Main table display only non-hybrid birds with occurence >1\\%.'," ( bird['freq']['year'] >= 0.01)"]
 condition_rare = ['\\footnotesize{>.1\\%}'," (bird['freq']['year'] < .00) and (bird['freq']['year'] > 0.001)"]
 
-# create project metadata
 for i,h in enumerate(listHotspot):
     projet_name = listHospotName[i]
     filename = projet_name.replace(' ','_').replace("'",'').replace('.','')
