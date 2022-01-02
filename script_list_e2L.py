@@ -5,6 +5,7 @@ import json
 
 with open('auth.json') as f:
   auth = json.load(f)
+
 session = e2L.auth(auth['username'], auth['password'])
 
 
@@ -13,7 +14,7 @@ session = e2L.auth(auth['username'], auth['password'])
 # listHospotName = ['Cabo Rojo NWR','Hacienda La Esperanza','Reserva Natural Laguna Cartagena','Cabo Rojo - Salt Flats','La Parguera--town and nearest environs','Refugio de Vida Silvestre de Boqueron','Reserva Natural Punta Guaniquilla','Reserva Natural de Humacao','Salinas de Cabo Rojo','Viejo San Juan','Laguna Cartegena - West End','Refugio Vida Silvestre de Boqueron','Reserva Natural Ca√±o Tiburones','Bosque Estatal de Ganica','Faro de Rincon','Punta Algarrobo','Cabo Rojo--Mangrove Flats','Palmas Altas','La Boca, Barceloneta','Charca Salobre Los Amadores','Faro de Cabo Rojo','Laguna Cartegena--Tower','Jagueyes-Jobos Bay','Cabo Rojo NWR--Cambate access','Reserva Natural Laguna Tortuguero','Bosque Estatal de Pinones','Parque Central de San Juan','Bosque Nacional El Yunque','Parque Nacional Cerro Gordo']
 
 listHotspot = ['L9601623','L323784','L323788','L4564353','L4081868','L323783','L323782','L682870','L738824','L682859','L5944654']
-listHospotName = ['ANP El Conuco (Sierra Bermeja)','Bosque Estatal de Maricao','Bosque Estatal de Susúa','Reserva Natural Finca Nolla','Reserva Natural Cano Tiburones (extremo oeste)','Bosque Estatal de Rio Abajo','Bosque Estatal de Guajataca','Cerro Jayuya','Charcas Ponce','Escolar Superior Sabana (Plain Pigeon spot)','Rooselvelt Roads, Ceiba, PR']
+listHospotName = ['ANP El Conuco Sierra Bermeja','Bosque Estatal de Maricao','Bosque Estatal de Susúa','Reserva Natural Finca Nolla','Reserva Natural Cano Tiburones extremo oeste','Bosque Estatal de Rio Abajo','Bosque Estatal de Guajataca','Cerro Jayuya','Charcas Ponce','Escolar Superior Sabana Plain Pigeon spot','Rooselvelt Roads, Ceiba, PR']
 
 lang = ['EN']
 cat = ['species']
