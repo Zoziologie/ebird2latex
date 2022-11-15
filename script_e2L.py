@@ -6,7 +6,7 @@ import json
 # importlib.reload(e2L) # to reload the module if modified
 
 # create project metadata
-projet_name = "Zimbabwe"
+projet_name = "Victoria Falls"
 filename = projet_name.replace(' ', '_').replace("'", '').replace('.', '')
 
 # 1. Authentify
@@ -16,7 +16,7 @@ with open('auth.json') as f:
 session = e2L.auth(auth['username'], auth['password'])
 
 # 2. Create the Bird List loading data from eBird
-code_loc = 'PR'  # See possible country code here : https://confluence.cornell.edu/display/CLOISAPI/eBird-1.1-HotSpotsByRegion + region code for each region ? where ?
+code_loc = 'L1439929'  # See possible country code here : https://confluence.cornell.edu/display/CLOISAPI/eBird-1.1-HotSpotsByRegion + region code for each region ? where ?
 lang = ['EN']  # a single language, or list of several language en,en_US,de,en_AE,en_AU,en_IN,en_NZ,en_UK,en_ZA,es,es_AR,es_CL,es_CU, es_DO,es_ES,es_MX,es_PA,es_PR,fi,fr,fr_HT,ht_HT,in,is,pt_BR,pt_PT,tr,zh https://support.ebird.org/en/support/solutions/articles/48000804865-bird-names-in-ebird
 cat = ['species']  # domestic,form,hybrid,intergrade,issf,slash,species,spuh
 byear = 1900
@@ -25,6 +25,14 @@ bmonth = 1
 emonth = 12
 info, bird_list = e2L.bird_creator(
     session, code_loc, lang, cat, byear, eyear, bmonth, emonth)
+
+# 2.5 Add a second bird list and merge
+
+info2, bird_list2 = e2L.bird_creator(
+    session, 'L1038161', lang, cat, byear, eyear, bmonth, emonth)
+
+info3, bird_list3 = e2L.merge_bird(bird_list, info, bird_list2, info2)
+
 
 # 3. Add Status
 # status can be any of the following: target (year/life - per region/world), endemic, introduced
