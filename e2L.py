@@ -155,6 +155,55 @@ def bird_creator(s, code_loc, lang, cat, byear, eyear, bmonth, emonth):
     return (info, sorted(bird_list, key=lambda k: k['taxonOrder']))
 
 
+def merge_bird(bird_list, info, bird_list2, info2):
+
+    # Define the sample size with replaced 0 to 1
+    samples_size_week_01 = [
+        1 if x == 0 else x for x in info['samples_size']['week']]
+    samples_size_week_02 = [
+        1 if x == 0 else x for x in info2['samples_size']['week']]
+    samples_size_month_01 = [
+        1 if x == 0 else x for x in info['samples_size']['month']]
+    samples_size_month_02 = [
+        1 if x == 0 else x for x in info2['samples_size']['month']]
+    samples_size_season_01 = [
+        1 if x == 0 else x for x in info['samples_size']['season']]
+    samples_size_season_02 = [
+        1 if x == 0 else x for x in info2['samples_size']['season']]
+
+    # merge existing taxo between the two list
+    for bird in bird_list:
+        bird_match = next(
+            (bird2 for bird2 in bird_list2 if bird2["speciesCode"] == bird["speciesCode"]), None)
+        if bird_match:
+            bird['freq']['week'] = list(map(lambda x1, w1, x2, w2: (x1*w1+x2*w2)/(w1+w2), bird['freq']
+                                            ['week'], samples_size_week_01, bird_match['freq']['week'], samples_size_week_02))
+            bird['freq']['month'] = list(map(lambda x1, w1, x2, w2: (x1*w1+x2*w2)/(w1+w2), bird['freq']
+                                             ['month'], samples_size_month_01, bird_match['freq']['month'], samples_size_month_02))
+            bird['freq']['season'] = list(map(lambda x1, w1, x2, w2: (x1*w1+x2*w2)/(w1+w2), bird['freq']
+                                              ['season'], samples_size_season_01, bird_match['freq']['season'], samples_size_season_02))
+            bird['freq']['year'] = (bird['freq']['year']*info['samples_size']['year']+bird_match['freq']['year']
+                                    * info2['samples_size']['year'])/(info['samples_size']['year']+info2['samples_size']['year'])
+
+    bird_speciesCode = [bird["speciesCode"] for bird in bird_list]
+    # add new taxt
+    for bird2 in bird_list2:
+        if not bird2['speciesCode'] in bird_speciesCode:
+            bird_list.append(bird2)
+
+    # Combine info
+    info['samples_size']['week'] = list(map(
+        lambda x1, x2: x1+x2, info['samples_size']['week'], info2['samples_size']['week']))
+    info['samples_size']['season'] = list(map(
+        lambda x1, x2: x1+x2, info['samples_size']['season'], info2['samples_size']['season']))
+    info['samples_size']['month'] = list(map(
+        lambda x1, x2: x1+x2, info['samples_size']['month'], info2['samples_size']['month']))
+    info['samples_size']['year'] = info['samples_size']['year'] + \
+        info['samples_size']['year']
+
+    info['NbTaxa'] = len([bird["speciesCode"] for bird in bird_list])
+
+
 def load_barchart(s, code_loc, byear, eyear, bmonth, emonth):
 
     url = 'http://ebird.org/barchartData?r={code_loc}&bmo={bmonth}&emo={emonth}&byr={byear}&eyr={eyear}&fmt=tsv'.format(
