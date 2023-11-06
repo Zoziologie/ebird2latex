@@ -1,3 +1,7 @@
+<a target="_blank" href="https://colab.research.google.com/github/Zoziologie/ebird2latex/blob/master/script_e2L.ipynb">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+</a>
+
 # eBirdToLaTex Checklist Generator #
 eBirdToLaTex Checklist Generator is a Python module which generates a customisable bird checklist based on a specific dataset downloaded from [eBird](http://ebird.org/). The web version of the generator is not available anymore as eBird is requiring to login to get barchart data.
 
