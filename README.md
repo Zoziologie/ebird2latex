@@ -1,6 +1,6 @@
 # eBird2LaTeX
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Zoziologie/ebird2latex/blob/master/script_e2L.ipynb)
+[![PyPI version](https://img.shields.io/pypi/v/e2L.svg)](https://pypi.org/project/e2L/) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Zoziologie/ebird2latex/blob/master/script_e2L.ipynb)
 
 eBird2LaTeX is a Python module which generates a customisable bird checklist based on [eBird barchart data](https://ebird.org/GuideMe?cmd=changeLocation).
 
@@ -46,3 +46,5 @@ You'll need to add your credidential of eBird in a new `auth.json` file:
 - eBird login to download barchart data and your target
 
 ## Example
+
+[See the example folder.](https://github.com/Zoziologie/ebird2latex/tree/master/example)
