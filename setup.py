@@ -13,9 +13,9 @@ setup(
     url="https://github.com/Zoziologie/ebird2latex",
     download_url="https://github.com/Zoziologie/ebird2latex/archive/refs/tags/v0.0.3.tar.gz",
     py_modules=["e2L"],
-        install_requires=['requests', 're', 'lxml'],
 
     keywords=['python', 'eBird', 'LaTeX'],
+    install_requires=["requests", "lxml"],
     classifiers=[
             "Programming Language :: Python :: 3",
             "Operating System :: MacOS :: MacOS X",
