@@ -29,7 +29,9 @@ _format_
   \rlap{\color{blue!25}\hspace*{-.5\tabcolsep}\rule[-.05\ht\strutbox]{\result\maxlen}{.95\ht\strutbox}}%
   \makebox[\dimexpr\maxlen-\tabcolsep][r]{#2}%
 }
-\renewcommand*\rmdefault{iwona}
+% \renewcommand*\rmdefault{iwona}
+\renewcommand{\rmdefault}{phv}  % Helvetica as default
+\renewcommand{\sfdefault}{phv}  % Set sans-serif to Helvetica
 \newcommand{\newnoteline}{\rule{\textwidth}{0.15mm}\\[1.5ex]}
 
 % prevent tables from being broken too early
