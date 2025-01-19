@@ -41,9 +41,13 @@ You'll need to add your credidential of eBird in a new `auth.json` file:
 
 ## Requirement
 
+- eBird login to download barchart data and your target.
 - python (only python3 has been tested) with a a couple of standard libraries: `requests`,`re`,`lxml`
-- latex (`pdflatex`)
-- eBird login to download barchart data and your target
+- latex (`pdflatex`) with some additional package needed
+
+```bash
+tlmgr install colortbl xtab fp ulem hyperref
+```
 
 ## Example
 
