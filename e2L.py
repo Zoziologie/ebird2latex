@@ -237,22 +237,26 @@ def auth(usr, pwd):
     # create a session to keep cookies
     s = requests.Session()
     # login url, I don't know why you need the part after ? but it doesn't work without
-    urlLogin = "https://secure.birds.cornell.edu/cassso/login?service=https%3A%2F%2Febird.org%2Febird%2Flogin%2Fcas%3Fportal%3Debird"
+    urlLogin = "https://secure.birds.cornell.edu/cassso/login"
     r = s.get(urlLogin)
     # search the value of the hidden input name=lt (link to cookies or login I guess)
-    matches = search('name="lt" value="(.*)"', r.text)
+    # matches = search('name="execution" value="(.*)"', r.text)
+    # Extract the `execution` value from the form
+    execution_match = search(r'name="execution" value="(.*?)"', r.text)
+    if not execution_match:
+        raise ValueError("Execution value not found in the login form.")
+    execution_value = execution_match.group(1)
     # create the data to include in the form
     form_data = [
         ("_eventId", "submit"),
-        ("execution", "e1s1"),
-        ("lt", matches[1]),
+        ("execution", execution_value),
         ("password", pwd),
         ("username", usr),
     ]
     # post a login to get the session ID
     s.post(urlLogin, data=form_data)
     # check that the session ID is return
-    sessionID = requests.utils.dict_from_cookiejar(s.cookies).get("EBIRD_SESSIONID")
+    sessionID = requests.utils.dict_from_cookiejar(s.cookies).get("JSESSIONID")
     if len(sessionID) == 0:
         raise ValueError("Authentification failed...")
     else:
