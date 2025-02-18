@@ -17,7 +17,7 @@ with open("auth.json") as f:
 session = e2L.auth(auth["username"], auth["password"])
 
 # 2. Create the Bird List loading data from eBird
-code_loc = "L1439929"  # See possible country code here : https://confluence.cornell.edu/display/CLOISAPI/eBird-1.1-HotSpotsByRegion + region code for each region ? where ?
+code_loc = "L30995711"  # See possible country code here : https://confluence.cornell.edu/display/CLOISAPI/eBird-1.1-HotSpotsByRegion + region code for each region ? where ?
 lang = [
     "EN"
 ]  # a single language, or list of several language en,en_US,de,en_AE,en_AU,en_IN,en_NZ,en_UK,en_ZA,es,es_AR,es_CL,es_CU, es_DO,es_ES,es_MX,es_PA,es_PR,fi,fr,fr_HT,ht_HT,in,is,pt_BR,pt_PT,tr,zh https://support.ebird.org/en/support/solutions/articles/48000804865-bird-names-in-ebird

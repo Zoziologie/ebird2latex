@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name="e2L",
-    version="0.2.0",
+    version="0.2.1",
     license="MIT",
     author="Raphaël Nussbaumer",
     author_email="rafnuss@gmail.com",

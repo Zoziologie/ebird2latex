@@ -388,7 +388,7 @@ def merge_bird(bird_list, info, bird_list2, info2):
             ) / (info["samples_size"]["year"] + info2["samples_size"]["year"])
 
     bird_speciesCode = [bird["speciesCode"] for bird in bird_list]
-    # add new taxt
+    # add new taxon
     for bird2 in bird_list2:
         if not bird2["speciesCode"] in bird_speciesCode:
             bird_list.append(bird2)
@@ -421,58 +421,51 @@ def merge_bird(bird_list, info, bird_list2, info2):
 
     info["NbTaxa"] = len([bird["speciesCode"] for bird in bird_list])
 
+    return (info, bird_list)
 
-def load_barchart(s, code_loc, byear, eyear, bmonth, emonth):
 
-    url = "http://ebird.org/barchartData?r={code_loc}&bmo={bmonth}&emo={emonth}&byr={byear}&eyr={eyear}&fmt=tsv".format(
+def load_barchart(s, code_loc, byear=1900, eyear=2050, bmonth=1, emonth=12):
+    url = "https://ebird.org/barchartData?r={code_loc}&bmo={bmonth}&emo={emonth}&byr={byear}&eyr={eyear}&fmt=json".format(
         code_loc=code_loc, byear=byear, eyear=eyear, bmonth=bmonth, emonth=emonth
     )
 
     print("Load barchart data from " + url)
     r = s.get(url, stream=True)
 
-    f = open("_barchart.tsv", "wb")
-    f.write(r.content)
-    f.close()
+    # Retrieve the list of bird
+    bc_bird_list = r.json()["dataRows"]
 
-    # lines = codecs.open('_barchart.tsv','r', encoding='utf8', errors='replace')
+    # Create the info strcture
+    info = {
+        "Nbsp": r.json()["numSpecies"],
+        "NbTaxa": r.json()["numTaxa"],
+        "samples_size": {},
+    }
 
-    bc_bird_list = []
-    info = {}
-    for l in r.iter_lines():
-        line = l.decode("utf8").strip()
-        if not line:
-            pass
-        elif "Frequency of observations in the selected location(s).:" in line:
-            pass
-        elif "Number of taxa" in line:
-            # Line with the number of taxa in the list
-            info["NbTaxa"] = int(line.replace("Number of taxa: ", ""))
-        elif "Jan\t\t\t\tFeb" in line:
-            pass
-        elif "Sample Size" in line:
-            info["samples_size"] = {}
-            info["samples_size"]["week"] = [
-                int(float(i)) for i in line.replace("Sample Size:", "").split()
-            ]
-            assert (
-                len(info["samples_size"]["week"]) > 0
-            ), "Empty Barchart! Check the barchart link above, maybe there is not data for your query or the query is wrong"
-            (
-                info["samples_size"]["month"],
-                info["samples_size"]["season"],
-                info["samples_size"]["year"],
-            ) = week_to_else(info["samples_size"]["week"])
-            # info['samples_size']['month'] = [i*4 for i in info['samples_size']['month']];
-            # info['samples_size']['season'] = [i*12 for i in info['samples_size']['season']];
-            # info['samples_size']['year'] = info['samples_size']['year']*48;
-        else:
-            name, lineF = line.split("\t", 1)
-            sciName = search('<em class="sci">(.*)</em>', name)[1]
-            # name_la,line = line.split('\t',1)
-            freq = [float(i) for i in lineF.split()]
-            assert len(freq) == 48, "Number of bird frequency is not equal to 48"
-            bc_bird_list.append({"sciName": sciName, "freq": freq})
+    # Retrieve the number of sample from the first bird (any bird should have the same value)
+    info["samples_size"]["week"] = bc_bird_list[0]["values_N"]
+
+    (
+        info["samples_size"]["month"],
+        info["samples_size"]["season"],
+        info["samples_size"]["year"],
+    ) = week_to_else(info["samples_size"]["week"])
+
+    # remove useless key in bird list to save storage
+    key_to_remove = {"buckets", "values_N", "prettyValues", "taxon"}  # Keys to remove
+
+    bc_bird_list = [
+        {
+            **bird["taxon"],  # Move taxon content up
+            **{
+                k if k != "values" else "freq": v
+                for k, v in bird.items()
+                if k not in key_to_remove
+            },
+        }
+        for bird in bc_bird_list
+    ]
+
     return (bc_bird_list, info)
 
 
