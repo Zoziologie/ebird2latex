@@ -236,7 +236,7 @@ def auth(usr, pwd):
     print("request sessionID from login...")
     # create a session to keep cookies
     s = requests.Session()
-    # login url, I don't know why you need the part after ? but it doesn't work without
+    # login url
     urlLogin = "https://secure.birds.cornell.edu/cassso/login"
     r = s.get(urlLogin)
     # search the value of the hidden input name=lt (link to cookies or login I guess)
@@ -306,6 +306,10 @@ def bird_creator(s, code_loc, lang, cat, byear, eyear, bmonth, emonth):
         for taxa_bird in taxa_bird_list:
             if taxa_bird["sciName"] == bc_bird["sciName"]:
                 bird = taxa_bird
+                if "exoticCategory" in bc_bird:
+                    bird["exoticCategory"] = bc_bird["exoticCategory"]
+                else:
+                    bird["exoticCategory"] = ""
                 bird["freq"] = {}
                 bird["freq"]["week"] = bc_bird["freq"]
                 bird_nb_week = list(
